@@ -1,7 +1,7 @@
 <?php
     class Users extends Controller {
         public function __construct() {
-            $this->userModel = $this->model('User');
+            $this->userModel = $this->model('UserModel');
         }
 
         public function register() {
@@ -188,7 +188,7 @@
             unset($_SESSION['email']);
             unset($_SESSION['gender']);
             unset($_SESSION['birthday']);
-            header('location:' . URLROOT . '/pages/index');
+            header('location:' . URLROOT . '/home');
         }
     }
 ?>

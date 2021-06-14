@@ -194,7 +194,7 @@
                 </form>
             </div>
         </div>
-        <a href="<?php echo URLROOT ?>/pages/index" id="form__close" class="form__close">
+        <a href="<?php echo URLROOT ?>/home" id="form__s" class="form__close">
             <i class="fas fa-times"></i>
         </a>
     </div>
@@ -280,4 +280,3 @@
         </div>
     </div>
 </div>
-

@@ -681,12 +681,12 @@ body.showLoginForm .form__close {
 #blog-container {
     width: 100%;
     background-color: #fff;
-    display: none;
-}
-
-#blog-container.show {
     display: block;
 }
+
+/* #blog-container.show {
+    
+} */
 
 .blog__head,
 .contact__head {
@@ -709,7 +709,7 @@ body.showLoginForm .form__close {
 }
 
 .blog__list {
-    padding: 80px 0;
+    padding: 24px 0;
 }
 
 .blog-item {
@@ -792,7 +792,14 @@ body.showLoginForm .form__close {
 
 .blog__desc {
     border-top: 1px solid #999;
-    padding: 14px 0;
+    padding-top: 14px;
+    overflow: hidden;
+    /* Them dau ba cham o cuoi */
+    text-overflow: ellipsis; 
+    /* So dong muon hien thi */
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
 }
 
 .blog__read {
@@ -816,7 +823,44 @@ body.showLoginForm .form__close {
     text-align: right;
     padding: 0 16px;
 }
+.pagination {
+    list-style: none;
+}
 
+.page-item {
+    display: inline-block;
+    
+}
+
+.page-item a{
+    color: #000;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+}
+
+/* blog detail */
+#blog_detail-container {
+    padding-top: 80px;
+    width: 100%;
+    background-color: #ccc;
+    display: block;
+}
+
+.blog_detail__content {
+    background-color: #fff;
+    padding: 0 100px 50px;
+}
+
+.blog_detail__header {
+    text-align: center;
+    padding: 30px;
+}
+
+.blog_detail__body {
+    margin-bottom: 30px;
+}
+
+.page-link,
 .blog__footer-previous,
 .blog__footer-next,
 .shop__footer-previous,

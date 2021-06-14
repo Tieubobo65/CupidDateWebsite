@@ -2,7 +2,7 @@
     error_reporting(E_ERROR | E_PARSE);
     //Core App Class
     class Core {
-        protected $currentController = 'Pages';
+        protected $currentController = 'Home';
         protected $currentMethod = 'index';
         protected $params = [];
 

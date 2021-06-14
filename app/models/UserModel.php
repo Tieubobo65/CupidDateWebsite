@@ -1,10 +1,10 @@
 <?php
-    class User {
+    class UserModel {
         private $db;
-
+        public $conn;
         public function __construct() {
             $this->db = new Database;
-            $this->db->connect();
+            $this->conn = $this->db->connect();
         }
 
         public function register($email, $firstname, $lastname, $password, $gender, $birthday) {
@@ -39,5 +39,26 @@
             } else {
                 return false;
             }
+        }
+
+        // Get all members 
+        public function getNumberMembers() {
+            $sql = "SELECT COUNT(*) total FROM users";
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_assoc($result);
+        }
+        
+        // Get all men 
+        public function getNumberMen() {
+            $sql = "SELECT COUNT(gender) as total FROM users WHERE gender = '1'";
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_assoc($result);
+        }
+
+        // Get all women
+        public function getNumberWomen() {
+            $sql = "SELECT COUNT(gender) as total FROM users WHERE gender = '2'";
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_assoc($result);
         }
     }
