@@ -31,22 +31,21 @@
             <div class="row">
                 <?php while ($post = mysqli_fetch_array($data['posts'])) { ?>
                     <div class="col l-4 m-6 c-12">
-                        <form action="blog/detailBlog/<?=$post['plug'] ?>" method="post">
                             <div class="blog-item">
                                 <div class="blog__img">
                                     <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="blog-img">
                                     <div class="blog__action">
                                         <ul class="list">
                                             <li>
-                                                <a href="#">
-                                                    <i class="fas fa-comment"></i>
-                                                    <span class="comments">16</span>
-                                                </a>
-                                            </li>
-                                            <li>
                                                 <a href="">
                                                     <i class="fas fa-heart"></i>
                                                     <span class="like">95</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fas fa-comment"></i>
+                                                    <span class="comments">16</span>
                                                 </a>
                                             </li>
                                             <li>
@@ -77,13 +76,9 @@
                                 <div class="blog__desc">
                                     <?php echo $post['content'] ?>
                                 </div>
-                                <input type="hidden" name="name" value="<?= $post['firstname'] . " " . $post['lastname'] ?>">
-                                <input type="hidden" name="time" value="<?= date("d/m/Y" , strtotime($post['created_at'])) ?>">
-                                <input type="hidden" name="content" value="<?= $post['content'] ?>">
-                                <input type="submit" name="readmore" class="blog__read" value="Read More >>">
+                                <a href="<?php echo URLROOT . "/blog/detailBlog/" . $post['plug'] ?>" class="blog__read">Read More >></a>
                             </div>
                         </div>
-                    </form>
                 <?php } ?>
             </div>
             <div class="row">

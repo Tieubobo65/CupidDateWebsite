@@ -22,7 +22,5 @@
             ];
             $this->view("/pages/blogdetail", $data);
         }
-
-
     }
 ?>

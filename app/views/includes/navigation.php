@@ -28,12 +28,6 @@
                         </ul>
                     </li>
                     <li class="heading__nav-item">
-                        <a id="shop-page" onclick="openShopPage()" href="#">Shop</a>
-                    </li>
-                    <li class="heading__nav-item">
-                        <a href="">Pages</a>
-                    </li>
-                    <li class="heading__nav-item">
                         <a id="contact-page" onclick="openContactPage()" href="#">Contact us</a>
                     </li>
                 </ul>
@@ -44,7 +38,7 @@
 
             <div>
                 <ul class="list heading__nav-list">
-                        <?php if(isset($_SESSION['user_id'])) : ?>
+                    <?php if(isset($_SESSION['user_id'])) : ?>
                     <li class="heading__nav-item">
                         <a href="#">
                             <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
@@ -102,12 +96,6 @@
                     </li>
                     <li class="heading__nav-mobile-item">
                         <a onclick="openMembersPage()" href="#">Members</a>
-                    </li>
-                    <li class="heading__nav-mobile-item">
-                        <a onclick="openShopPage()" href="#">Shop</a>
-                    </li>
-                    <li class="heading__nav-mobile-item">
-                        <a href="">Pages</a>
                     </li>
                     <li class="heading__nav-mobile-item">
                         <a onclick="openContactPage()" href="#">Contact us</a>

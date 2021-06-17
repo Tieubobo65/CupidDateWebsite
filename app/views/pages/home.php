@@ -116,24 +116,24 @@
         
                 <div class="col l-6 m-12 c-12">
                     <div class="download__desc">
-                                <h1 class="download__title">Download <span style="font-weight: 700;"><span style="color: #F52222;">Cupid</span>Date</span> app</h1>
+                        <h1 class="download__title">Download <span style="font-weight: 700;"><span style="color: #F52222;">Cupid</span>Date</span> app</h1>
                         <p class="download__desc bold">Free Available in All Store PlayStore, AppStore & Microsoft Store</p>
 
                         <div class="download__os">
                             <div class="download-item">
                                 <a class="download__icon" href="">
-                                            <i class="fab fa-android"></i>
-                                        </a>
+                                    <i class="fab fa-android"></i>
+                                </a>
                             </div>
                             <div class="download-item">
                                 <a class="download__icon" href="">
-                                            <i class="fab fa-apple"></i>
-                                        </a>
+                                    <i class="fab fa-apple"></i>
+                                </a>
                             </div>
                             <div class="download-item">
                                 <a class="download__icon" href="">
-                                            <i class="fab fa-windows"></i>
-                                        </a>
+                                    <i class="fab fa-windows"></i>
+                                </a>
                             </div>
                         </div>
 
