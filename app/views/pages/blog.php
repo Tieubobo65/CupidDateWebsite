@@ -45,7 +45,9 @@
                                             <li>
                                                 <a href="#">
                                                     <i class="fas fa-comment"></i>
-                                                    <span class="comments">16</span>
+                                                    <span class="comments">
+                                                        <?php echo $post['post_comment_count']?>
+                                                    </span>
                                                 </a>
                                             </li>
                                             <li>
@@ -63,20 +65,25 @@
                                     </h2>
                                     <div class="blog__info">
                                         <div class="blog__author">
-                                            <?php echo "By " . $post['firstname'] . " " . $post['lastname'] ?>
+                                            <a href="#">
+                                                <span>By</span>
+                                                <span style="font-weight: 600;">
+                                                    <?php echo $post['firstname'] . " " . $post['lastname'] ?>
+                                                </span>
+                                            </a>
                                         </div>
                                         <div class="blog__time">
                                             <?php echo date("d/m/Y" , strtotime($post['created_at'])) ?>
                                         </div>
                                         <div class="blog__field">
-                                            Dating
+                                            <?php echo $post['cat_title'] ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="blog__desc">
                                     <?php echo $post['content'] ?>
                                 </div>
-                                <a href="<?php echo URLROOT . "/blog/detailBlog/" . $post['plug'] ?>" class="blog__read">Read More >></a>
+                                <a href="<?php echo URLROOT . "/blog/detailBlog/" . $post['slug'] ?>" class="blog__read">Read More >></a>
                             </div>
                         </div>
                 <?php } ?>

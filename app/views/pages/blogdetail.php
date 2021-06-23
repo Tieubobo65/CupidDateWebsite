@@ -10,243 +10,185 @@
 </div>
 
 <!-- Begin blog detail -->
-<div id="blog_detail-container">
+<div id="post-container">
     <div class="wide grid">
-        <div class="row blog_detail__container">
-            <div class="col l-8">
-                <!-- Begin show post content -->
-                <div class="blog_detail__list">
-                    <div class="blog_detail-item">
-                        <div class="blog_detail__img">
-                            <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="image">
-                        </div>
-                        <div class="blog_detail__header">
-                            <h2><?php echo $post['title'] ?></h2>
-                            <div class="row blog_detail__info">
-                                <div class="col l-8 blog_detail__topic">
-                                    <span>Topic</span>
+        <div class="post__list">
+            <div class="row">
+                <div class="col l-8 m-12 c-12 pad-20">
+                    <!-- Begin show post content -->
+                    <div class="post-item">
+                        <div class="post__header">
+                            <div class="post-item__img">
+                                <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="image">
+                            </div>
+                            
+                            <div class="post__title">
+                                <h2><?php echo $post['title'] ?></h2>
+                            </div>
+    
+                            <div class="post__info">
+                                <div class="post__category">
+                                    <?php echo $post['cat_title'] ?>
                                 </div>
-                                <div class="col l-4 blog_detail__author">
-                                    <span>By </span>
-                                    <a href="#">
-                                        <span style="font-weight: bold; color: #374957;"><?php echo $post['firstname'] . " " . $post['lastname'] ?></span>
-                                    </a>
-                                    <span>•</span>
-                                    <span><?php echo date("d/m/Y" , strtotime($post['created_at'])) ?></span>
+                                <div class="post__author">
+                                    <span>
+                                        By 
+                                        <a href=""><?php echo $post['firstname'] . " " . $post['lastname'] ?></a>
+                                        •
+                                        <?php echo date("d/m/Y" , strtotime($post['created_at'])) ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="blog_detail__body">
-                            <p>
-                                <?php echo $post['content'] ?>
-                            </p>
+    
+                        <div class="post__body">
+                            <?php echo $post['content'] ?>
                         </div>
-                        <div class="row blog_detail__more">
-                            <div class="author">
+    
+                        <div class="post__more">
+                            <div class="post__author">
                                 <span>By </span>
                                 <a href="#">
-                                    <span style="font-weight: bold; color: #374957;"><?php echo $post['firstname'] . " " . $post['lastname'] ?></span>
+                                    <span><?php echo $post['firstname'] . " " . $post['lastname'] ?></span>
                                 </a>
                             </div>
-                            <div class="share">
+                            <div class="post__share">
                                 <span>SHARE:</span>
-                                <span>
-                                    <ul>
-                                        <li>
-                                            <a href=""><i class="fab fa-facebook-f" style="color: #3b5998;"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href=""><i class="fab fa-instagram" style="color: #E1306C;"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href=""><i class="fab fa-twitter" style="color: #00acee;"></i></a>
-                                        </li>
-                                    </ul>
-                                </span>
+                                <ul>
+                                    <li>
+                                        <a href=""><i class="fab fa-facebook-f" style="color: #3b5998;"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fab fa-instagram" style="color: #E1306C;"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="fab fa-twitter" style="color: #00acee;"></i></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- End show post content -->
-
-                <!-- Begin related posts -->
-                <div class="related-posts">
-                    <h3 style="margin: 20px 0;">Related Posts</h3>
-                    <div class="row related-posts-list">
-                        <div class="col l-6 related-posts-item">
-                            <div class="container">
-                                <div class="related-posts__img">
-                                    <a href="#">
-                                        <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="related-posts__content">
-                                    <div class="related-posts__category">
-                                        <a href="#">Category name</a>
-                                    </div>
-                                    <div class="related-posts__title">
-                                        <h2><a href="#">Post title example</a></h2>
-                                    </div>
-                                    <div class="related-posts__info">
-                                        <span><a href="#">Nguyen Thien</a></span>
-                                        <span>2 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l-6 related-posts-item">
-                            <div class="container">
-                                <div class="related-posts__img">
-                                    <a href="#">
-                                        <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="related-posts__content">
-                                    <div class="related-posts__category">
-                                        <a href="#">Category name</a>
-                                    </div>
-                                    <div class="related-posts__title">
-                                        <h2><a href="#">Post title example</a></h2>
-                                    </div>
-                                    <div class="related-posts__info">
-                                        <span><a href="#">Nguyen Thien</a></span>
-                                        <span>2 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l-6 related-posts-item">
-                            <div class="container">
-                                <div class="related-posts__img">
-                                    <a href="#">
-                                        <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="related-posts__content">
-                                    <div class="related-posts__category">
-                                        <a href="#">Category name</a>
-                                    </div>
-                                    <div class="related-posts__title">
-                                        <h2><a href="#">Post title example</a></h2>
-                                    </div>
-                                    <div class="related-posts__info">
-                                        <span><a href="#">Nguyen Thien</a></span>
-                                        <span>2 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End related posts -->
-
-                <!-- Begin comments -->
-                <div class="comments-container">
-                    <h3>Comments</h3>
-                    <div class="row">
-                        <div class="col l-12">
-                            <div class="comments-login">
-                                <p>
-                                    Create an account to write a comment.
-                                    <a href="#" class="signup-btn">Sign up</a>
-                                </p>
-                                <p>
-                                    Already have an account?
-                                    <a href="#" class="signin-btn">Sign in</a>
-                                </p>
-                            </div>
-                            <div class="row comments-form">
-                                <div class="col l-12">
-                                    <form action="" class="">
-                                        <textarea name="" id="" cols="30" rows="10" placeholder="Add a comment..."></textarea>
-                                        <input type="submit" value="SEND" class="submit-btn">
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="row comments-list">
-                                <div class="col l-12">
-                                    <div class="comments-item">
-                                        <div class="comments-item__info">
-                                            <a href="#">
-                                                <img src="<?php echo URLROOT; ?>/public/img/member-1.jpg" alt="">
-                                            </a>
-                                            <div class="comments-item__more">
+                    <!-- End show post content -->
+    
+                    <!-- Begin related latedPosts -->
+                    <div class="related-posts">
+                        <h3>Related Posts</h3>
+                        <div class="related-posts-list">
+                            <div class="row mg-auto">
+                                <?php 
+                                    $length = 2;
+                                    $i = 0;
+                                    while (($relatedPost = mysqli_fetch_array($data['relatedPosts'])) && ($i < $length)) { 
+                                        $i = $i + 1;
+                                        // if ($relatedPost['post_id'] != $post['post_id']) {
+                                ?>
+                                    <div class="col l-6">
+                                        <div class="related-posts-item">
+                                            <div class="related-posts__img">
                                                 <a href="#">
-                                                    <?php echo $post['firstname'] . " " . $post['lastname'] ?>
+                                                    <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="">
                                                 </a>
-                                                <p>
-                                                    1 day ago
-                                                </p>
+                                            </div>
+                                            <div class="related-posts__content">
+                                                <div class="related-posts__category">
+                                                    <?php echo $relatedPost['cat_title'] ?>
+                                                </div>
+                                                <h2><a href="#"><?php echo $relatedPost['title'] ?></a></h2>
+                                                <div class="related-posts__info">
+                                                    <div>
+                                                        <a href="#">
+                                                            <?php echo $relatedPost['firstname'] . " " . $relatedPost['lastname'] ?>
+                                                        </a>
+                                                        <?php echo date("d/m/Y" , strtotime($relatedPost['created_at'])) ?>
+                                                    </div>
+                                                    <a href="#"><i class="fas fa-share-alt"></i></a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="comments-item__content">
-                                            <p>
-                                                It's great tips.
-                                            </p>
+                                    </div>
+                                <?php }  ?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End related posts -->
+    
+                    <!-- Begin comments -->
+                    <div class="comments-container">
+                        <h3>Comments</h3>
+                        <div class="row">
+                            <div class="col l-12 m-12 c-12">
+                                <?php if(isset($_SESSION['user_id'])) : ?>
+                                    <div class="row comments-form">
+                                        <div class="col l-12">
+                                            <form action="" method="POST" id="addcomment" action="">
+                                                <textarea name="comment-content" id="comment-textbox" cols="30" rows="10" placeholder="Add a comment..."></textarea>
+                                                <div id="text-danger" style="color: #fb5252;"></div>
+                                                <input type="hidden" name="post-id" value="<?php echo $post['post_id'] ?>">
+                                                <input type="hidden" name="user-id" value="<?php echo $_SESSION['user_id'] ?>">
+                                                <input type="submit" value="SEND" class="submit-btn" name="send" id="send-btn">
+                                            </form>
                                         </div>
+                                    </div>
+                                <?php else : ?>
+                                    <div class="comments-login">
+                                        <p>
+                                            Create an account to write a comment.
+                                            <a href="<?php echo URLROOT; ?>/users/register" class="signup-btn">Sign up</a>
+                                        </p>
+                                        <p>
+                                            Already have an account?
+                                            <a href="<?php echo URLROOT; ?>/users/login" class="signin-btn">Sign in</a>
+                                        </p>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                            <div class="row comments-list" id="comment-list">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End comments -->
+                </div>
+    
+                <!-- Begin right sidebar -->
+                <div class="col l-4 blog_detail__sidebar">  
+                    <h3>Latest Posts</h3>
+                    <?php 
+                        $length = 3;
+                        $i = 0;
+                        while (($lastedPost = mysqli_fetch_array($data['lastedPosts'])) && ($i < $length)) { 
+                            $i = $i + 1;
+                            if ($lastedPost['post_id'] != $post['post_id']) {
+                    ?>
+                        <div class="sidebar-list">
+                            <div class="row sidebar-item">
+                                <div class="col l-5 sidebar__img">
+                                    <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="">
+                                </div>
+                                <div class="col l-7 sidebar-item__content">
+                                    <div class="sidebar__author">
+                                        <a href="#">
+                                            <?php echo $lastedPost['firstname'] . " " . $lastedPost['lastname'] ?>
+                                        </a>
+                                    </div>
+                                    <div class="sidebar__title">
+                                        <a href="<?php echo URLROOT . "/blog/detailBlog/" . $lastedPost['slug'] ?>">
+                                            <?php echo $lastedPost['title'] ?>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- End comments -->
+                    <?php }} ?>
+                <!-- End right sidebar -->
             </div>
-
-            <!-- Begin right sidebar -->
-            <div class="col l-4 blog_detail__sidebar">  
-                <h3>Latest Posts</h3>
-                <div class="sidebar-list">
-                    <div class="row sidebar-item">
-                        <div class="col l-5 sidebar__img">
-                            <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="">
-                        </div>
-                        <div class="col l-7 sidebar-item__content">
-                            <div class="sidebar__author">
-                                <a href="#">Nguyen Thien</a>
-                            </div>
-                            <div class="sidebar__title">
-                                <a href="#">Recommend blog in sidebar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sidebar-list">
-                    <div class="row sidebar-item">
-                        <div class="col l-5 sidebar__img">
-                            <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="">
-                        </div>
-                        <div class="col l-7 sidebar-item__content">
-                            <div class="sidebar__author">
-                                <a href="#">Nguyen Thien</a>
-                            </div>
-                            <div class="sidebar__title">
-                                <a href="#">Recommend blog in sidebar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sidebar-list">
-                    <div class="row sidebar-item">
-                        <div class="col l-5 sidebar__img">
-                            <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="">
-                        </div>
-                        <div class="col l-7 sidebar-item__content">
-                            <div class="sidebar__author">
-                                <a href="#">Nguyen Thien</a>
-                            </div>
-                            <div class="sidebar__title">
-                                <a href="#">Recommend blog in sidebar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End right sidebar -->
         </div>
     </div>
 </div>
 <!-- End blog detail -->
+<script>
+    getCommentList(<?php echo $post['post_id'] ?>);
+    ajaxSubmit('addcomment', <?php echo $post['post_id'] ?>)
+</script>
 
 <?php
     require APPROOT . '/views/includes/footer.php';

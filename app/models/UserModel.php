@@ -8,9 +8,8 @@
         }
 
         public function register($email, $firstname, $lastname, $password, $gender, $birthday) {
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
             $sql = "INSERT INTO users (email, firstname, lastname, password, gender, birthday) VALUES('$email', '$firstname', '$lastname', '$password', '$gender', '$birthday')";
-
-            //execute function 
             if($this->db->execute($sql)) {
                 return true;
             } else {
