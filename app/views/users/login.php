@@ -1,4 +1,11 @@
 <?php
+    require_once APPROOT . '/views/includes/login_google.php';
+?>
+<?php
+    require_once APPROOT . '/views/includes/login_fb.php';
+?>
+
+<?php
     require APPROOT . '/views/includes/head.php';
 ?>
 
@@ -182,11 +189,11 @@
                         <button id="login-button" class="button" type="submit" value="submit">Login</button>
                         <div class="login-with">
                             <span class="bold">Login With</span>
-                            <button class="login-with__facebook">
+                            <button class="login-with__facebook" type="button" onclick = "window.location = '<?php echo $facebook_login_url; ?>'">
                                 <i class="fab fa-facebook-f"></i>
                             </button>
     
-                            <button class="login-with__google">
+                            <button type="button" class="login-with__google" onclick="window.location = '<?php echo $login_url;?>'">
                                 <i class="fab fa-google-plus-g"></i>
                             </button>
                         </div>
