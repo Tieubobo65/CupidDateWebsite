@@ -17,9 +17,9 @@
                 <nav id="heading__nav" class="heading__nav">
                     <div>
                         <ul class="list heading__nav-list">
-                            <li class="heading__nav-item">
-                                <a id="blog-page" onclick="openBlogPage()" style="cursor: pointer;" href='#'>Blog</a>
-                            </li>
+                        <li class="heading__nav-item">
+                            <a id="blog-page" onclick="openBlogPage()" style="cursor: pointer;" href="<?php echo URLROOT; ?>/blog">Blog</a>
+                        </li>
                             <li class="heading__nav-item">
                                 <a id="community-page" href="#">Community</a>
                                 <ul class="list sub-heading__nav">
