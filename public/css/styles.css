@@ -55,7 +55,8 @@ a {
     margin: auto;
 }
 
-.overlay {
+.overlay,
+#overlay_invisible {
     position: fixed;
     top: 0;
     left: 0;
@@ -225,14 +226,6 @@ a {
     /* animation: slide 10s ease-in-out forwards; */
 }
 
-@keyframes slide {
-    50%{
-        background: url(/public/img/slider-1.jpg) top center / cover no-repeat;
-    }
-    50%{
-        background: url(/public/img/slider-3.jpg) top center / cover no-repeat;
-    }
-}
 .slider__title {
     font-size: 48px;
     font-weight: 600;
@@ -524,6 +517,7 @@ a {
 
 .form__close {
     z-index: 2;
+    cursor: pointer;
 }
 
 .form__close i {
@@ -550,6 +544,7 @@ a {
     font-weight: bold;
     border-radius: 5px;
     width: 100%;
+    cursor: pointer;
 }
 
 .form__input:focus {
@@ -645,7 +640,7 @@ body.showLoginForm .form__close {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.login-container {
+.login-container{
     margin-bottom: 50px;
 }
 
@@ -690,7 +685,7 @@ body.showLoginForm .form__close {
 
 .blog__head,
 .contact__head {
-    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(/public/img/member.jpg) top center / cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(../img/member.jpg) top center / cover no-repeat;
     min-height: 312px;
     position: relative;
     text-align: center;
@@ -1222,7 +1217,7 @@ body.showLoginForm .form__close {
 
 .members__head,
 .waiting__head {
-    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(/public/img/member.jpg) top center / cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(../img/member.jpg) top center / cover no-repeat;
     min-height: 450px;
     height: auto;
     position: relative;
@@ -1443,6 +1438,7 @@ body.showLoginForm .form__close {
 }
 
 .member__action {
+    border: none;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1479,7 +1475,7 @@ body.showLoginForm .form__close {
 }
 
 .profile__banner {
-    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(/public/img/member-profile-cover.jpg) top center / cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(../img/member-profile-cover.jpg) top center / cover no-repeat;
     min-height: 422px;
     padding-top: 200px;
     max-height: 422px;
@@ -1493,11 +1489,28 @@ body.showLoginForm .form__close {
     bottom: 0;
 }
 
+.profile__avatar {
+    position: relative;
+}
 .profile__avatar img {
     max-height: 260px;
+    min-height: 300px;
     min-width: 260px;
     border-radius: 50%;
     border: 8px solid #eee;
+}
+
+.profile__avatar i {
+    align-self: flex-end;
+    font-size: 30px;
+    padding: 10px;
+    color: #333;
+    background-color: #eee;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 26px;
+    right: 26px;
+    cursor: pointer;
 }
 
 .profile__user-info {
@@ -1530,7 +1543,7 @@ body.showLoginForm .form__close {
 }
 
 .profile__detail {
-    margin: 80px 0
+    margin: 120px 0;
 }
 
 .profile-list {
@@ -1565,10 +1578,36 @@ body.showLoginForm .form__close {
     padding: 0 20px;
 }
 
+
 .profile__photo-item img {
     max-width: 100%;
+    max-height: 110px;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin: 10px ;
+    cursor: pointer;
+}
+
+#profile__photo-add {
+    background-color: #eee;
+    min-height: 110px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#profile__photo-add i {
+    font-size: 30px;
+    padding: 10px 12px;
+    border-radius: 50%;
+}
+
+#profile__photo-add:hover i {
+    background-color: #e74c3c;
+    color: #fff;
 }
 
 .like-button {
@@ -1705,14 +1744,6 @@ body.showLoginForm .form__close {
 }
 
 /*Contact us*/
-.contact-container {
-    display: none;
-}
-
-.contact-container.show {
-    display: block;
-}
-
 .contact-form {
     padding-top: 100px;
     padding-bottom: 50px;
@@ -1728,11 +1759,214 @@ body.showLoginForm .form__close {
 }
 
 .setup-container {
-    margin-top: 200px;
+    margin-top: 150px;
     text-align: center;
 }
 
+.setup-container h2 {
+    margin-bottom: 40px;
+}
 .setup-container img {
     max-width: 200px;
     margin-bottom: 50px;
+}
+
+.setup__input {
+    max-width: 26%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.setup__note {
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+.setup__note i {
+    margin-right: 10px;
+}
+
+.setup__button button {
+    margin: 20px 40px;
+    padding: 10px;
+    min-width: 130px;
+}
+
+.setup__step {
+    display: none;
+}
+
+.setup__step.show {
+    display: block;
+}
+
+/* Set the size of the div element that contains the map */
+#map {
+    height: 600px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+  }
+
+.login-with button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.setup__language {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-icon {
+    padding: 5px;
+    margin-right: 5px;
+    color: red;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+#countryError,
+#stateError,
+#cityError {
+    text-align: center;
+    color: #fff;
+}
+
+#profileDisplay {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#overlay_invisible {
+    display: none;
+}
+
+#form-container-photo,
+#open-photo{
+    margin-top: 400px;
+    display: none;
+}
+
+#change-avt {
+    z-index: 2;
+    display: none;
+}
+
+#photo {
+    justify-content: center;
+}
+
+#photo img {
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 5px;
+}
+
+#open-photo img {
+    z-index: 2;
+}
+#add_photo {
+    z-index: 2;
+    padding: 0;
+    padding-top: 30px;
+}
+
+#add_photo-form {
+    text-align: center;
+}
+
+#add_photo a {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+.suggestion,
+.add_photo-form-submit {
+    text-align: center;
+    margin-top: 30px;
+    background-color: #FFE4C4;
+    padding: 30px;
+}
+
+.add_photo-form-submit {
+    padding: 30px 130px;
+}
+
+.suggestion__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.suggestion__item img {
+    max-width: 100px;
+    border-radius: 5px;
+    max-height: 100px;
+}
+
+.suggestion__item i {
+    margin: 10px;
+    color: rgb(43, 97, 214);
+}
+
+.suggestion__item p {
+    line-height: 1;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.add_photo-form-submit {
+    display: none;
+}
+
+#photo_upload {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#change-avt-form {
+    text-align: center;
+}
+.change-avt-submit {
+    margin-bottom: 30px;
+    display: none;
+}
+
+.change-avt-submit img {
+    border-radius: 50%;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.change-avt__button {
+    text-align: center;
+    margin-bottom: 30px;
+    min-width: 400px;
+}
+
+.change-avt__button button {
+    margin-top: 10px;
+    min-width: 300px;
+}
+
+.uploaded-photos {
+    margin-top: 30px;
+    max-width: 500px;
+}
+.profile-edit-button {
+    float: right;
+    font-weight: 700;
+}
+
+.profile-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row {
+    display: flex;
+    line-height: 1;
+    margin-top: 20px;
 }
