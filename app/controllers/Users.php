@@ -273,8 +273,6 @@
             }
 
             if(isset($_FILES['avt'])) {
-                print_r($_FILES);
-                print_r($_POST);
                 if($_FILES['avt'] != '') {
                     $avatar = time() . '_' . $_FILES['avt']['name'];
                     $this->userModel->addPhoto($_SESSION['user_id'], $avatar);
@@ -282,7 +280,7 @@
                     $target = "../public/img/" . $avatar;
                     move_uploaded_file($_FILES['avt']['tmp_name'], $target);
                     $_SESSION['avatar'] = $avatar;
-                } 
+                }
             }
 
             $address = $this->userModel->getCurrentAddress($_SESSION['city_id']);

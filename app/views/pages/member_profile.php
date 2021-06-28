@@ -16,22 +16,19 @@
                     <div class="col l-6">
                         <div class="profile__banner-left">
                             <div class="profile__avatar">
-                                <?php if($_SESSION['avatar']) { ?>
-                                    <img src="<?php echo URLROOT; ?>/public/img/<?php echo $_SESSION['avatar'];?>" alt="">
-                                    <input type="file" name="avatar" id="avatar" onChange="displayImage(this)" style="display: none">
+                                <?php if($data['user_detail']['avatar']) { ?>
+                                    <img src="<?php echo URLROOT; ?>/public/img/<?php echo $data['user_detail']['avatar'];?>" alt="" onclick="openAvt(this.src)" style="cursor: pointer">
                                 <?php } else { ?>
                                     <img src="../public/img/avt.png" alt="avatar">
                                 <?php } ?>
-
-                                <i class="fas fa-camera" onclick="openChangeAvatar()"></i>
                             </div>
 
                             <div class="profile__user-info">
                                 <div class="user__name">
                                     <h1>
-                                        <?php echo $_SESSION['firstname'];
+                                        <?php echo $data['user_detail']['firstname'];
                                             echo " ";
-                                            echo $_SESSION['lastname'];
+                                            echo $data['user_detail']['lastname'];
                                         ?>
                                     </h1>
                                 </div>
@@ -39,7 +36,7 @@
                                 <div class="user__age">
                                     <?php
                                         // Create a datetime object using date of birth
-                                        $dob = new DateTime($_SESSION['birthday']);
+                                        $dob = new DateTime($data['user_detail']['birthday']);
                                      
                                         // Get today's date
                                         $now = new DateTime();
@@ -54,7 +51,7 @@
 
                                 <div class="user__address">
                                     <?php 
-                                        echo $data['country_name'];
+                                        echo $data['address']['country'];
                                     ?>
 
                                 </div>
@@ -65,8 +62,12 @@
                         <div class="profile__banner-right">
                             <a href="<?php echo URLROOT; ?>/users/setup">
                                 <button class="button">
-                                    <i class="fas fa-trash-alt"></i>
-                                    Delete Account
+                                    <i class="fas fa-heart"></i>
+                                    Like
+                                </button>
+                                <button class="button">
+                                <i class="fas fa-comment"></i>
+                                    Message
                                 </button>
                             </a>
                         </div>
@@ -84,7 +85,6 @@
                                 <div class="col l-12">
                                     <div class="profile__basic-info">
                                         Basic Information
-                                        <a class="profile-edit-button" style="color: #F08080" href="" onclick="editBasicInfoForm()">Edit</a>
                                     </div>
                                 </div>
     
@@ -108,14 +108,14 @@
                                             <div>
                                                 <ul class="list profile-list" style="font-weight: 700;">
                                                     <li>
-                                                        <?php echo $_SESSION['firstname'];?>
+                                                        <?php echo $data['user_detail']['firstname'];?>
                                                     </li>
                                                     <li>
                                                         <?php echo $diff->y." years old";?>
                                                     </li>
                                                     <li>
                                                         <?php 
-                                                        $timestamp = strtotime($_SESSION['birthday']);
+                                                        $timestamp = strtotime($$data['user_detail']['birthday']);
                                                         $day = date('d', $timestamp);
                                                         $year = date('Y', $timestamp);
                                                         $month = date('m', $timestamp);
@@ -133,7 +133,7 @@
                                                     </li>
                                                     <li>
                                                         <?php 
-                                                            switch($_SESSION['gender']) {
+                                                            switch($data['user_detail']['gender']) {
                                                                 case 0: {
                                                                     echo "Male";
                                                                     break;
@@ -156,13 +156,13 @@
                                                         ?>
                                                     </li>
                                                     <li>
-                                                        <?php echo $data['country_name'];?>
+                                                        <?php echo $data['address']['country'];?>
                                                     </li>
                                                     <li>
-                                                        <?php echo $data['state_name'];?>
+                                                        <?php echo $data['address']['state'];?>
                                                     </li>
                                                     <li>
-                                                        <?php echo $data['city_name'];?>
+                                                        <?php echo $data['address']['city'];?>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -191,7 +191,7 @@
                                                 <ul class="list profile-list" style="font-weight: 700;">
                                                 <li>
                                                         <?php
-                                                        switch($_SESSION['status']) {
+                                                        switch($data['user_detail']['status']) {
                                                             case 0: {
                                                                 echo "Single";
                                                                 break;
@@ -211,11 +211,11 @@
                                                         ?>
                                                     </li>
                                                     <li>
-                                                        <?php echo $_SESSION['job'];?>
+                                                        <?php echo $data['user_detail']['job'];?>
                                                     </li>
                                                     <li>
                                                         <?php
-                                                            switch($_SESSION['income']) {
+                                                            switch($data['user_detail']['income']) {
                                                                 case 0:
                                                                     echo "No income";
                                                                     break;
@@ -242,7 +242,7 @@
                                                     </li>
                                                     <li>
                                                         <?php
-                                                            switch($_SESSION['getmarried']) {
+                                                            switch($data['user_detail']['getmarried']) {
                                                                 case 0:
                                                                     echo "Want to get married soon";
                                                                     break;
@@ -263,7 +263,7 @@
                                                     </li>
                                                     <li>
                                                         <?php
-                                                        switch($_SESSION['alcohol']) {
+                                                        switch($data['user_detail']['alcohol']) {
                                                             case 0:
                                                                 echo "No";
                                                                 break;
@@ -280,7 +280,7 @@
                                                     </li>
                                                     <li>
                                                     <?php
-                                                        switch($_SESSION['cigarettes']) {
+                                                        switch($data['user_detail']['cigarettes']) {
                                                             case 0:
                                                                 echo "No";
                                                                 break;
@@ -297,7 +297,7 @@
                                                     </li>
                                                     <li>
                                                     <?php
-                                                        switch($_SESSION['dayoff']) {
+                                                        switch($data['user_detail']['dayoff']) {
                                                             case 0:
                                                                 echo "Saturday and Sunday";
                                                                 break;
@@ -322,10 +322,9 @@
                                     <div class="profile__intro">
                                         <div class="profile-title">
                                             <h1>About me</h1>
-                                            <a style="color: #F08080" href="" class="profile-edit-button">Edit</a>
                                         </div>
                                         <?php
-                                            echo $_SESSION['user_about'];
+                                            echo $data['user_detail']['user_about'];
                                         ?>
                                     </div>
                                 </div>
@@ -334,9 +333,8 @@
                                     <div class="profile__intro">
                                         <div class="profile-title">
                                             <h1>About me</h1>
-                                            <a style="color: #F08080" href="" class="profile-edit-button">Edit</a>
                                         </div>
-                                        <?php echo $_SESSION['user_character'];?>
+                                        <?php echo $data['user_detail']['user_character'];?>
                                     </div>
                                 </div>
                             </div>
@@ -375,102 +373,17 @@
     <div id="overlay_invisible" onclick="closeForm()"> </div>
     </a>
 
-    <div class="form-container" id="form-container-photo">
-        <div id="add_photo" class="form row">
-            <div class="add_photo-container">
-                <h1 class="form__title">Add some new photos!</h1>
-                <form id="add_photo-form" class="add_photo-form" action="<?php echo URLROOT;?>/users/personel_profile" method="POST" enctype="multipart/form-data">
-                    <button id="add_photo-button" onclick="phototriggerClick()" class="button">Upload photo from your device</button>
-                    <input type="file" name="photo" id="photo" onChange="displayPhoto(this)" style="display: none">
-                    <div class="add_photo-form-submit">
-                        <h3>Your photo here</h3>
-                        <img id="photo_upload" src="" alt="">
-                        <br>
-                        <button type="submit" class="button">Save</button>
-                    </div>
-                </form>
-
-                <div class="suggestion">
-                    <h3>Suggestion from Cupid Date</h3>
-                    <div class="row">
-                        <div class="col l-4">
-                            <div class="suggestion__item">
-                                <i class="fas fa-check-circle"></i>
-                                <img src="../public/img/suggest_1.jpg" alt="">
-                                <p>Your own photo</p>
-                            </div>
-                        </div>
-
-                        <div class="col l-4">
-                            <div class="suggestion__item">
-                                <i class="fas fa-check-circle"></i>
-                                <img src="../public/img/suggest_2.jpg" alt="">
-                                <p>Just be yourself</p>
-                            </div>
-                        </div>
-
-                        <div class="col l-4">
-                            <div class="suggestion__item">
-                                <i class="fas fa-check-circle"></i>
-                                <img src="../public/img/suggest_3.jpg" alt="">
-                                <p>Real & clear images</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#">Refer for photo selection tips here</a>
-                </div>
-
-
-            </div>
-        </div>
-        <a onclick="closeForm()" id="form__close" class="form__close">
-            <i class="fas fa-times"></i>
-        </a>
-    </div>
-
     <div class="form-container" id="open-photo">
         <div id="photo" class="row">
             <img id="open-photo__img" src="" alt="">
         </div>
     </div>
 
-    <div class="form-container" id="change-avt">
-        <div class="form row">
-            <div class="change-avt-container">
-                <h1 class="form__title">Set a new avatar!</h1>
-                <form id="change-avt-form" class="change-avt-form" action="<?php echo URLROOT;?>/users/personel_profile" method="POST" enctype="multipart/form-data">
-                    <div class="change-avt__button">
-                        <button id="upload-avt-button" onclick="avttriggerClick()" class="button">Upload photo from your device</button><br>
-                        <input type="file" name="avt" id="avt" onChange="displayAvt(this)" style="display: none">
-
-                        <div class="uploaded-photos">
-                            <h3>Choose from your uploaded pictures</h3>
-                            <div class="row">
-                                <?php foreach($data['photos'] as $value) {?>
-                                    <div class="col l-4">
-                                        <div class="profile__photo-item">
-                                            <img src="<?php echo URLROOT; ?>/public/img/<?php echo $value['photo_name'] ;?>" alt="" onclick="chooseAvt(this.src)">
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            </div>
- 
-                        </div>
-                     </div>
-
-                     <div class="change-avt-submit">
-                        <img id="new-avt" src="<?php echo URLROOT; ?>/public/img/<?php echo $_SESSION['avatar'];?>" alt=""><br>
-                        <button id="avt-cancel" type="button" class="button" onclick="cancelAvatar()">Cancel</button>
-                        <button id="avt-submit" type="submit" class="button">Save</button><br>
-                     </div>
-                </form>
-            </div>
+    <div class="form-container" id="open-avt">
+        <div id="avt" class="row">
+            <img id="open-avt__img" src="" alt="">
         </div>
-        <a onclick="closeForm()" id="form__close" class="form__close">
-            <i class="fas fa-times"></i>
-        </a>
     </div>
-
 </div>
 
 

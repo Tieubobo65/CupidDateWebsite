@@ -152,13 +152,13 @@
         }
 
         public function addRelationship($user_1, $user_2) {
-            $sql = "INSERT INTO relationships(user_1, user_2, status, created) VALUES($user_1, $user_2, '1', now())";
+            $sql = "INSERT INTO relationships(user_1, user_2, status, created) VALUES($user_1, $user_2, '0', now())";
             echo $sql;
             $this->db->execute($sql);
         }
         
         public function checkRelationship($user_1, $user_2) {
-            $sql = "SELECT status FROM relationships WHERE (user_1 = $user_1 AND user_2 = $user_2) OR (user_1 = $user_2 AND user_2 = $user_1)";
+            $sql = "SELECT DISTINCT status FROM relationships WHERE (user_1 = $user_1 AND user_2 = $user_2) OR (user_1 = $user_2 AND user_2 = $user_1)";
             $row = mysqli_fetch_array($this->db->execute($sql));
             return $row['status'];
         }
@@ -181,5 +181,11 @@
             $sql = "SELECT COUNT(gender) as total FROM users WHERE gender = '2'";
             $result = mysqli_query($this->conn, $sql);
             return mysqli_fetch_assoc($result);
+        }
+
+        public function getUserDetail($user_id) {
+            $sql = "SELECT * FROM users WHERE id = $user_id";
+            $row = mysqli_fetch_array($this->db->execute($sql));
+            return $row;
         }
     }

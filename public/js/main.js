@@ -680,6 +680,7 @@ function openAddPhotoForm() {
 
 function closeForm() {
     document.querySelector('.form-container').style.display="none";
+    document.querySelector('#open-avt').style.display='none';
     document.querySelector('#overlay_invisible').style.display="none";
     document.querySelector('#change-avt').style.display = 'none';
     document.querySelector('#open-photo').style.display='none';
@@ -710,6 +711,12 @@ function openPhoto(src) {
     document.querySelector('#open-photo__img').setAttribute('src', src);
 }
 
+function openAvt(src) {
+    document.querySelector('#overlay_invisible').style.display="block";
+    document.querySelector('#open-avt').style.display="block";
+    document.querySelector('#open-avt__img').setAttribute('src', src);
+}
+
 //change avt
 function openChangeAvatar() {
     document.querySelector('#overlay_invisible').style.display = 'block';
@@ -735,8 +742,27 @@ function displayAvt(e) {
     }
 }
 
+function chooseAvt(src) {
+    document.querySelector('.uploaded-photos').style.display="none";
+    document.querySelector('.change-avt__button').style.display="none";
+    document.querySelector('.change-avt-submit').style.display="block";
+    document.querySelector('#new-avt').setAttribute('src', src);
+}
 
-//add some describe
+function cancelAvatar() {
+    document.querySelector('.uploaded-photos').style.display="block";
+    document.querySelector('.change-avt__button').style.display="block";
+    document.querySelector('.change-avt-submit').style.display="none";
+}
+
+//Like
+// $(document).ready(function() {
+//     $('.like').click(function() {
+//         var id = $(this).attr("id");
+//         document.getElementById(id).parentElement.parentElement.parentElement.parentElement.parentElement.outerHTML = "";
+//     })
+// })
+
 $(document).ready(function() {
     $('.like-form').on('submit', function() {
         var that = $(this),
@@ -760,9 +786,30 @@ $(document).ready(function() {
     })
 })
 
+//seeking friends
 $(document).ready(function() {
-    $('.like').click(function() {
-        var id = $(this).attr("id");
-        document.getElementById(id).parentElement.parentElement.parentElement.parentElement.parentElement.outerHTML = "";
+    $('form.seeking-form').on('submit', function() {
+        var that = $(this),
+            url = that.attr('action'),
+            type = that.attr('method'),
+            seeking_gender = $('#seeking_gender').val();
+            from_age = $('#from_age').val();
+            to_age = $('#to_age').val();
+            data = {
+                seeking_gender: seeking_gender,
+                from_age: from_age,
+                to_age: to_age
+            };
+        console.log(data);
+        $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            success:function(data) {
+                $('#state').html(data);
+            }
+        });
+        return false;
     })
 })
+

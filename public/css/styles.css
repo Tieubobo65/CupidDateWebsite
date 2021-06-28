@@ -1849,22 +1849,27 @@ body.showLoginForm .form__close {
     display: none;
 }
 
+#open-avt {
+    display: none;
+}
 #change-avt {
     z-index: 2;
     display: none;
 }
 
-#photo {
+#photo, #avt {
     justify-content: center;
 }
 
-#photo img {
+#photo img,
+#avt img {
     max-width: 500px;
     max-height: 500px;
     border-radius: 5px;
 }
 
-#open-photo img {
+#open-photo img,
+#open-avt img{
     z-index: 2;
 }
 #add_photo {
