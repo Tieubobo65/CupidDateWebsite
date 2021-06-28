@@ -300,7 +300,6 @@ function openContactPage() {
      document.getElementById("shop-page").classList.remove("here");
 }
 
-<<<<<<< HEAD
 function ajaxSubmit(form, id=null) {
     $(document).ready(function() {
         var formId = '#' + form;
@@ -348,7 +347,6 @@ function getCommentList(postId) {
     });
 }
 
-=======
 function initMap() {
     // The location of Uluru
     const hcm = { lat: 10.8685, lng: 106.7964 };
@@ -768,4 +766,3 @@ $(document).ready(function() {
         document.getElementById(id).parentElement.parentElement.parentElement.parentElement.parentElement.outerHTML = "";
     })
 })
->>>>>>> 21476e0e (profilecommit)
