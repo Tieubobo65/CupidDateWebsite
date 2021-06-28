@@ -60,4 +60,13 @@
             $result = mysqli_query($this->conn, $sql);
             return mysqli_fetch_assoc($result);
         }
+
+        public function getUserById($user_id) {
+            $sql = "SELECT *
+                    FROM users
+                    WHERE id = $user_id
+                    ";
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_assoc($result);
+        }
     }

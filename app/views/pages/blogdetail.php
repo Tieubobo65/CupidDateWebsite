@@ -187,7 +187,7 @@
 <!-- End blog detail -->
 <script>
     getCommentList(<?php echo $post['post_id'] ?>);
-    ajaxSubmit('addcomment', <?php echo $post['post_id'] ?>)
+    ajaxSubmitBlog('addcomment', <?php echo $post['post_id'] ?>)
 </script>
 
 <?php

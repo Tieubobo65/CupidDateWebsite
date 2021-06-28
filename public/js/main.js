@@ -300,7 +300,7 @@ function openContactPage() {
      document.getElementById("shop-page").classList.remove("here");
 }
 
-function ajaxSubmit(form, id=null) {
+function ajaxSubmitBlog(form, id=null) {
     $(document).ready(function() {
         var formId = '#' + form;
         if ($(formId).length) {
@@ -324,12 +324,43 @@ function ajaxSubmit(form, id=null) {
                             $("textarea#comment-textbox").val('');
                             getCommentList(id);
                         }
-                        
                     }
+
                 }
             });
         })
-        
+
+    }); 
+}
+
+function ajaxSubmitMessage(form, id=null) {
+    $(document).ready(function() {
+        var formId = '#' + form;
+        if ($(formId).length) {
+            console.log(formId + " existed");
+        }
+        else {
+            console.log(formId + " MISSING");
+        }
+        $(formId).on("submit", function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/CupidDate/messages/" + form,
+                data: $(formId).serializeArray(),
+                success: function(data) {
+                    console.log(data);
+                    if (form === "addmessage") {
+                        if ($("#message-textbox").val() != '') {
+                            $("#message-textbox").val('');
+                            getChatList(id);
+                        }
+                    }
+
+                }
+            });
+        })
+
     }); 
 }
 
@@ -347,3 +378,44 @@ function getCommentList(postId) {
     });
 }
 
+function getChatList(userId) {
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "../getchatlist/" + userId,
+            success: function(data) {
+                console.log(data);
+                $("#chat-box").html(data);
+            }
+        });
+    });
+}
+
+
+
+// get conversation list
+// function getConversationList(userId) {
+//     $(document).ready(function() {
+//         $.ajax({
+//             type: "GET",
+//             url: "./messages/getconversationlist/" + userId,
+//             success: function(data) {
+//                 console.data;
+//                 $(".conversation-container").html(data);
+//             }
+//         });
+//     });
+// }
+
+// function getConversation(userId) {
+//     $(document).ready(function() {
+//         $.ajax({
+//             type: "GET",
+//             url: "./messages/getconversation/" + userId,
+//             success: function(data) {
+//                 console.log(data);
+//                 $(".message-chat").html(data);
+//             }
+//         });
+//     });
+// }

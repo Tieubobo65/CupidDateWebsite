@@ -20,10 +20,16 @@
                         <a id="community-page" href="#">Community</a>
                         <ul class="list sub-heading__nav">
                             <li>
-                                <a onclick="openMembersPage()" href="#">Members</a>
+                                <a onclick="openMembersPage()" href="#">
+                                <i class="fas fa-users"></i>
+                                    Members
+                                </a>
                             </li>
                             <li>
-                                <a onclick="openWaitingMembers()" href="#">Waiting You</a>
+                                <a onclick="openWaitingMembers()" href="#">
+                                    <i class="fas fa-user-friends"></i>    
+                                    Waiting You
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -45,10 +51,22 @@
                         </a>
                         <ul class="list sub-heading__nav">
                             <li>
-                                <a href="#">Your profile</a>
+                                <a href="#">
+                                    <i class="fas fa-user-circle"></i>
+                                    Your profile
+                                </a>
                             </li>
                             <li>
-                                <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
+                                <a href="<?php echo URLROOT; ?>/messages">
+                                    <i class="fas fa-comment-dots"></i>
+                                    Messages
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo URLROOT; ?>/users/logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Log out
+                                </a>
                             </li>
                         </ul>
                     </li>
