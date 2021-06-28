@@ -23,7 +23,7 @@
                 while($rows = mysqli_fetch_assoc($search)) {
                     $output .= '
                                 <div class="conversation-item">
-                                    <a href="./messages/chat/' . $rows['user_id_2'] . '">
+                                    <a href="./messages/chat/' . $rows['user_2'] . '">
                                         <div class="conversation-content">
                                             <img src="./public/img/member-1.jpg" alt="">
                                             <div class="conversation__detail">
@@ -87,7 +87,7 @@
                     else {
                         $output .= '
                                     <div class="chat incoming">
-                                        <img src="cupiddate/public/img/member-1.jpg" alt="">
+                                        <img src="./public/img/' . $rows['avatar'] . '" alt="">
                                         <div class="details">
                                             <p>' . $rows['message_content'] . '</p>
                                         </div>
@@ -108,7 +108,7 @@
             }
             elseif (mysqli_num_rows($conversations) > 0) {
                 while($rows = mysqli_fetch_assoc($conversations)) {
-                    $last = $this->messageModel->getLastChat($outgoing_id, $rows['user_id_2']);
+                    $last = $this->messageModel->getLastChat($outgoing_id, $rows['user_2']);
                     $rows2 = mysqli_fetch_assoc($last);
                     if (mysqli_num_rows($last) > 0) {
                         $result = $rows2['message_content'];
@@ -120,9 +120,9 @@
                     (strlen($result) > 28) ? $msg = substr($result, 0, 28) : $msg = $result;
                     $output .= '
                                 <div class="conversation-item">
-                                    <a href="./messages/chat/' . $rows['user_id_2'] . '">
+                                    <a href="./messages/chat/' . $rows['user_2'] . '">
                                         <div class="conversation-content">
-                                            <img src="./public/img/member-1.jpg" alt="">
+                                            <img src="./public/img/' . $rows['avatar'] . '" alt="">
                                             <div class="conversation__detail">
                                                 <span>
                                                     ' . $rows['firstname'] . ' ' . $rows['lastname'] .'
@@ -155,7 +155,7 @@
                 else {
                     $output .= '
                                 <div class="chat incoming">
-                                    <img src="http://localhost/cupiddate/public/img/member-1.jpg" alt="">
+                                    <img src="./public/img/' . $rows['avatar'] . '" alt="">
                                     <div class="details">
                                         <p>' . $rows['message_content'] . '</p>
                                     </div>

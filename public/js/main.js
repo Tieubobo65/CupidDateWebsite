@@ -378,7 +378,6 @@ function getCommentList(postId) {
     });
 }
 
-<<<<<<< HEAD
 function getChatList(userId) {
     $(document).ready(function() {
         $.ajax({
@@ -392,35 +391,6 @@ function getChatList(userId) {
     });
 }
 
-
-
-// get conversation list
-// function getConversationList(userId) {
-//     $(document).ready(function() {
-//         $.ajax({
-//             type: "GET",
-//             url: "./messages/getconversationlist/" + userId,
-//             success: function(data) {
-//                 console.data;
-//                 $(".conversation-container").html(data);
-//             }
-//         });
-//     });
-// }
-
-// function getConversation(userId) {
-//     $(document).ready(function() {
-//         $.ajax({
-//             type: "GET",
-//             url: "./messages/getconversation/" + userId,
-//             success: function(data) {
-//                 console.log(data);
-//                 $(".message-chat").html(data);
-//             }
-//         });
-//     });
-// }
-=======
 function initMap() {
     // The location of Uluru
     const hcm = { lat: 10.8685, lng: 106.7964 };
@@ -840,4 +810,3 @@ $(document).ready(function() {
         document.getElementById(id).parentElement.parentElement.parentElement.parentElement.parentElement.outerHTML = "";
     })
 })
->>>>>>> f82d6f63c6e1e143d51719cbc8dfef38e0da3aaa

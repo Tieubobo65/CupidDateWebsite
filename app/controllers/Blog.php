@@ -39,12 +39,7 @@
             }
             else {
                 $comment_content = $_POST['comment-content'];
-                if ($this->postsModel->addComment($post_id, $user_id, $comment_content)) {
-                    $success = "Them thanh cong";
-                }
-                else {
-                    $success = "Them that bai";
-                }
+                $this->postsModel->addComment($post_id, $user_id, $comment_content);
             }
             
             $data = array(
@@ -67,7 +62,7 @@
                         <div class="comments-item">
                             <div class="comments-item__info">
                                 <a href="#">
-                                    <img src="<?php echo URLROOT; ?>/public/img/member-1.jpg" alt="">
+                                    <img src="../../public/img/' . $rows['avatar'] . '" alt="">
                                 </a>
                                 <div class="comments-item__more">
                                     <a href="#">

@@ -51,7 +51,7 @@
         
         // Get comments
         public function getComments($post_id) {
-            $sql = "SELECT p.post_id, user_id, firstname, lastname, comment_content, c.created_at
+            $sql = "SELECT p.post_id, user_id, firstname, lastname, avatar, comment_content, c.created_at
                     FROM comments c
                     INNER JOIN users u ON c.user_id = u.id
                     INNER JOIN posts p ON c.post_id = p.post_id

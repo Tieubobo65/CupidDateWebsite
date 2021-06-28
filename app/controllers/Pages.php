@@ -2,7 +2,7 @@
 <?php 
     class Pages extends Controller {
     public function __construct() {
-        $this->userModel = $this->model('User');
+        $this->userModel = $this->model('UserModel');
     }
 
     public function index() {
@@ -39,8 +39,6 @@
         $data = $this->userModel->getAllUsers();
         $this->view('pages/waiting', $data);
     }
-
-
 }
 
 ?>

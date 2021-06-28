@@ -16,7 +16,7 @@
                 <div class="chat-item">
                     <div class="chat-title">
                         <div class="chat-title__content">
-                            <img src="<?php echo URLROOT; ?>/public/img/member-1.jpg" alt="">
+                            <img src="<?php echo URLROOT; ?>/public/img/<?=$info['avatar']?>" alt="">
                             <div class="chat-title__detail">
                                 <span>
                                     <?php echo $info['firstname'] . " " . $info['lastname'] ?>

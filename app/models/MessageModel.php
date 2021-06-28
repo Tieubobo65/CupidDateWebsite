@@ -10,22 +10,22 @@
 
         public function getAllConversationById($user_id) {
             $sql = "SELECT *
-                    FROM liked l
-                    INNER JOIN users u ON l.user_id_2 = u.id
-                    WHERE l.liked_status = 1
-                    AND l.user_id_2 != $user_id
-                    AND l.user_id_1 = $user_id";
+                    FROM relationships r
+                    INNER JOIN users u ON r.user_2 = u.id
+                    WHERE r.status = '1'
+                    AND r.user_2 != $user_id
+                    AND r.user_1 = $user_id";
             return mysqli_query($this->conn, $sql);
         }
 
         public function searchConversation($search) {
             $user_id = $_SESSION['user_id'];
             $sql = "SELECT *
-                    FROM liked l
-                    INNER JOIN users u ON l.user_id_2 = u.id
-                    WHERE l.liked_status = 1
-                    AND l.user_id_2 != $user_id
-                    AND l.user_id_1 = $user_id
+                    FROM relationships r
+                    INNER JOIN users u ON r.user_2 = u.id
+                    WHERE r.status = '1'
+                    AND r.user_2 != $user_id
+                    AND r.user_1 = $user_id
                     AND (u.firstname LIKE '%{$search}%'
                     OR u.lastname LIKE '%{$search}%')";
             return mysqli_query($this->conn, $sql);
