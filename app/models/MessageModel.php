@@ -44,7 +44,8 @@
 
         public function getChat($outgoing_id, $incoming_id) {
             $sql = "SELECT *
-                    FROM messages
+                    FROM messages m
+                    INNER JOIN users u ON m.from_user_id = u.id
                     WHERE (from_user_id = $outgoing_id AND to_user_id = $incoming_id)
                     OR (from_user_id = $incoming_id AND to_user_id = $outgoing_id)
                     ORDER BY message_id ASC

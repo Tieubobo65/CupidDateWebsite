@@ -11,7 +11,7 @@ form.onsubmit = (e) => {
 
 sendBtn.onclick = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost/CupidDate/messages/insertChat", true);
+    xhr.open("POST", "../../messages/insertChat", true);
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
@@ -23,11 +23,9 @@ sendBtn.onclick = () => {
     xhr.send(formData);
 }
 
-
-
 setInterval(() => {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "/cupiddate/messages/getChat", true);
+    xhr.open("POST", "../../messages/getChat", true);
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
