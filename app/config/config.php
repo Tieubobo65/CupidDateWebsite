@@ -13,4 +13,12 @@
 
     //Sitename
     define('SITENAME', 'Cupid Date');
+
+    //country setup
+    $autoload['packages'] = array();
+
+    $autoload['libraries'] = array('session', 'database');
+
+    $autoload['helper'] = array('url', 'file');
+
 ?>

@@ -26,7 +26,6 @@
             return $this->result;
         }
 
-        
         public function getData() {
             if(!$this->result) {
                 $data = 0;
@@ -35,5 +34,46 @@
             }
             return $data;
         }
+
+        public function getAllData($table) {
+            $sql = "SELECT * FROM $table";
+            $this->execute($sql);
+            if(mysqli_num_rows($this->execute($sql))==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function getSingleData($col, $table, $id_col, $id) {
+            $sql = "SELECT $col FROM $table WHERE $id_col = $id";
+            $this->execute($sql);
+            $data = mysqli_fetch_array($this->execute($sql));
+            return $data[$col];   
+        }
+
+
+        public function getAllDataBy($table, $col, $value) {
+            $sql = "SELECT *FROM $table WHERE $col = $value";
+            $this->execute($sql);
+            if(mysqli_num_rows($this->execute($sql))==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function updateUser($col, $value, $id) {
+                $sql = "UPDATE users SET $col = '$value' WHERE id = $id";
+                $this->execute($sql);
+        }
+
+    
     }
 ?>

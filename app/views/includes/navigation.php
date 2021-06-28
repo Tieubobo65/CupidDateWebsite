@@ -1,10 +1,15 @@
 <div class="heading">
             <div class="grid wide heading-container ">
                 <div id="heading__logo" class="heading__logo">
-                    <a href="#" id="home-page" onclick="openHomePage()">
+                <?php if(isset($_SESSION['user_id'])) { ?>
+                    <a href="<?php echo URLROOT; ?>/users/home" id="home-page">
                         <span style="color: #e74c3c">Cupid</span> Date
                     </a>
-
+                <?php } else { ?>
+                    <a href="<?php echo URLROOT; ?>/pages/index" id="home-page">
+                        <span style="color: #e74c3c">Cupid</span> Date
+                    </a>
+                <?php } ?>
                     <div id="heading__menubar">
                         <i class="fas fa-bars"></i>
                     </div>
@@ -20,10 +25,10 @@
                                 <a id="community-page" href="#">Community</a>
                                 <ul class="list sub-heading__nav">
                                     <li>
-                                        <a onclick="openMembersPage()" href="#">Members</a>
+                                        <a href="<?php echo URLROOT; ?>/pages/members">Members</a>
                                     </li>
                                     <li>
-                                        <a onclick="openWaitingMembers()" href="#">Waiting You</a>
+                                        <a href="<?php echo URLROOT; ?>/pages/waiting" href="#">Waiting You</a>
                                     </li>
                                 </ul>
                             </li>
@@ -34,7 +39,7 @@
                                 <a href="">Pages</a>
                             </li>
                             <li class="heading__nav-item">
-                                <a id="contact-page" onclick="openContactPage()" href="#">Contact us</a>
+                                <a href="<?php echo URLROOT; ?>/pages/contact">Contact us</a>
                             </li>
                         </ul>
                     </div>
@@ -46,13 +51,24 @@
                         <ul class="list heading__nav-list">
                         <?php if(isset($_SESSION['user_id'])) : ?>
                             <li class="heading__nav-item">
-                                <a href="#">
-                                    <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
-                                </a>
+                                <?php if($_SESSION['avatar']) { ?>
+                                    <a href="#">
+                                        <img src="<?php echo URLROOT; ?>/public/img/<?php echo $_SESSION['avatar']?>" alt="">
+                                        <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
+                                    </a>
+                                <?php } else { ?>
+                                    <a href="#">
+                                        <img src="../public/img/avt_placeholder.svg" alt="">
+                                        <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
+                                    </a>
+                                <?php } ?>
+
                                 <ul class="list sub-heading__nav">
+                                <?php if($_SESSION['city_id']) { ?>
                                     <li>
-                                        <a href="#">Your profile</a>
+                                        <a href="<?php echo URLROOT; ?>/users/personel_profile">Your profile</a>
                                     </li>
+                                <?php } ?>
                                     <li>
                                         <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
                                     </li>
