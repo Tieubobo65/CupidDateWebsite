@@ -300,6 +300,7 @@ function openContactPage() {
      document.getElementById("shop-page").classList.remove("here");
 }
 
+<<<<<<< HEAD
 function initMap() {
     // The location of Uluru
     const hcm = { lat: 10.8685, lng: 106.7964 };
@@ -719,3 +720,51 @@ $(document).ready(function() {
         document.getElementById(id).parentElement.parentElement.parentElement.parentElement.parentElement.outerHTML = "";
     })
 })
+
+function ajaxSubmit(form, id=null) {
+    $(document).ready(function() {
+        var formId = '#' + form;
+        if ($(formId).length) {
+            console.log(formId + " existed");
+        }
+        else {
+            console.log(formId + " MISSING");
+        }
+        $(formId).on("submit", function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/CupidDate/blog/" + form,
+                data: $(formId).serializeArray(),
+                success: function(data) {
+                    console.log(data);
+                    if (form === "addcomment") {
+                        if ($("textarea#comment-textbox").val() === '')
+                            $("#text-danger").text('Please fill out this field.')
+                        else {
+                            $("textarea#comment-textbox").val('');
+                            getCommentList(id);
+                        }
+                        
+                    }
+                }
+            });
+        })
+        
+    }); 
+}
+
+// get comment list in a post
+function getCommentList(postId) {
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "../getcomments/" + postId,
+            success: function(data) {
+                console.log(data);
+                $('#comment-list').html(data);
+            }
+        });
+    });
+}
+

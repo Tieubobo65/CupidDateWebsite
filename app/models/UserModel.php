@@ -1,16 +1,16 @@
 <?php
-    class User {   
-        private $db;
 
+    class UserModel {
+        private $db;
+        public $conn;
         public function __construct() {
             $this->db = new Database;
-            $this->db->connect();
+            $this->conn = $this->db->connect();
         }
 
         public function register($email, $firstname, $lastname, $password, $gender, $birthday) {
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
             $sql = "INSERT INTO users (email, firstname, lastname, password, gender, birthday) VALUES('$email', '$firstname', '$lastname', '$password', '$gender', '$birthday')";
-
-            //execute function 
             if($this->db->execute($sql)) {
                 return true;
             } else {
@@ -161,5 +161,25 @@
             $sql = "SELECT status FROM relationships WHERE (user_1 = $user_1 AND user_2 = $user_2) OR (user_1 = $user_2 AND user_2 = $user_1)";
             $row = mysqli_fetch_array($this->db->execute($sql));
             return $row['status'];
+        }
+        // Get all members 
+        public function getNumberMembers() {
+            $sql = "SELECT COUNT(*) total FROM users";
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_assoc($result);
+        }
+        
+        // Get all men 
+        public function getNumberMen() {
+            $sql = "SELECT COUNT(gender) as total FROM users WHERE gender = '1'";
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_assoc($result);
+        }
+
+        // Get all women
+        public function getNumberWomen() {
+            $sql = "SELECT COUNT(gender) as total FROM users WHERE gender = '2'";
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_assoc($result);
         }
     }

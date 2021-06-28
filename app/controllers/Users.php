@@ -1,8 +1,7 @@
 <?php
     class Users extends Controller {
         public function __construct() {
-            // $this->dynamic_dependent_model = $this->model('Dynamic_dependent');
-            $this->userModel = $this->model('User');
+            $this->userModel = $this->model('UserModel');
         }
 
         public function register() {
@@ -332,6 +331,7 @@
             unset($_SESSION['email']);
             unset($_SESSION['gender']);
             unset($_SESSION['birthday']);
+<<<<<<< HEAD
             unset($_SESSION['city_id']);
             unset($_SESSION['status']);
             unset($_SESSION['job']);
@@ -344,6 +344,9 @@
             unset($_SESSION['user_character']);
             unset($_SESSION['avatar']);
             header('location:' . URLROOT . '/pages/index');
+=======
+            header('location:' . URLROOT . '/home');
+>>>>>>> 8509f54997bf36a7e16d2a0c081ba592dbc7a7cf
         }
     }
 ?>

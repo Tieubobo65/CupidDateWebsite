@@ -1,20 +1,19 @@
 <div class="heading">
             <div class="grid wide heading-container ">
                 <div id="heading__logo" class="heading__logo">
-                <?php if(isset($_SESSION['user_id'])) { ?>
-                    <a href="<?php echo URLROOT; ?>/users/home" id="home-page">
-                        <span style="color: #e74c3c">Cupid</span> Date
-                    </a>
-                <?php } else { ?>
-                    <a href="<?php echo URLROOT; ?>/pages/index" id="home-page">
-                        <span style="color: #e74c3c">Cupid</span> Date
-                    </a>
-                <?php } ?>
-                    <div id="heading__menubar">
-                        <i class="fas fa-bars"></i>
-                    </div>
+                    <?php if(isset($_SESSION['user_id'])) { ?>
+                        <a href="<?php echo URLROOT; ?>/users/home" id="home-page">
+                            <span style="color: #e74c3c">Cupid</span> Date
+                        </a>
+                    <?php } else { ?>
+                        <a href="<?php echo URLROOT; ?>/pages/index" id="home-page">
+                            <span style="color: #e74c3c">Cupid</span> Date
+                        </a>
+                    <?php } ?>
+                        <div id="heading__menubar">
+                            <i class="fas fa-bars"></i>
+                        </div>
                 </div>
-    
                 <nav id="heading__nav" class="heading__nav">
                     <div>
                         <ul class="list heading__nav-list">
@@ -75,9 +74,9 @@
                                 </ul>
                             </li>
 
-                            <?php else : ?>
+                            <?php else: ?>
 
-                            <li class="heading__nav-item">
+                                <li class="heading__nav-item">
                                 <a href="<?php echo URLROOT; ?>/users/login">
                                     <i class="fas fa-key"></i>
                                     Login
@@ -92,62 +91,55 @@
                             <?php endif; ?>
                         </ul>
                     </div>
-
-                    <div class="vertical-line">
-                    </div>
-
-                    <div id="heading__language">
-                        <ul class="heading__nav-list">
-                            <li class="heading__nav-item">
-                                <a href="">
-                                    <i class="fas fa-globe"></i>
-                                    English 
-                                    <i class="fas fa-chevron-down"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-
-                <!--Nav Mobile-->
-                <nav id="heading__nav-mobile" class="heading__nav-mobile">
-                    <div class="heading__nav-list">
-                        <ul>
-                            <li class="heading__nav-mobile-item">
-                                <a onclick="openBlogPage()" href="#">Blog</a>
-                            </li>
-                            <li class="heading__nav-mobile-item">
-                                <a onclick="openMembersPage()" href="#">Members</a>
-                            </li>
-                            <li class="heading__nav-mobile-item">
-                                <a onclick="openShopPage()" href="#">Shop</a>
-                            </li>
-                            <li class="heading__nav-mobile-item">
-                                <a href="">Pages</a>
-                            </li>
-                            <li class="heading__nav-mobile-item">
-                                <a onclick="openContactPage()" href="#">Contact us</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="heading__nav-list">
-                        <ul>
-                            <li class="heading__nav-mobile-item">
-                                <a onclick="openLoginForm()" href="#">
-                                    <i class="fas fa-key"></i>
-                                    Login
-                                </a>
-                            </li>
-                            <li class="heading__nav-mobile-item">
-                                <a onclick="openRegistrationForm()" href="#">
-                                    <i class="fas fa-user-plus"></i>
-                                    Registration
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </nav>
+            <div class="vertical-line">
             </div>
-        </div>
+
+            <div id="heading__language">
+                <ul class="heading__nav-list">
+                    <li class="heading__nav-item">
+                        <a href="">
+                            <i class="fas fa-globe"></i>
+                            English 
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--Nav Mobile-->
+        <nav id="heading__nav-mobile" class="heading__nav-mobile">
+            <div class="heading__nav-list">
+                <ul>
+                    <li class="heading__nav-mobile-item">
+                        <a onclick="openBlogPage()" href="#">Blog</a>
+                    </li>
+                    <li class="heading__nav-mobile-item">
+                        <a onclick="openMembersPage()" href="#">Members</a>
+                    </li>
+                    <li class="heading__nav-mobile-item">
+                        <a onclick="openContactPage()" href="#">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="heading__nav-list">
+                <ul>
+                    <li class="heading__nav-mobile-item">
+                        <a onclick="openLoginForm()" href="#">
+                            <i class="fas fa-key"></i>
+                            Login
+                        </a>
+                    </li>
+                    <li class="heading__nav-mobile-item">
+                        <a onclick="openRegistrationForm()" href="#">
+                            <i class="fas fa-user-plus"></i>
+                            Registration
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+</div>

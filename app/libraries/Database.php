@@ -73,7 +73,14 @@
                 $sql = "UPDATE users SET $col = '$value' WHERE id = $id";
                 $this->execute($sql);
         }
-
-    
+        public function execstmt($query, $data) {
+            try {
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute($data);
+                return $stmt;
+            } catch (ErrorException $error) {
+              die(var_dump("An Error has occured. Error : $error <br> SQL Query : $stmt"));
+            }
+          }
     }
 ?>
