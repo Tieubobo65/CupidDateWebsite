@@ -27,7 +27,7 @@
                                         <a href="<?php echo URLROOT; ?>/pages/members">Members</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo URLROOT; ?>/pages/waiting" href="#">Waiting You</a>
+                                        <a href="<?php echo URLROOT; ?>/pages/waiting">Waiting You</a>
                                     </li>
                                 </ul>
                             </li>

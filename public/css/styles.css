@@ -5,7 +5,7 @@
 }
 
 html {
-    font-family: "GT America",sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     line-height: 1.5;
     color: #333;
 }
@@ -81,8 +81,8 @@ a {
 }
  /* Heading */
 .heading {
-    height: 40px;
-    line-height: 37px;
+    height: 80px;
+    line-height: 77px;
     background-color: rgba(0, 0, 0, 0.68);
     display: flex;
     border-bottom: 1px solid #e74c3c;
@@ -128,14 +128,10 @@ a {
     display: inline-block;
 }
 
-.heading__nav-item:hover > a,
+.heading__nav-item > a:hover,
 .heading__nav-item a.here {
     color: #e74c3c;
     border-bottom: 3px solid #e74c3c;
-}
-
-.heading__nav-item::after > a {
-    border-bottom: none;
 }
 
 .heading__nav-item ul li i {
@@ -175,10 +171,10 @@ a {
 }
 
 .sub-heading__nav {
-    border-top: 3px solid #e74c3c;
+    border-top: 1px solid #e74c3c;
     display: none;
     position: absolute;
-    top: 38px;
+    top: 80px;
     background-color: rgba(0, 0, 0, 0.68);
     line-height: 40px;
     width: 170px;
@@ -186,8 +182,7 @@ a {
 
 .sub-heading__nav li{
     border-bottom: 1px solid #000;
-    text-align: left;
-    padding: 0 10px;
+    text-align: center;
 }
 
 .sub-heading__nav a {
@@ -684,9 +679,9 @@ body.showLoginForm .form__close {
     display: block;
 }
 
-/* #blog-container.show {
-    
-} */
+#blog-container.show {
+    display: block;
+}
 
 .blog__head,
 .contact__head {
@@ -709,7 +704,7 @@ body.showLoginForm .form__close {
 }
 
 .blog__list {
-    padding: 24px 0;
+    padding: 80px 0;
 }
 
 .blog-item {
@@ -780,7 +775,6 @@ body.showLoginForm .form__close {
 
 .blog__author {
     padding-right: 12px;
-    color: #2e3c43;
 }
 
 .blog__author a {
@@ -797,11 +791,8 @@ body.showLoginForm .form__close {
 
 .blog__desc {
     border-top: 1px solid #999;
-    padding-top: 14px;
     overflow: hidden;
-    /* Them dau ba cham o cuoi */
     text-overflow: ellipsis; 
-    /* So dong muon hien thi */
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     display: -webkit-box;
@@ -828,6 +819,61 @@ body.showLoginForm .form__close {
     text-align: right;
     padding: 0 16px;
 }
+
+.blog__footer-previous,
+.blog__footer-next,
+.shop__footer-previous,
+.shop__footer-next {
+    border: none;
+    background-color: #fff;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    margin: -1px;
+    outline: 0;
+}
+
+.blog__footer-previous:hover,
+.blog__footer-next:hover,
+.shop__footer-previous:hover,
+.shop__footer-next:hover  {
+    color: #e74c3c;
+    cursor: pointer;
+}
+
+.blog__footer-previous i,
+.blog__footer-next i,
+.shop__footer-previous i,
+.shop__footer-next i {
+    background-color: #333;
+    color: #fff;
+    font-size: 10px;
+    padding: 10px 14px;
+}
+
+.blog__footer-previous i:hover,
+.blog__footer-next i:hover,
+.shop__footer-previous i:hover,
+.shop__footer-next i:hover {
+    background-color:#e74c3c;
+}
+
+
+.blog__footer-previous i,
+.shop__footer-previous i {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    margin-left: 5px;
+}
+
+.blog__footer-next i,
+.shop__footer-next i {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    margin-right: 5px;
+}
+
 .pagination {
     list-style: none;
 }
@@ -837,7 +883,7 @@ body.showLoginForm .form__close {
     
 }
 
-.page-item a{
+.page-item a {
     color: #000;
     padding: 4px 8px;
     border: 1px solid #ccc;
@@ -1150,60 +1196,6 @@ body.showLoginForm .form__close {
 }
 /* End blog detail */
 
-.page-link,
-.blog__footer-previous,
-.blog__footer-next,
-.shop__footer-previous,
-.shop__footer-next {
-    border: none;
-    background-color: #fff;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 16px;
-    color: #333;
-    margin: -1px;
-    outline: 0;
-}
-
-.blog__footer-previous:hover,
-.blog__footer-next:hover,
-.shop__footer-previous:hover,
-.shop__footer-next:hover  {
-    color: #e74c3c;
-    cursor: pointer;
-}
-
-.blog__footer-previous i,
-.blog__footer-next i,
-.shop__footer-previous i,
-.shop__footer-next i {
-    background-color: #333;
-    color: #fff;
-    font-size: 10px;
-    padding: 10px 14px;
-}
-
-.blog__footer-previous i:hover,
-.blog__footer-next i:hover,
-.shop__footer-previous i:hover,
-.shop__footer-next i:hover {
-    background-color:#e74c3c;
-}
-
-
-.blog__footer-previous i,
-.shop__footer-previous i {
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-    margin-left: 5px;
-}
-
-.blog__footer-next i,
-.shop__footer-next i {
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-    margin-right: 5px;
-}
 
 /* Members Page */
 #members-container,
@@ -1775,13 +1767,215 @@ body.showLoginForm .form__close {
     max-width: 200px;
     margin-bottom: 50px;
 }
+
+.setup__input {
+    max-width: 26%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.setup__note {
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+.setup__note i {
+    margin-right: 10px;
+}
+
+.setup__button button {
+    margin: 20px 40px;
+    padding: 10px;
+    min-width: 130px;
+}
+
+.setup__step {
+    display: none;
+}
+
+.setup__step.show {
+    display: block;
+}
+
+/* Set the size of the div element that contains the map */
+#map {
+    height: 600px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+  }
+
+.login-with button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.setup__language {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-icon {
+    padding: 5px;
+    margin-right: 5px;
+    color: red;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+#countryError,
+#stateError,
+#cityError {
+    text-align: center;
+    color: #fff;
+}
+
+#profileDisplay {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#overlay_invisible {
+    display: none;
+}
+
+#form-container-photo,
+#open-photo{
+    margin-top: 400px;
+    display: none;
+}
+
+#change-avt {
+    z-index: 2;
+    display: none;
+}
+
+#photo {
+    justify-content: center;
+}
+
+#photo img {
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 5px;
+}
+
+#open-photo img {
+    z-index: 2;
+}
+#add_photo {
+    z-index: 2;
+    padding: 0;
+    padding-top: 30px;
+}
+
+#add_photo-form {
+    text-align: center;
+}
+
+#add_photo a {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+.suggestion,
+.add_photo-form-submit {
+    text-align: center;
+    margin-top: 30px;
+    background-color: #FFE4C4;
+    padding: 30px;
+}
+
+.add_photo-form-submit {
+    padding: 30px 130px;
+}
+
+.suggestion__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.suggestion__item img {
+    max-width: 100px;
+    border-radius: 5px;
+    max-height: 100px;
+}
+
+.suggestion__item i {
+    margin: 10px;
+    color: rgb(43, 97, 214);
+}
+
+.suggestion__item p {
+    line-height: 1;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.add_photo-form-submit {
+    display: none;
+}
+
+#photo_upload {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#change-avt-form {
+    text-align: center;
+}
+.change-avt-submit {
+    margin-bottom: 30px;
+    display: none;
+}
+
+.change-avt-submit img {
+    border-radius: 50%;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.change-avt__button {
+    text-align: center;
+    margin-bottom: 30px;
+    min-width: 400px;
+}
+
+.change-avt__button button {
+    margin-top: 10px;
+    min-width: 300px;
+}
+
+.uploaded-photos {
+    margin-top: 30px;
+    max-width: 500px;
+}
+.profile-edit-button {
+    float: right;
+    font-weight: 700;
+}
+
+.profile-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row {
+    display: flex;
+    line-height: 1;
+    margin-top: 20px;
+}
+
+
 /* Begin messages */
 
 #message-container,
 #chat-container {
-    margin-top: 40px;
+    margin-top: 80px;
     max-height: 800px;
-    height: 95vh;
+    height: 95vh - 40px;
     border-radius: 3px;
 }
 
@@ -1994,201 +2188,6 @@ body.showLoginForm .form__close {
     color: #333;
 
 }
-
-
-.setup__input {
-    max-width: 26%;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-.setup__note {
-    display: flex;
-    justify-content: center;
-    opacity: 0.7;
-}
-
-.setup__note i {
-    margin-right: 10px;
-}
-
-.setup__button button {
-    margin: 20px 40px;
-    padding: 10px;
-    min-width: 130px;
-}
-
-.setup__step {
-    display: none;
-}
-
-.setup__step.show {
-    display: block;
-}
-
-/* Set the size of the div element that contains the map */
-#map {
-    height: 600px;
-    /* The height is 400 pixels */
-    width: 100%;
-    /* The width is the width of the web page */
-  }
-
-.login-with button:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
-
-.setup__language {
-    display: flex;
-    justify-content: center;
-}
-
-.avatar-icon {
-    padding: 5px;
-    margin-right: 5px;
-    color: red;
-    background-color: #fff;
-    border-radius: 50%;
-}
-
-#countryError,
-#stateError,
-#cityError {
-    text-align: center;
-    color: #fff;
-}
-
-#profileDisplay {
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-#overlay_invisible {
-    display: none;
-}
-
-#form-container-photo,
-#open-photo{
-    margin-top: 400px;
-    display: none;
-}
-
-#change-avt {
-    z-index: 2;
-    display: none;
-}
-
-#photo {
-    justify-content: center;
-}
-
-#photo img {
-    max-width: 500px;
-    max-height: 500px;
-    border-radius: 5px;
-}
-
-#open-photo img {
-    z-index: 2;
-}
-#add_photo {
-    z-index: 2;
-    padding: 0;
-    padding-top: 30px;
-}
-
-#add_photo-form {
-    text-align: center;
-}
-
-#add_photo a {
-    color: #e74c3c;
-    text-decoration: underline;
-}
-
-.suggestion,
-.add_photo-form-submit {
-    text-align: center;
-    margin-top: 30px;
-    background-color: #FFE4C4;
-    padding: 30px;
-}
-
-.add_photo-form-submit {
-    padding: 30px 130px;
-}
-
-.suggestion__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.suggestion__item img {
-    max-width: 100px;
-    border-radius: 5px;
-    max-height: 100px;
-}
-
-.suggestion__item i {
-    margin: 10px;
-    color: rgb(43, 97, 214);
-}
-
-.suggestion__item p {
-    line-height: 1;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.add_photo-form-submit {
-    display: none;
-}
-
-#photo_upload {
-    max-width: 300px;
-    max-height: 300px;
-}
-
-#change-avt-form {
-    text-align: center;
-}
-.change-avt-submit {
-    margin-bottom: 30px;
-    display: none;
-}
-
-.change-avt-submit img {
-    border-radius: 50%;
-    max-width: 300px;
-    max-height: 300px;
-}
-
-.change-avt__button {
-    text-align: center;
-    margin-bottom: 30px;
-    min-width: 400px;
-}
-
-.change-avt__button button {
-    margin-top: 10px;
-    min-width: 300px;
-}
-
-.uploaded-photos {
-    margin-top: 30px;
-    max-width: 500px;
-}
-.profile-edit-button {
-    float: right;
-    font-weight: 700;
-}
-
-.profile-title {
-    display: flex;
-    justify-content: space-between;
-}
 .typing-area input {
     height: 49px;
     width: calc(100% - 60px);
@@ -2216,4 +2215,9 @@ body.showLoginForm .form__close {
     display: flex;
     line-height: 1;
     margin-top: 20px;
+}
+
+#online-members {
+    max-height: 300px;
+    overflow: hidden;
 }
