@@ -57,15 +57,10 @@
             $outgoing_id = $_POST['outgoing_id'];
             $incoming_id = $_POST['incoming_id'];
             $message = $_POST['message'];
-            $chat = $this->messageModel->addMessage($outgoing_id, $incoming_id, $message);
+            
             if (!empty($_POST['message'])) {
-                
-                
+                $chat = $this->messageModel->addMessage($outgoing_id, $incoming_id, $message);
             }
-            else {
-                echo "That bai";
-            }
-            echo $chat;
         }
 
         public function getChat() {
@@ -87,7 +82,7 @@
                     else {
                         $output .= '
                                     <div class="chat incoming">
-                                        <img src="./public/img/' . $rows['avatar'] . '" alt="">
+                                        <img src="../../public/img/' . $rows['avatar'] . '" alt="">
                                         <div class="details">
                                             <p>' . $rows['message_content'] . '</p>
                                         </div>
@@ -190,8 +185,5 @@
 
             echo json_encode($data);
         }
-
-        
-        
     }
 ?>
