@@ -99,6 +99,8 @@
                 empty($data['genderError']) && empty($data['birthdayError'])) {
                     //hash password
                     $password = password_hash($password, PASSWORD_DEFAULT);
+                    $age = (new DateTime())->diff(new DateTime($birthday))->y;
+
                     //register user from model function
                     if($this->userModel->register($email, $firstname, $lastname, $password, $gender, $birthday)) {
                         //close form and redirect to the login page

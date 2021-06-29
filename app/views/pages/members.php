@@ -55,9 +55,9 @@
                     <label for="seeking_gender">Seeking a</label>
                     <select name="seeking_gender" id="seeking_gender" class="seeking-form__select">
                         <option value="" disabled selected hidden>Choose Gender</option>
-                        <option value="1">Woman</option>
-                        <option value="0">Man</option>
-                        <option value="2">Other</option>
+                        <option value="2">Woman</option>
+                        <option value="1">Man</option>
+                        <option value="3">Other</option>
                     </select>
 
                     <label for="from_age">From</label>
@@ -75,7 +75,7 @@
                             <option value="<?php echo $i;?>"><?php echo $i;?></option>
                         <?php } ?>
                     </select>
-                    <button class="submit">Search</button>
+                    <button type="submit" class="button">Search</button>
                 </form>
         </div>
     </div>
@@ -136,8 +136,8 @@
             </div>
         </div>
 
-                <div class="online-members grid wide">
-                    <div class="row">
+                <div  class="online-members grid wide">
+                    <div id="online-members" class="row">
                         <?php
                             foreach($data as $value) { 
                                 if($value['id'] == $_SESSION['user_id']) {

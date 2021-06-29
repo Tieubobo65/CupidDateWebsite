@@ -65,7 +65,121 @@
             $seeking_gender = $_GET['seeking_gender'];
             $from_age = $_GET['from_age'];
             $to_age = $_GET['to_age'];
-            
+
+            if($seeking_gender == NULL && $from_age == NULL & $to_age == NULL) {
+                $data = $this->userModel->getAllUsers();
+                foreach($data as $value) { 
+                    if($value['id'] == $_SESSION['user_id']) {
+                        continue;
+                    }
+                    $output .='<div class="col l-3 m-4 c-12">
+                                    <div class="member-item">
+                                        <a href="'.URLROOT.'/pages/member_profile?user_id='.$value["id"].'">
+                                        <div class="member__img">
+                                            <img id="img_'.$value["id"].'" src="'.URLROOT.'/public/img/'.$value["avatar"].'" alt="ABC">
+                                            <form id="'.$value['id'].'" class="like-form" action="'.URLROOT.'/pages/like" method="POST">
+                                                button id = "button_'.$value['id'].'" type="submit" class="like">
+                                                    <div class="member__action">
+                                                        <i class="fas fa-heart"></i>
+                                                        Like
+                                                    </div>
+                                                </button>
+                                            </form>  
+                                        </div>
+                                        </a>
+                                        <div class="member__info">
+                                            <div class="member__name">'
+                                                .$value["firstname"]. $value['lastname'].'
+                                            </div>
+                                            <div class="member__age">'
+                                                .$diff = (new DateTime())->diff(new DateTime($value["birthday"]))->y
+                                                .' years old
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                    
+                }
+                echo $output;
+            }
+
+            if($seeking_gender != NULL) {
+                $data = $this->userModel->getAllUsersByGender($seeking_gender);
+                foreach($data as $value) { 
+                    if($value['id'] == $_SESSION['user_id']) {
+                        continue;
+                    }
+                    $output .='<div class="col l-3 m-4 c-12">
+                                    <div class="member-item">
+                                        <a href="'.URLROOT.'/pages/member_profile?user_id='.$value["id"].'">
+                                        <div class="member__img">
+                                            <img id="img_'.$value["id"].'" src="'.URLROOT.'/public/img/'.$value["avatar"].'" alt="ABC">
+                                            <form id="'.$value['id'].'" class="like-form" action="'.URLROOT.'/pages/like" method="POST">
+                                                button id = "button_'.$value['id'].'" type="submit" class="like">
+                                                    <div class="member__action">
+                                                        <i class="fas fa-heart"></i>
+                                                        Like
+                                                    </div>
+                                                </button>
+                                            </form>  
+                                        </div>
+                                        </a>
+                                        <div class="member__info">
+                                            <div class="member__name">'
+                                                .$value["firstname"]. $value['lastname'].'
+                                            </div>
+                                            <div class="member__age">'
+                                                .$diff = (new DateTime())->diff(new DateTime($value["birthday"]))->y
+                                                .' years old
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                    
+                }
+                echo $output;
+            }
+
+            if($from_age != NULL) {
+                $data = $this->userModel->getAllUsersFromAge($from_age);
+                foreach($data as $data1) {
+                    foreach($data as $value1) {
+                        foreach($value1 as $value) {
+                            if($value['id'] == $_SESSION['user_id']) {
+                                continue;
+                            }
+                            $output .='<div class="col l-3 m-4 c-12">
+                                            <div class="member-item">
+                                                <a href="'.URLROOT.'/pages/member_profile?user_id='.$value["id"].'">
+                                                <div class="member__img">
+                                                    <img id="img_'.$value["id"].'" src="'.URLROOT.'/public/img/'.$value["avatar"].'" alt="ABC">
+                                                    <form id="'.$value['id'].'" class="like-form" action="'.URLROOT.'/pages/like" method="POST">
+                                                        button id = "button_'.$value['id'].'" type="submit" class="like">
+                                                            <div class="member__action">
+                                                                <i class="fas fa-heart"></i>
+                                                                Like
+                                                            </div>
+                                                        </button>
+                                                    </form>  
+                                                </div>
+                                                </a>
+                                                <div class="member__info">
+                                                    <div class="member__name">'
+                                                        .$value["firstname"]. $value['lastname'].'
+                                                    </div>
+                                                    <div class="member__age">'
+                                                        .$diff = (new DateTime())->diff(new DateTime($value["birthday"]))->y
+                                                        .' years old
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                        }
+                    }
+                }
+            }
+            echo $output;
+
         }
     }
 }

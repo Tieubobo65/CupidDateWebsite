@@ -57,7 +57,7 @@
 
 
         public function getAllDataBy($table, $col, $value) {
-            $sql = "SELECT *FROM $table WHERE $col = $value";
+            $sql = "SELECT *FROM $table WHERE $col = '$value'";
             $this->execute($sql);
             if(mysqli_num_rows($this->execute($sql))==0) {
                 $data = 0;
@@ -68,6 +68,7 @@
             }
             return $data;
         }
+
 
         public function updateUser($col, $value, $id) {
                 $sql = "UPDATE users SET $col = '$value' WHERE id = $id";

@@ -142,6 +142,22 @@
             return $this->db->getAllData('users');
         }
 
+        public function getAllUsersByGender($gender) {
+            return $this->db->getAllDataBy('users', 'gender', $gender);
+        }
+
+        public function getAllUsersFromAge($age) {
+            $sql = "SELECT * FROM users";
+            $row = $this->db->getAllData('users');
+            foreach($row as $value)
+            {
+                if(((new DateTime())->diff(new DateTime($value["birthday"]))->y) >= $age) {
+                    $result[] = $this->db->getAllDataBy('users', 'id', $value['id']);
+                }
+            }
+            return $result;
+        }
+
         public function addPhoto($user_id, $photo_name) {
             $sql = "INSERT INTO photos (photo_id, user_id, photo_name) VALUES(NULL, '$user_id', '$photo_name')";
             $this->db->execute($sql);
@@ -187,5 +203,13 @@
             $sql = "SELECT * FROM users WHERE id = $user_id";
             $row = mysqli_fetch_array($this->db->execute($sql));
             return $row;
+        }
+        public function getUserById($user_id) {
+            $sql = "SELECT *
+                    FROM users
+                    WHERE id = $user_id
+                    ";
+            $result = mysqli_query($this->conn, $sql);
+            return mysqli_fetch_assoc($result);
         }
     }

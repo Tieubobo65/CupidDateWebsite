@@ -69,6 +69,12 @@
                                     </li>
                                 <?php } ?>
                                     <li>
+                                        <a href="<?php echo URLROOT; ?>/messages">
+                                            <i class="fas fa-comment-dots"></i>
+                                            Messages
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
                                     </li>
                                 </ul>
