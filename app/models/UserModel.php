@@ -152,9 +152,16 @@
         }
 
         public function addRelationship($user_1, $user_2) {
-            $sql = "INSERT INTO relationships(user_1, user_2, status, created) VALUES($user_1, $user_2, '1', now())";
+            $sql = "INSERT INTO relationships(user_1, user_2, status) VALUES($user_1, $user_2, '0', now())";
             echo $sql;
             $this->db->execute($sql);
+        }
+
+        public function confirmRelationship($user_1, $user_2) {
+            $sql = "INSERT INTO relationships(user_1, user_2, status) VALUES($user_1, $user_2, '1', now())";
+            $sql2 = "UPDATE relationships SET status = '1' WHERE user_1 = $user_2 AND user_2 = $user_1 ";
+            $this->db->execute($sql);
+            $this->db->execute($sql2);
         }
         
         public function checkRelationship($user_1, $user_2) {
@@ -162,6 +169,25 @@
             $row = mysqli_fetch_array($this->db->execute($sql));
             return $row['status'];
         }
+        // Get waiting member
+        public function getWaitingMembers($user_1) {
+            $sql = "SELECT *
+                    FROM relationships r
+                    INNER JOIN users u ON r.user_1 = u.id
+                    WHERE user_2 = $user_1
+                    AND status = '0'
+                    ";
+            return mysqli_query($this->conn, $sql);
+        }
+
+
+        // Get hint user
+        public function getHintMember() {
+            $sql = "SELECT *
+                    FROM 
+                    ";
+        }
+
         // Get all members 
         public function getNumberMembers() {
             $sql = "SELECT COUNT(*) total FROM users";

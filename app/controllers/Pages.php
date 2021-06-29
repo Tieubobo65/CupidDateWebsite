@@ -28,15 +28,16 @@
         }
     }
 
-
-
     public function members() {
         $data = $this->userModel->getAllUsers();
         $this->view('pages/members', $data);
     }
 
     public function waiting() {
-        $data = $this->userModel->getAllUsers();
+        $result = $this->userModel->getWaitingMembers($_SESSION['user_id']);
+        $data = [
+            "waiting" => $result
+        ];
         $this->view('pages/waiting', $data);
     }
 }
