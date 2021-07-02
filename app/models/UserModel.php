@@ -178,6 +178,7 @@
 
         public function removeRelationship($user_1, $user_2) {
             $sql = "DELETE FROM relationships WHERE user_1 = $user_1 AND user_2 = $user_2";
+            echo $sql;
             $this->db->execute($sql);
         }
 

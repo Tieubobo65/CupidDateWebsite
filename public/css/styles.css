@@ -676,7 +676,7 @@ body.showLoginForm .form__close {
 #blog-container {
     width: 100%;
     background-color: #fff;
-    display: none;
+    display: block;
 }
 
 #blog-container.show {
@@ -777,6 +777,10 @@ body.showLoginForm .form__close {
     padding-right: 12px;
 }
 
+.blog__author a {
+    color: #2e3c43;
+}
+
 .blog__time {
     padding: 0 12px;
 }
@@ -787,7 +791,11 @@ body.showLoginForm .form__close {
 
 .blog__desc {
     border-top: 1px solid #999;
-    padding: 14px 0;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
 }
 
 .blog__read {
@@ -866,6 +874,329 @@ body.showLoginForm .form__close {
     margin-right: 5px;
 }
 
+.pagination {
+    list-style: none;
+}
+
+.page-item {
+    display: inline-block;
+    
+}
+
+.page-item a {
+    color: #000;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+}
+
+/* Begin blog detail */
+#post-container {
+    padding-top: 80px;
+    width: 100%;
+    background-color: #fff;
+    display: block;
+    color: #5f7d95;
+    line-height: 1.6;
+}
+
+.pad-20 {
+    padding: 0 28px;
+}
+
+
+.post__header {
+    text-align: center;
+}
+
+.post__header h2 {
+    margin: 20px 0;
+    color: #374957;
+    line-height: 1.4;
+}
+
+.post-item {
+    padding-top: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e3e9ed;
+}
+
+.post-item__img img {
+    width: 100%;
+    height: 100%;
+}
+
+.post__info {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.post__info .post__category {
+    color: #e74c3c;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.post__author a {
+    color: #374957;
+    font-weight: 600;
+}
+
+.post__author:hover a {
+    color: #e74c3c;
+}
+
+.post__body {
+    margin-bottom: 20px;
+}
+
+.post__more {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.post__more .post__author {
+    margin-top: 5px;
+}
+
+.post__more .post__share {
+    display: flex;
+}
+
+.post__more .post__share span {
+    padding: 3px;
+    text-transform: uppercase;
+}
+
+.post__more .post__share ul {
+    list-style: none;
+    display: flex;
+}
+
+.post__more .post__share li i {
+    padding: 9px;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 16px;
+    box-sizing: content-box;
+}
+
+.related-posts h3,
+.comments-container h3 {
+    margin: 20px 0;
+}
+
+.related-posts-list {
+    margin-bottom: 30px;
+}
+
+/* .mg-auto {
+    display: flex;
+    justify-content: space-between;
+} */
+
+.related-posts-item {
+    width: 300px;
+    height: 440px;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 40px rgb(95 125 149 / 25%);
+}
+
+.related-posts__img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px 3px 0 0;
+}
+
+.related-posts__content {
+    padding: 20px;
+}
+
+.related-posts__content a {
+    color: #e74c3c;
+}
+
+.related-posts__content a:hover {
+    color: #c22d1c;
+}
+
+.related-posts__content h2 {
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.related-posts__content h2 a {
+    color: #374957;
+}
+
+.related-posts__content h2 a:hover {
+    color: #e74c3c;
+}
+
+.related-posts__category{
+    color: #e74c3c;
+}
+
+.related-posts__info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.related-posts__info {
+    font-size: 14px;
+}
+
+.related-posts__title a,
+.related-posts__info a {
+    color: #374957;
+    font-weight: 700;
+}
+
+.comments-login {
+    margin-bottom: 30px;
+    padding: 30px;
+    border: 1px solid #e3e9ed;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 18px;
+    display: block;
+}
+
+.comments-login .signup-btn {
+    color: #374957;
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.comments-login .signup-btn:hover {
+    color: #e74c3c;
+}
+
+.comments-login p {
+    margin-bottom: 10px;
+}
+
+.comments-login .signin-btn {
+    padding: 5px 20px;
+    box-shadow: inset 0 0 0 1px #869fb2;
+    color: #869fb2;
+    border-radius: 3px;
+}
+
+.comments-login .signin-btn:hover {
+    color: #fff;
+    background-color: #e74c3c;
+}
+
+.comments-form form textarea {
+    padding: 20px;
+    width: 100%;
+    height: 100px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    box-shadow: 0 0 40px rgb(95 125 149 / 25%);
+}
+
+.comments-form form {
+    margin-bottom: 30px;
+}
+
+.comments-form form .submit-btn {
+    cursor: pointer;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    box-shadow: inset 0 0 0 100px #1273eb;
+}
+
+.comments-form form .submit-btn:hover {
+    box-shadow: inset 0 0 0 100px #0e5cbc;
+}
+
+.comments-list {
+    padding: 8px;
+}
+
+.comments-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgb(95 125 149 / 25%);
+}
+
+.comments-item__info {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.comments-item__info a {
+    height: auto;
+}
+
+.comments-item__info img {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.comments-item__more {
+    padding: 0 5px 0 10px;
+}
+
+.comments-item__more a {
+    color: #374957;
+}
+
+.blog_detail__sidebar {
+    padding: 4px 0;
+    background-color: #fff;
+}
+
+.blog_detail__sidebar h3 {
+    margin-bottom: 20px;
+    color: #374957;
+}
+
+.sidebar-list {
+    background-color: #fff;
+    box-shadow: 0 0 40px rgb(95 125 149 / 25%);
+}
+
+.sidebar-list .sidebar-item {
+    margin-bottom: 10px;
+}
+
+.sidebar-list .sidebar-item__content {
+    padding: 10px;
+}
+
+.sidebar__img img {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar__author a{
+    color: #1273eb;
+}
+
+.sidebar__title a{
+    color: #374957;
+    font-weight: 600    ;
+}
+
+.sidebar__title a:hover {
+    color: #1273eb;
+}
+/* End blog detail */
+
+
 /* Members Page */
 #members-container,
 #waiting-container,
@@ -891,7 +1222,8 @@ body.showLoginForm .form__close {
     color: #fff;
 }
 .waiting__head {
-    min-height: 312px;
+    min-height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(../img/member1.jpeg) top center / cover no-repeat;
 }
 .seeking {
     position: absolute;
@@ -1659,7 +1991,7 @@ body.showLoginForm .form__close {
 #chat-container {
     margin-top: 80px;
     max-height: 800px;
-    height: 95vh;
+    height: 95vh - 40px;
     border-radius: 3px;
 }
 

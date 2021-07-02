@@ -63,7 +63,6 @@
         }
     }
 
-
     public function member_profile() {
         $member_id = $_GET['user_id'];
         $user_detail = $this->userModel->getUserDetail($member_id);
@@ -142,6 +141,7 @@
             $seeking_gender = $_GET['seeking_gender'];
             $from_age = $_GET['from_age'];
             $to_age = $_GET['to_age'];
+            $output = "";
 
             if($seeking_gender == NULL && $from_age == NULL & $to_age == NULL) {
                 $data = $this->userModel->getAllUsers();
