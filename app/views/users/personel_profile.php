@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="profile__user-info">
-                                <div class="user__name">
+                                <div class="user__name" style="min-width: 500px">
                                     <h1>
                                         <?php echo $_SESSION['firstname'];
                                             echo " ";
@@ -63,12 +63,10 @@
                     </div>
                     <div class="col l-6">
                         <div class="profile__banner-right">
-                            <a href="<?php echo URLROOT; ?>/users/setup">
-                                <button class="button">
+                                <button class="button" onclick = "openDeleteAccountForm()">
                                     <i class="fas fa-trash-alt"></i>
                                     Delete Account
                                 </button>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -449,13 +447,14 @@
                                 <?php foreach($data['photos'] as $value) {?>
                                     <div class="col l-4">
                                         <div class="profile__photo-item">
-                                            <img src="<?php echo URLROOT; ?>/public/img/<?php echo $value['photo_name'] ;?>" alt="" onclick="chooseAvt(this.src)">
+                                            <img src="<?php echo URLROOT; ?>/public/img/<?php echo $value['photo_name'] ;?>" id="<?php echo $value['photo_name'] ;?>" alt="" onclick="chooseAvt(this.src, this.id)">
                                         </div>
                                     </div>
                                 <?php } ?>
                             </div>
  
                         </div>
+                        <input type="text" name="avt_url" id="avt_url" style="display: none">
                      </div>
 
                      <div class="change-avt-submit">
@@ -463,6 +462,25 @@
                         <button id="avt-cancel" type="button" class="button" onclick="cancelAvatar()">Cancel</button>
                         <button id="avt-submit" type="submit" class="button">Save</button><br>
                      </div>
+                     
+                </form>
+            </div>
+        </div>
+        <a onclick="closeForm()" id="form__close" class="form__close">
+            <i class="fas fa-times"></i>
+        </a>
+    </div>
+
+    <div class="form-container" id="delete-account">
+        <div class="form row">
+            <div class="delete-account-container">
+                <h3 class="form__title">Are you sure you want to delete your account?</h3>
+                <p>☛ All images will be completely deleted</p>
+                <p>☛ Your account will not show up in search results</p>
+                <p>☛ Your account can no longer be viewed by others</p>
+                <form id="<?php echo $_SESSION["user_id"];?>" class="delete-account-form" action="<?php echo URLROOT;?>/pages/index" method="POST">
+                    <button type="submit" class="button">I agree to delete my account</button>
+                    <button type="button" class="button" onclick = "closeForm()">Cancel</button>
                 </form>
             </div>
         </div>

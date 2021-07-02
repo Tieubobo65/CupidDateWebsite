@@ -7,7 +7,7 @@
             $this->db = new Database;
             $this->conn = $this->db->connect();
         }
-
+        
         public function register($email, $firstname, $lastname, $password, $gender, $birthday) {
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $sql = "INSERT INTO users (email, firstname, lastname, password, gender, birthday) VALUES('$email', '$firstname', '$lastname', '$password', '$gender', '$birthday')";
@@ -168,16 +168,38 @@
         }
 
         public function addRelationship($user_1, $user_2) {
-            $sql = "INSERT INTO relationships(user_1, user_2, status, created) VALUES($user_1, $user_2, '0', now())";
-            echo $sql;
+            if(!$this->isLike($user_2, $user_1)) {
+                $sql = "INSERT INTO relationships(user_1, user_2, status, created) VALUES($user_1, $user_2, '0', now())";
+            } else {
+                $sql = "INSERT INTO relationships(user_1, user_2, status, created) VALUES($user_1, $user_2, '1', now())";
+            }
             $this->db->execute($sql);
         }
-        
-        public function checkRelationship($user_1, $user_2) {
-            $sql = "SELECT DISTINCT status FROM relationships WHERE (user_1 = $user_1 AND user_2 = $user_2) OR (user_1 = $user_2 AND user_2 = $user_1)";
-            $row = mysqli_fetch_array($this->db->execute($sql));
-            return $row['status'];
+
+        public function removeRelationship($user_1, $user_2) {
+            $sql = "DELETE FROM relationships WHERE user_1 = $user_1 AND user_2 = $user_2";
+            $this->db->execute($sql);
         }
+
+        //check if user 1 liked user 2 yet
+        public function isLike($user_1, $user_2) {
+            $sql = "SELECT * FROM relationships WHERE user_1 = $user_1 AND user_2 = $user_2";
+            $row = mysqli_num_rows($this->db->execute($sql));
+            if($row != 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        //Delete account 
+        public function deleteAccount($user_id) {
+            $this->db->delete('photos', 'user_id', $user_id);
+            $this->db->delete('relationships', 'user_1', $user_id);
+            $this->db->delete('relationships', 'user_2', $user_id);
+            $this->db->delete('users', 'id', $user_id);
+        }
+
         // Get all members 
         public function getNumberMembers() {
             $sql = "SELECT COUNT(*) total FROM users";

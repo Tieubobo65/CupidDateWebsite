@@ -24,7 +24,7 @@
                             </div>
 
                             <div class="profile__user-info">
-                                <div class="user__name">
+                                <div class="user__name" style="min-width: 500px">
                                     <h1>
                                         <?php echo $data['user_detail']['firstname'];
                                             echo " ";
@@ -60,16 +60,44 @@
                     </div>
                     <div class="col l-6">
                         <div class="profile__banner-right">
-                            <a href="<?php echo URLROOT; ?>/users/setup">
-                                <button class="button">
-                                    <i class="fas fa-heart"></i>
-                                    Like
-                                </button>
+                            <?php if($data["like"] == 1) { ?>
+                                <form name="profile__unlike-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__unlike-form" action="<?php echo URLROOT;?>/pages/unlike" method="POST">
+                                    <button class="button" type="submit" id="unlike_button">
+                                        <i class="fas fa-heart"></i>
+                                        Unlike
+                                    </button>
+                                </form>
+
+                                <form style = "display: none" name="profile__like-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__like-form" action="<?php echo URLROOT;?>/pages/like" method="POST">
+                                    <button class="button" type="submit" id="like_button">
+                                        <i class="fas fa-heart"></i>
+                                        Like
+                                    </button>
+                                </form>
                                 <button class="button">
                                 <i class="fas fa-comment"></i>
                                     Message
                                 </button>
-                            </a>
+                            <?php } else {?>
+                                <form name="profile__like-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__like-form" action="<?php echo URLROOT;?>/pages/like" method="POST">
+                                    <button class="button" type="submit" id="like_button">
+                                        <i class="fas fa-heart"></i>
+                                        Like
+                                    </button>
+                                </form>
+
+                                <form style = "display: none" name="profile__unlike-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__unlike-form" action="<?php echo URLROOT;?>/pages/unlike" method="POST">
+                                    <button class="button" type="submit" id="unlike_button">
+                                        <i class="fas fa-heart"></i>
+                                        Unlike
+                                    </button>
+                                </form>
+
+                                <button class="button">
+                                <i class="fas fa-comment"></i>
+                                    Message
+                                </button>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -370,7 +398,7 @@
     </div>
 
     <a style="cursor: unset">
-    <div id="overlay_invisible" onclick="closeForm()"> </div>
+    <div id="overlay_invisible" onclick="closeAvt()"> </div>
     </a>
 
     <div class="form-container" id="open-photo">

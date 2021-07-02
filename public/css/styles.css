@@ -1515,12 +1515,15 @@ body.showLoginForm .form__close {
     display: none;
 }
 
-#change-avt {
+
+#change-avt,
+#delete-account {
     z-index: 2;
     display: none;
 }
 
-#photo {
+#photo,
+#avt {
     justify-content: center;
 }
 
@@ -1530,7 +1533,8 @@ body.showLoginForm .form__close {
     border-radius: 5px;
 }
 
-#open-photo img {
+#open-photo img,
+#open-avt img {
     z-index: 2;
 }
 #add_photo {
@@ -1637,12 +1641,23 @@ body.showLoginForm .form__close {
     margin-top: 20px;
 }
 
+.delete-account-container p {
+    margin-left: 70px;
+}
+
+.delete-account-container form {
+    margin: 20px 0;
+    min-width: 500px;
+    display: flex;
+    justify-content: space-around;
+}
+
 
 /* Begin messages */
 
 #message-container,
 #chat-container {
-    margin-top: 40px;
+    margin-top: 80px;
     max-height: 800px;
     height: 95vh;
     border-radius: 3px;
@@ -1654,7 +1669,7 @@ body.showLoginForm .form__close {
 
 #message-container .message-item,
 #chat-container .chat-item {
-    height: 95vh;
+    height: 88vh;
     margin: 0 -8px;
     border-radius: 5px 0 0 5px;
 }
