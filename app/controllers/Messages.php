@@ -14,28 +14,37 @@
             $this->view('pages/messages', $data);
         }
 
+        // search conversation
         public function search() {
+            $outgoing_id = $_SESSION['user_id'];
             $searchTerm = $_POST['searchTerm'];
             $search = $this->messageModel->searchConversation($searchTerm);
             $output = "";
 
             if (mysqli_num_rows($search) > 0) {
                 while($rows = mysqli_fetch_assoc($search)) {
+                    $last = $this->messageModel->getLastChat($outgoing_id, $rows['user_2']);
+                    $rows2 = mysqli_fetch_assoc($last);
+                    if (mysqli_num_rows($last) > 0) {
+                        $result = $rows2['message_content'];
+                    }
+                    else {
+                        $result = "No message available";
+                    }
+
+                    (strlen($result) > 28) ? $msg = substr($result, 0, 28) : $msg = $result;
                     $output .= '
-                                <div class="conversation-item">
-                                    <a href="./messages/chat/' . $rows['user_2'] . '">
-                                        <div class="conversation-content">
-                                            <img src="./public/img/member-1.jpg" alt="">
-                                            <div class="conversation__detail">
-                                                <span>
-                                                    ' . $rows['firstname'] . ' ' . $rows['lastname'] .'
-                                                </span>
-                                                <p>This is test message</p>
-                                            </div>
-                                        </div>
-                                    </a>
+                        <div class="conversation-item">
+                            <a href="./messages/chat/' . $rows['user_2'] . '">
+                            <div class="conversation-content">
+                                <img src="./public/img/' . $rows['avatar'] . '" alt="">
+                                <div class="conversation__detail">
+                                    <span>' . $rows['firstname'] . ' ' . $rows['lastname'] .'</span>
+                                    <p>' . $msg . '</p>
                                 </div>
-                                ';
+                            </div>
+                        </a>
+                    </div>';
                 }
             } else {
                 $output .= "<p>No conversation found related to your search term</p>";
@@ -114,20 +123,18 @@
 
                     (strlen($result) > 28) ? $msg = substr($result, 0, 28) : $msg = $result;
                     $output .= '
-                                <div class="conversation-item">
-                                    <a href="./messages/chat/' . $rows['user_2'] . '">
-                                        <div class="conversation-content">
-                                            <img src="./public/img/' . $rows['avatar'] . '" alt="">
-                                            <div class="conversation__detail">
-                                                <span>
-                                                    ' . $rows['firstname'] . ' ' . $rows['lastname'] .'
-                                                </span>
-                                                <p>' . $msg . '</p>
-                                            </div>
-                                        </div>
-                                    </a>
+                        <div class="conversation-item">
+                            <a href="./messages/chat/' . $rows['user_2'] . '">
+                                <div class="conversation-content">
+                                    <img src="./public/img/' . $rows['avatar'] . '" alt="">
+                                    <div class="conversation__detail">
+                                        <span>' . $rows['firstname'] . ' ' . $rows['lastname'] .'</span>
+                                        <p>' . $msg . '</p>
+                                    </div>
                                 </div>
-                                ';
+                            </a>
+                        </div>
+                    ';
                 }
             }
             echo $output;

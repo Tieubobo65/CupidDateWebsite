@@ -1973,21 +1973,19 @@ body.showLoginForm .form__close {
 
 #message-container,
 #chat-container {
-    margin-top: 80px;
+    margin-top: 81px;
     max-height: 800px;
-    height: 95vh - 40px;
+    height: 637px;
     border-radius: 3px;
-}
-
-.message-list {
-    box-shadow: 0 0 40px rgb(95 125 149 / 25%);
+    margin-bottom: 10px;
 }
 
 #message-container .message-item,
 #chat-container .chat-item {
-    height: 95vh;
+    height: 637px;
     margin: 0 -8px;
     border-radius: 5px 0 0 5px;
+    box-shadow: 0 0 40px rgb(95 125 149 / 25%);
 }
 
 #message-container .search-container,
@@ -2000,7 +1998,6 @@ body.showLoginForm .form__close {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
     background-color: #ccc;
 }
@@ -2099,12 +2096,13 @@ body.showLoginForm .form__close {
 
 .conversation-container .conversation__detail p {
     color: #67676a;
+    text-align: left;
 }
 
 
 /* Begin chat */
 .chat-title__content {
-    padding: 10px 20px;
+    padding: 10px 30px;
     display: flex;
     align-items: center;
 }

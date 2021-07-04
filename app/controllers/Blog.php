@@ -15,8 +15,8 @@
         }
 
         // Show detail blog page
-        public function detailBlog($slug) {
-            $post = $this->postsModel->findPostBySlug($slug);
+        public function t($post_id) {
+            $post = $this->postsModel->findPostBySlug($post_id);
             $relatedPosts = $this->postsModel->getRelatedPosts($post['cat_id']);
             $lastedPosts = $this->postsModel->findAllPosts();
             $comments = $this->postsModel->getComments($post['post_id']);

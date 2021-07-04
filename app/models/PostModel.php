@@ -19,12 +19,12 @@
         }
         
         // Get post by slug
-        public function findPostBySlug($slug) {
+        public function findPostBySlug($post_id) {
             $sql = "SELECT * 
                     FROM posts p 
                     INNER JOIN users u ON p.author_id = u.id 
                     INNER JOIN categories c ON p.cat_id = c.cat_id
-                    WHERE p.slug = '$slug'";
+                    WHERE p.post_id = $post_id";
             return mysqli_query($this->conn, $sql)->fetch_assoc();
         }
 

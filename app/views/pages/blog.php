@@ -83,7 +83,7 @@
                                 <div class="blog__desc">
                                     <?php echo $post['content'] ?>
                                 </div>
-                                <a href="<?php echo URLROOT . "/blog/detailBlog/" . $post['slug'] ?>" class="blog__read">Read More >></a>
+                                <a href="<?php echo URLROOT . "/blog/t/" . $post['post_id'] ?>" class="blog__read">Read More >></a>
                             </div>
                         </div>
                 <?php } ?>
