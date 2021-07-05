@@ -13,8 +13,8 @@
                     FROM relationships r
                     INNER JOIN users u ON r.user_2 = u.id
                     WHERE r.status = '1'
-                    AND r.user_2 != $user_id
-                    AND r.user_1 = $user_id";
+                    AND (r.user_2 != $user_id
+                    AND r.user_1 = $user_id)";
             return mysqli_query($this->conn, $sql);
         }
 

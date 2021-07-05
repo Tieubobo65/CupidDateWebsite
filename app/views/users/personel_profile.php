@@ -48,7 +48,7 @@
                                         $diff = $now->diff($dob);
                                      
                                         // Get the age in years, months and days
-                                        echo $diff->y." years old";
+                                        echo ($diff->y + 1)." years old";
                                     ?>
                                 </div>
 
@@ -109,7 +109,7 @@
                                                         <?php echo $_SESSION['firstname'];?>
                                                     </li>
                                                     <li>
-                                                        <?php echo $diff->y." years old";?>
+                                                        <?php echo ($diff->y + 1)." years old";?>
                                                     </li>
                                                     <li>
                                                         <?php 
@@ -132,17 +132,17 @@
                                                     <li>
                                                         <?php 
                                                             switch($_SESSION['gender']) {
-                                                                case 0: {
+                                                                case 1: {
                                                                     echo "Male";
                                                                     break;
                                                                 }
                                                                     
-                                                                case 1: {
+                                                                case 2: {
                                                                     echo "Female";
                                                                     break;
                                                                 }
                                                                     
-                                                                case 2: {
+                                                                case 3: {
                                                                     echo "Other";
                                                                     break;
                                                                 }

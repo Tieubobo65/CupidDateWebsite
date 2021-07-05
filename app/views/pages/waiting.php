@@ -83,6 +83,7 @@
         </div>
 
                 <div class="online-members grid wide">
+                <?php if(count($data) > 0) { ?>
                     <div class="row">
                         <?php foreach($data as $value) { ?>
                             <div class="col l-3 m-4 c-12">
@@ -119,7 +120,7 @@
                                         $diff = $now->diff($dob);
                                      
                                         // Get the age in years, months and days
-                                        echo $diff->y." years old";
+                                        echo ($diff->y + 1)." years old";
                                         ?>
                                     </div>
                                 </div> 
@@ -127,6 +128,10 @@
                         </div>
                         <?php } ?>
                     </div>
+                    <?php } else { ?>
+                        <h3>You have not been liked by anyone yet or maybe they matched you before.</h3>
+                    <br>        
+                    <?php } ?>
                 </div>
     </div>
 </div>

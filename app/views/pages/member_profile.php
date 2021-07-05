@@ -45,7 +45,7 @@
                                         $diff = $now->diff($dob);
                                      
                                         // Get the age in years, months and days
-                                        echo $diff->y." years old";
+                                        echo ($diff->y + 1)." years old";
                                     ?>
                                 </div>
 
@@ -139,11 +139,11 @@
                                                         <?php echo $data['user_detail']['firstname'];?>
                                                     </li>
                                                     <li>
-                                                        <?php echo $diff->y." years old";?>
+                                                        <?php echo ($diff->y + 1)." years old";?>
                                                     </li>
                                                     <li>
                                                         <?php 
-                                                        $timestamp = strtotime($$data['user_detail']['birthday']);
+                                                        $timestamp = strtotime($data['user_detail']['birthday']);
                                                         $day = date('d', $timestamp);
                                                         $year = date('Y', $timestamp);
                                                         $month = date('m', $timestamp);
@@ -162,17 +162,17 @@
                                                     <li>
                                                         <?php 
                                                             switch($data['user_detail']['gender']) {
-                                                                case 0: {
+                                                                case 1: {
                                                                     echo "Male";
                                                                     break;
                                                                 }
                                                                     
-                                                                case 1: {
+                                                                case 2: {
                                                                     echo "Female";
                                                                     break;
                                                                 }
                                                                     
-                                                                case 2: {
+                                                                case 3: {
                                                                     echo "Other";
                                                                     break;
                                                                 }
@@ -384,11 +384,6 @@
                                     </div>
                                 </div>
                                 <?php } ?>
-                                <div class="col l-6">
-                                    <div id="profile__photo-add" onclick="openAddPhotoForm()" class="profile__photo-item">
-                                        <i class="fas fa-plus"></i>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
