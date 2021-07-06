@@ -29,14 +29,7 @@ function openRegistrationForm() {
     document.body.classList.add("showForm");
     document.body.classList.add("showRegistrationForm");
 }
-//Close Login Form
-function closeForm() {
-    //hide nav mobile
-    document.getElementById("heading__nav-mobile").style.display='none';
-    document.body.classList.remove("showForm");
-    document.body.classList.remove("showLoginForm");
-    document.body.classList.remove("showRegistrationForm");
-}
+
 
 //Heading On Click
 function openBlogPage() {
@@ -724,11 +717,21 @@ function openAddPhotoForm() {
 
 function closeForm() {
     document.querySelector('.form-container').style.display="none";
+    // document.querySelector('#open-avt').style.display='none';
+    document.querySelector('#overlay_invisible').style.display="none";
+    document.querySelector('#change-avt').style.display = 'none';
+    document.querySelector('#open-photo').style.display='none';
+    document.querySelector('#delete-account').style.display='none';
+}
+
+function closeAvt() {
+    document.querySelector('.form-container').style.display="none";
     document.querySelector('#open-avt').style.display='none';
     document.querySelector('#overlay_invisible').style.display="none";
     document.querySelector('#change-avt').style.display = 'none';
     document.querySelector('#open-photo').style.display='none';
 }
+
 
 function phototriggerClick() {
     event.preventDefault();
@@ -786,11 +789,12 @@ function displayAvt(e) {
     }
 }
 
-function chooseAvt(src) {
+function chooseAvt(src, id) {
     document.querySelector('.uploaded-photos').style.display="none";
     document.querySelector('.change-avt__button').style.display="none";
     document.querySelector('.change-avt-submit').style.display="block";
     document.querySelector('#new-avt').setAttribute('src', src);
+    document.getElementById('avt_url').value = id;
 }
 
 function cancelAvatar() {
@@ -799,16 +803,10 @@ function cancelAvatar() {
     document.querySelector('.change-avt-submit').style.display="none";
 }
 
-//Like
-// $(document).ready(function() {
-//     $('.like').click(function() {
-//         var id = $(this).attr("id");
-//         document.getElementById(id).parentElement.parentElement.parentElement.parentElement.parentElement.outerHTML = "";
-//     })
-// })
-
+//Click like
 $(document).ready(function() {
     $('.like-form').on('submit', function() {
+        document.getElementById($(this).attr('id')).parentElement.parentElement.parentElement.parentElement.outerHTML = "";
         var that = $(this),
             user_2 = that.attr('id'),
             like = 1,
@@ -826,6 +824,85 @@ $(document).ready(function() {
                 console.log(response);
             }
         });
+        return false;
+    })
+})
+
+//Click like in profile member
+
+$(document).ready(function() {
+    $('.profile__like-form').on('submit', function() {
+        var that = $(this),
+            user_2 = that.attr('id'),
+            like = 1,
+            url = that.attr('action'),
+            type = that.attr('method'),
+            data = {
+                like: like,
+                user_2: user_2
+            };
+        $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            success:function(response) {
+                console.log(response);
+            }
+        });
+        document.querySelector(".profile__like-form").style.display = "none";
+        document.querySelector(".profile__unlike-form").style.display = "block";
+        return false;
+    })
+})
+
+//Click Unlike
+$(document).ready(function() {
+    $('.unlike-form').on('submit', function() {
+        alert("If you unlike members, they will not be here anymore and your messages with them will dissapear. But maybe you still have a chance to like them again while using Cupid Date website.");
+        document.getElementById($(this).attr('id')).parentElement.parentElement.parentElement.parentElement.outerHTML = "";
+        var that = $(this),
+            user_2 = that.attr('id'),
+            like = 0,
+            url = that.attr('action'),
+            type = that.attr('method'),
+            data = {
+                like: like,
+                user_2: user_2
+            };
+        $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            success:function(response) {
+                console.log(response);
+            }
+        });
+        return false;
+    })
+})
+
+//Click Unlike in profile member
+$(document).ready(function() {
+    $('.profile__unlike-form').on('submit', function() {
+        var that = $(this),
+            user_2 = that.attr('id'),
+            like = 0,
+            url = that.attr('action'),
+            type = that.attr('method'),
+            data = {
+                like: like,
+                user_2: user_2
+            };
+        $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            success:function(response) {
+                console.log(response);
+            }
+        });
+        document.querySelector(".profile__like-form").style.display = "block";
+        document.querySelector(".profile__unlike-form").style.display = "none";
         return false;
     })
 })
@@ -856,4 +933,11 @@ $(document).ready(function() {
         return false;
     })
 })
+
+//Delete account
+function openDeleteAccountForm() {
+    document.querySelector('#delete-account').style.display = "flex";
+    document.querySelector('#overlay_invisible').style.display = "block";
+}   
+
 

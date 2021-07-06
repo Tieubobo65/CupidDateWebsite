@@ -29,6 +29,12 @@
                                     <li>
                                         <a href="<?php echo URLROOT; ?>/pages/waiting">Waiting You</a>
                                     </li>
+                                    <li>
+                                        <a href="<?php echo URLROOT; ?>/pages/liked">Liked Members</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo URLROOT; ?>/pages/matches">Matches</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="heading__nav-item">

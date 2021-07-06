@@ -1222,7 +1222,8 @@ body.showLoginForm .form__close {
     color: #fff;
 }
 .waiting__head {
-    min-height: 312px;
+    min-height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(../img/member1.jpeg) top center / cover no-repeat;
 }
 .seeking {
     position: absolute;
@@ -1846,12 +1847,15 @@ body.showLoginForm .form__close {
     display: none;
 }
 
-#change-avt {
+
+#change-avt,
+#delete-account {
     z-index: 2;
     display: none;
 }
 
-#photo {
+#photo,
+#avt {
     justify-content: center;
 }
 
@@ -1861,7 +1865,8 @@ body.showLoginForm .form__close {
     border-radius: 5px;
 }
 
-#open-photo img {
+#open-photo img,
+#open-avt img {
     z-index: 2;
 }
 #add_photo {
@@ -1966,6 +1971,17 @@ body.showLoginForm .form__close {
     display: flex;
     line-height: 1;
     margin-top: 20px;
+}
+
+.delete-account-container p {
+    margin-left: 70px;
+}
+
+.delete-account-container form {
+    margin: 20px 0;
+    min-width: 500px;
+    display: flex;
+    justify-content: space-around;
 }
 
 
@@ -2157,7 +2173,7 @@ body.showLoginForm .form__close {
 }
 
 #chat-box .outgoing .details p {
-    background-color: #333;
+    background-color: #e74c3c;
     color: #fff;
     border-radius: 18px 18px 0 18px;
     padding: 12px;

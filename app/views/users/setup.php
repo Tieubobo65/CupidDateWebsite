@@ -55,7 +55,7 @@
                 <p>This info will be visible to others</p>
             </div>
             <div class="setup__button">
-                <button id="setup_next-1" class="button" onclick="openSetup()";>PREVIOUS</button>
+                <button class="button" type="button" onclick="openSetup()";>PREVIOUS</button>
                 <button id="setup_next-1" class="button" onclick="openSecondStep()";>NEXT</button>
             </div>
         </div>
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="setup__button">
-                    <button class="button" onclick="openFirstStep()";>PREVIOUS</button>
+                    <button class="button" type="button" onclick="openFirstStep()";>PREVIOUS</button>
                     <button class="button" type="submit" onclick="openThirdStep()";>NEXT</button>
                 </div>
             </form>
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="setup__button">
-                    <button class="button" onclick="openSecondStep()";>PREVIOUS</button>
+                    <button class="button" type="button" onclick="openSecondStep()";>PREVIOUS</button>
                     <button type="submit" class="button" onclick="openFourthStep()";>NEXT</button>
                 </div>
             </form>
@@ -126,7 +126,7 @@
                 </div>
 
                 <div class="setup__button">
-                    <button class="button" onclick="openThirdStep()";>PREVIOUS</button>
+                    <button class="button" type="button" onclick="openThirdStep()";>PREVIOUS</button>
                     <button type="submit" class="button" onclick="openFifthStep()";>NEXT</button>
                 </div>
             </form>
@@ -151,7 +151,7 @@
                 </div>
 
                 <div class="setup__button">
-                    <button class="button" onclick="openFourthStep()";>PREVIOUS</button>
+                    <button class="button" type="button" onclick="openFourthStep()";>PREVIOUS</button>
                     <button type="submit" class="button" onclick="openSixStep()";>NEXT</button>
                 </div>
             </form>
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="setup__button">
-                    <button class="button" onclick="openFifthStep()";>PREVIOUS</button>
+                    <button class="button" type="button" onclick="openFifthStep()";>PREVIOUS</button>
                     <button type="submit" class="button" onclick="openSevenStep()";>NEXT</button>
                 </div>
             </form>
@@ -204,7 +204,7 @@
                 </div>
 
                 <div class="setup__button">
-                    <button class="button" onclick="openSixStep()";>PREVIOUS</button>
+                    <button class="button" type="button" onclick="openSixStep()";>PREVIOUS</button>
                     <button type="submit" class="button" onclick="openEightStep()";>NEXT</button>
                 </div>
             </form>
@@ -226,7 +226,7 @@
                 </div>
 
                 <div class="setup__button">
-                    <button class="button" onclick="openSevenStep()";>PREVIOUS</button>
+                    <button class="button" type="button" onclick="openSevenStep()";>PREVIOUS</button>
                     <button type="submit" class="button" onclick="openNineStep()";>NEXT</button>
                 </div>
             </form>
@@ -248,7 +248,7 @@
                 </div>
 
                 <div class="setup__button">
-                    <button class="button" onclick="openEightStep()";>PREVIOUS</button>
+                    <button class="button" type="button" onclick="openEightStep()";>PREVIOUS</button>
                     <button type="submit" class="button" onclick="openTenStep()";>NEXT</button>
                 </div>
             </form>
@@ -264,7 +264,7 @@
                     <img src="../public/img/add_picture.png" alt="" onclick="triggerClick()" id="profileDisplay">
                     <input type="file" name="avatar" id="avatar" onChange="displayImage(this)" style="display: none">
                     <div class="setup__button">
-                        <button class="button" onclick="openNineStep()";>PREVIOUS</button>
+                        <button class="button" type="button" onclick="openNineStep()";>PREVIOUS</button>
                         <button type="submit" name="save_avatar" class="button" onclick="open11Step()" style="padding: 10px 20px">SAVE AND GO TO HOME PAGE</button>
                     </div>
             </form>

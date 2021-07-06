@@ -74,6 +74,12 @@
                 $sql = "UPDATE users SET $col = '$value' WHERE id = $id";
                 $this->execute($sql);
         }
+
+        public function delete($table, $col, $value) {
+            $sql = "DELETE FROM $table WHERE $col = '$value'";
+            $this->execute($sql);
+        }
+
         public function execstmt($query, $data) {
             try {
                 $stmt = $this->pdo->prepare($query);

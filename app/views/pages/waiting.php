@@ -9,11 +9,11 @@
 </div>
 
 <div id="members-container" class="members-container show">
-    <div class="members__head">
+    <div class="waiting__head">
         <div class="breadcrumb">
                 <div class="page-title">
                     <img src="../public/img/t-left-img.png" alt="">
-                    <h1 style="font-size: 50px;">Members</h1>
+                    <h1 style="font-size: 50px;">Waiting Members</h1>
                     <img src="../public/img/t-right-img.png" alt="">
                 </div>
                 <span>
@@ -21,7 +21,7 @@
                 </span>
                  » Community » 
                 <span>
-                    <a href="#">Members</a>
+                    <a href="#">Waiting Members</a>
                 </span>
         </div>
     </div>
@@ -39,14 +39,14 @@
                         <div class="slide slide_1">
                             <div class="slide-content">
                                 <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Actively Click Like!</p>
+                                <p class="step">Click like back to people who already like you</p>
                             </div>
                         </div>
 
                         <div class="slide slide_2">
                             <div class="slide-content">
                                 <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Click like back to people who already like you</p>
+                                <p class="step">Actively Click Like!</p>
                             </div>
                         </div>
 
@@ -84,10 +84,10 @@
 
                 <div class="online-members grid wide">
                     <div class="row">
-                        <?php foreach($data['waiting'] as $value) { ?>
+                        <?php foreach($data as $value) { ?>
                             <div class="col l-3 m-4 c-12">
                             <div class="member-item">
-                                <a href="#">
+                                <a href="<?php echo URLROOT; ?>/pages/member_profile?user_id=<?php echo $value['id'];?>">
                                     <div class="member__img">
                                         <img id="img_<?php echo $value['id'];?>" src="<?php echo URLROOT; ?>/public/img/<?= $value['avatar']?>" alt="">
                                         <form id="<?php echo $value['id'];?>" class="like-form" action="<?php echo URLROOT;?>/pages/like" method="POST">
@@ -97,7 +97,7 @@
                                                     Like
                                                 </div>
                                             </button>
-                                    </form>  
+                                        </form>  
 
                                     </div>
                                 </a>

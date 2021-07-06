@@ -266,6 +266,7 @@
             ];
             $this->view('users/home', $data);
         }
+
         function personel_profile() {
             if(isset($_FILES['photo'])) {
                 $photo_name = time() . '_' . $_FILES['photo']['name'];
@@ -275,13 +276,20 @@
             }
 
             if(isset($_FILES['avt'])) {
-                if($_FILES['avt'] != '') {
+                if($_FILES['avt']['name'] != '') {
                     $avatar = time() . '_' . $_FILES['avt']['name'];
                     $this->userModel->addPhoto($_SESSION['user_id'], $avatar);
                     $this->userModel->updateAvatar($_SESSION['user_id'], $avatar);
                     $target = "../public/img/" . $avatar;
                     move_uploaded_file($_FILES['avt']['tmp_name'], $target);
                     $_SESSION['avatar'] = $avatar;
+                } else if($_POST['avt_url'] != '') {
+                    $avatar = $_POST['avt_url'];
+                    $this->userModel->addPhoto($_SESSION['user_id'], $avatar);
+                    $this->userModel->updateAvatar($_SESSION['user_id'], $avatar);
+                    $_SESSION['avatar'] = $avatar;
+                } else {
+                    $avatar = "../public/img/avt.png";
                 }
             }
 
@@ -344,5 +352,7 @@
             unset($_SESSION['avatar']);
             header('location:' . URLROOT . '/home');
         }
+
+
     }
 ?>

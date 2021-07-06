@@ -40,7 +40,7 @@
                                 <img src="./public/img/' . $rows['avatar'] . '" alt="">
                                 <div class="conversation__detail">
                                     <span>' . $rows['firstname'] . ' ' . $rows['lastname'] .'</span>
-                                    <p>' . $msg . '</p>
+                                    <p>' . htmlspecialchars(stripslashes($msg)) . '</p>
                                 </div>
                             </div>
                         </a>
@@ -83,7 +83,7 @@
                         $output .= '
                                     <div class="chat outgoing">
                                         <div class="details">
-                                            <p>' . $rows['message_content'] . '</p>
+                                            <p>' . htmlspecialchars(stripslashes($rows['message_content'])) . '</p>
                                         </div>
                                     </div>
                                     ';
@@ -93,7 +93,7 @@
                                     <div class="chat incoming">
                                         <img src="../../public/img/' . $rows['avatar'] . '" alt="">
                                         <div class="details">
-                                            <p>' . $rows['message_content'] . '</p>
+                                            <p>' . htmlspecialchars(stripslashes($rows['message_content'])) . '</p>
                                         </div>
                                     </div>
                                     ';
@@ -129,7 +129,7 @@
                                     <img src="./public/img/' . $rows['avatar'] . '" alt="">
                                     <div class="conversation__detail">
                                         <span>' . $rows['firstname'] . ' ' . $rows['lastname'] .'</span>
-                                        <p>' . $msg . '</p>
+                                        <p>' . htmlspecialchars(stripslashes($msg)) . '</p>
                                     </div>
                                 </div>
                             </a>

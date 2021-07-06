@@ -9,7 +9,7 @@
 </div>
 
 <!-- Begin blog -->
-<div id="blog-container">
+<div id="blog-container" class="show">
     <div class="blog__head">
         <div class="breadcrumb">
             <div class="page-title">
