@@ -907,32 +907,6 @@ $(document).ready(function() {
     })
 })
 
-//seeking friends
-$(document).ready(function() {
-    $('form.seeking-form').on('submit', function() {
-        var that = $(this),
-            url = that.attr('action'),
-            type = that.attr('method'),
-            seeking_gender = $('#seeking_gender').val();
-            from_age = $('#from_age').val();
-            to_age = $('#to_age').val();
-            data = {
-                seeking_gender: seeking_gender,
-                from_age: from_age,
-                to_age: to_age
-            };
-        console.log(data);
-        $.ajax({
-            url: url,
-            type: type,
-            data: data,
-            success:function(data) {
-                $('#online-members').html(data);
-            }
-        });
-        return false;
-    })
-})
 
 //Delete account
 function openDeleteAccountForm() {

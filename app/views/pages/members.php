@@ -24,37 +24,16 @@
                     <a href="#">Members</a>
                 </span>
         </div>
+    </div>
+
+    <div class="members-list">
 
         <div class="seeking">
-            <form action="<?php echo URLROOT; ?>/pages/seeking" class="seeking-form" id="seeking-form" method="GET">
-                    <label for="seeking__gender1">I am a</label>
-                    <select name="seeking__gender1" id="" class="seeking-form__select">
-                        <option value="man">
-                        <?php if($_SESSION['gender']) {
-                            switch($_SESSION['gender']) {
-                                case 0: {
-                                    echo "Man";
-                                    break;
-                                }
-                                    
-                                case 1: {
-                                    echo "Woman";
-                                    break;
-                                }
-                                    
-                                case 2: {
-                                    echo "Other";
-                                    break;
-                                }
-                            }
-                        }?>
-                        </option>
+            <form action="<?php echo URLROOT; ?>/pages/members" class="seeking-form" id="seeking-form" method="POST">
 
-                    </select>
-
-                    <label for="seeking_gender">Seeking a</label>
+                    <label for="seeking_gender">Seeking gender</label>
                     <select name="seeking_gender" id="seeking_gender" class="seeking-form__select">
-                        <option value="" disabled selected hidden>Choose Gender</option>
+                        <option value="">Any</option>
                         <option value="2">Woman</option>
                         <option value="1">Man</option>
                         <option value="3">Other</option>
@@ -62,7 +41,7 @@
 
                     <label for="from_age">From</label>
                     <select name="from_age" id="from_age" class="seeking-form__select">
-                        <option value="" disabled selected hidden>Any</option>
+                        <option value="">Any</option>
                         <?php for($i = 18; $i<71; $i++) { ?>
                             <option value="<?php echo $i;?>"><?php echo $i;?></option>
                         <?php } ?>
@@ -70,77 +49,44 @@
 
                     <label for="to_age">To</label>
                     <select name="to_age" id="to_age" class="seeking-form__select">
-                        <option value="" disabled selected hidden>Any</option>
+                        <option value="">Any</option>
                         <?php for($i = 18; $i<71; $i++) { ?>
                             <option value="<?php echo $i;?>"><?php echo $i;?></option>
                         <?php } ?>
                     </select>
-                    <button type="submit" class="button">Search</button>
+
+                    <label for="country">Country</label>
+                    <select name="country" id="country" class="seeking-form__select">
+                        <option value="">Any</option>
+                        <?php
+                        foreach($data["country"] as $row)
+                        {
+                            echo '<option value="'.$row["country_id"].'">'.$row["country_name"].'</option>';
+                        }
+                    ?>
+                    </select>
+
+                    <label for="state">State</label>
+                    <select name="state" id="state" class="seeking-form__select">
+                        <option value="">Any</option>
+
+                    </select>
+
+                    <label for="state">City</label>
+                    <select name="city" id="city" class="seeking-form__select">
+                        <option value="">Any</option>
+
+                    </select>
+                    <button style="padding: 10px" type="submit" class="button">Search</button>
                 </form>
-        </div>
-    </div>
-
-    <div class="members-list">
-        <div class="members__step" id="slider">
-            <input type="radio" name="slider" id="slide1" checked>
-            <input type="radio" name="slider" id="slide2">
-            <input type="radio" name="slider" id="slide3">
-            <input type="radio" name="slider" id="slide4">
-
-            <div id="slides">
-                <div id="overflow">
-                    <div class="inner">
-                        <div class="slide slide_1">
-                            <div class="slide-content">
-                                <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Actively Click Like!</p>
-                            </div>
-                        </div>
-
-                        <div class="slide slide_2">
-                            <div class="slide-content">
-                                <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Click like back to people who already like you</p>
-                            </div>
-                        </div>
-
-                        <div class="slide slide_3">
-                            <div class="slide-content">
-                                <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Wait for the person you like to respond</p>
-                            </div>
-                        </div>
-
-                        <div class="slide slide_4">
-                            <div class="slide-content">
-                                <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Chat with them!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-
-            <div id="controls">
-                <label for="slide1"></label>
-                <label for="slide2"></label>
-                <label for="slide3"></label>
-                <label for="slide4"></label>
-            </div>
-
-            <div id="bullets">
-                <label for="slide1"></label>
-                <label for="slide2"></label>
-                <label for="slide3"></label>
-                <label for="slide4"></label>
-            </div>
         </div>
 
                 <div  class="online-members grid wide">
+                <?php if(count($data) > 1) { ?>
                     <div id="online-members" class="row">
                         <?php
                             foreach($data as $value) { 
-                                if($value['id'] == $_SESSION['user_id']) {
+                                if($value['id'] == NULL) {
                                     continue;
                                 }
                                 ?>
@@ -179,7 +125,7 @@
                                         $diff = $now->diff($dob);
                                      
                                         // Get the age in years, months and days
-                                        echo $diff->y." years old";
+                                        echo ($diff->y + 1)." years old";
                                         ?>
                                     </div>
                                 </div> 
@@ -187,6 +133,10 @@
                         </div>
                         <?php } ?>
                     </div>
+                <?php } else { ?>
+                    <h3>No users available!</h3>
+                    <br>        
+                <?php } ?>
                 </div>
     </div>
 </div>

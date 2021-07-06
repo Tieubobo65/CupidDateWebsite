@@ -253,12 +253,14 @@
 
         function home() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $avatar = time() . '_' . $_FILES['avatar']['name'];
-                $this->userModel->updateAvatar($_SESSION['user_id'], $avatar);
-                $this->userModel->addPhoto($_SESSION['user_id'], $avatar);
-                $target = "../public/img/" . $avatar;
-                move_uploaded_file($_FILES['avatar']['tmp_name'], $target);
-                $_SESSION['avatar'] = $avatar;
+                if($_FILES['avatar']['name'] != '') {
+                    $avatar = time() . '_' . $_FILES['avatar']['name'];
+                    $this->userModel->updateAvatar($_SESSION['user_id'], $avatar);
+                    $this->userModel->addPhoto($_SESSION['user_id'], $avatar);
+                    $target = "../public/img/" . $avatar;
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], $target);
+                    $_SESSION['avatar'] = $avatar;
+                }
             }
 
             $data = [
@@ -285,7 +287,6 @@
                     $_SESSION['avatar'] = $avatar;
                 } else if($_POST['avt_url'] != '') {
                     $avatar = $_POST['avt_url'];
-                    $this->userModel->addPhoto($_SESSION['user_id'], $avatar);
                     $this->userModel->updateAvatar($_SESSION['user_id'], $avatar);
                     $_SESSION['avatar'] = $avatar;
                 } else {
@@ -293,7 +294,7 @@
                 }
             }
 
-            $address = $this->userModel->getCurrentAddress($_SESSION['city_id']);
+            $address = $this->userModel->getCurrentAddress($_SESSION['user_id']);
             $photos =  $this->userModel->getAllPhotos($_SESSION['user_id']);
             $data = [
                 'city_name' => $address['city'],

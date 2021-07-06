@@ -53,18 +53,20 @@
             return $country;
         }
 
-        public function getCurrentAddress($city_id) {
+        public function getCurrentAddress($member_id) {
+            $city_id = $this->db->getSingleData('city_id', 'users', 'id', $member_id);
             $state_id = $this->db->getSingleData('state_id', 'cities', 'city_id', $city_id);
             $country_id = $this->db->getSingleData('country_id', 'states', 'state_id', $state_id);
             $address = [
+                'city_id' => $city_id,
+                'state_id' => $state_id,
+                'country_id' => $country_id,
                 'city' => $this->db->getSingleData('city_name', 'cities', 'city_id', $city_id),
                 'state' => $this->db->getSingleData('state_name', 'states', 'state_id', $state_id),
                 'country' => $this->db->getSingleData('country_name', 'countries', 'country_id', $country_id)
             ];
             return $address;
         }
-
-
 
         public function fetch_state($country_id) {
             $query = $this->db->getAllDataBy('states', 'country_id', $country_id);
@@ -142,20 +144,113 @@
             return $this->db->getAllData('users');
         }
 
-        public function getAllUsersByGender($gender) {
+        public function seekingUsers($gender, $from_age, $to_age, $city) {
+            $sql = "SELECT * FROM users WHERE 
+                 gender = '$gender' AND
+                 DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') >= $from_age AND
+                 DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') <= $to_age AND
+                 city_id =  '$city'";
+            $this->db->execute($sql);
+             if(mysqli_num_rows($this->db->execute($sql))==0) {
+                 $data = 0;
+             } else {
+                 while($datas = $this->db->getData()) {
+                     $data[] = $datas;
+                 }
+             }
+             return $data;
+        }
+
+        public function seekingUsersByGenderAndAge($gender, $from_age, $to_age) {
+            $sql = "SELECT * FROM users WHERE 
+            gender = '$gender' AND
+            DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') >= $from_age AND
+            DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') <= $to_age";
+            $this->db->execute($sql);
+            if(mysqli_num_rows($this->db->execute($sql))==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->db->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function seekingUsersByGenderAndFromAge($gender, $from_age) {
+            $sql = "SELECT * FROM users WHERE 
+            gender = '$gender' AND
+            DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') >= $from_age";
+            $this->db->execute($sql);
+            if(mysqli_num_rows($this->db->execute($sql))==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->db->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function seekingUsersByGenderAndToAge($gender, $to_age) {
+            $sql = "SELECT * FROM users WHERE 
+            gender = '$gender' AND
+            DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') <= $to_age";
+            $this->db->execute($sql);
+            $this->db->execute($sql);
+            if(mysqli_num_rows($this->db->execute($sql))==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->db->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function seekingUsersByAge($from_age, $to_age) {
+            $sql = "SELECT * FROM users WHERE 
+            DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') >= $from_age AND
+            DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') <= $to_age";
+            $this->db->execute($sql);
+            if(mysqli_num_rows($this->db->execute($sql))==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->db->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function seekingUsersByGender($gender) {
             return $this->db->getAllDataBy('users', 'gender', $gender);
         }
 
-        public function getAllUsersFromAge($age) {
-            $sql = "SELECT * FROM users";
-            $row = $this->db->getAllData('users');
-            foreach($row as $value)
-            {
-                if(((new DateTime())->diff(new DateTime($value["birthday"]))->y) >= $age) {
-                    $result[] = $this->db->getAllDataBy('users', 'id', $value['id']);
+        public function seekingUsersFromAge($age) {
+            $sql = "SELECT * FROM users WHERE DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') >= $age";
+            $this->db->execute($sql);
+            if(mysqli_num_rows($this->db->execute($sql))==0) {
+                $data = NULL;
+            } else {
+                while($datas = $this->db->getData()) {
+                    $data[] = $datas;
                 }
             }
-            return $result;
+            return $data;
+        }
+
+        public function seekingUsersToAge($age) {
+            $sql = "SELECT * FROM users WHERE DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(birthday, '%Y') <= $age";
+            $this->db->execute($sql);
+            if(mysqli_num_rows($this->db->execute($sql))==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->db->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
         }
 
         public function addPhoto($user_id, $photo_name) {
@@ -176,9 +271,14 @@
             $this->db->execute($sql);
         }
 
+        public function updateRelationship($user_1, $user_2, $status) {
+            $sql = "UPDATE relationships SET status = '$status' WHERE user_1 = $user_1 AND user_2 = $user_2";
+            echo $sql;
+            $this->db->execute($sql);
+        }
+
         public function removeRelationship($user_1, $user_2) {
             $sql = "DELETE FROM relationships WHERE user_1 = $user_1 AND user_2 = $user_2";
-            echo $sql;
             $this->db->execute($sql);
         }
 

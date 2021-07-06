@@ -6,6 +6,7 @@
     }
 
     public function index() {
+        //if delete account
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user_id = $_SESSION["user_id"];
             unset($_SESSION['user_id']);
@@ -35,8 +36,6 @@
     }
 
     public function contact() {
-        echo "<script>alert('LIKE')</script>";
-
         $this->view('pages/contact');
     }
 
@@ -48,6 +47,10 @@
             if(!$this->userModel->isLike($user_1, $user_2)) {
                 $this->userModel->addRelationship($user_1, $user_2);
             }
+
+            if($this->userModel->isLike($user_2, $user_1)) {
+                $this->userModel->updateRelationship($user_2, $user_1, '1');
+            }
         }
     }
 
@@ -57,12 +60,10 @@
             $user_2 = $_POST['user_2'];
             $user_1 = $_SESSION['user_id'];
             $this->userModel->removeRelationship($user_1, $user_2);
-            // if($this->userModel->isLike($user_2, $user_1)) {
-            //     $this->userModel->updateRelationship($user_2, $user_1, '1');
-            // }
         }
     }
 
+    //show member profile
     public function member_profile() {
         $member_id = $_GET['user_id'];
         $user_detail = $this->userModel->getUserDetail($member_id);
@@ -84,17 +85,79 @@
 
     //members page: all members that user haven't like yet
     public function members() {
-        //get all members (users) from database
-        $data = $this->userModel->getAllUsers();
-        foreach($data as $k => $value) {
-            //remove members that user has already liked
-            if($this->userModel->isLike($_SESSION["user_id"], $value["id"])) {
-                unset($data[$k]);
+        //seeking members
+        if($_POST['seeking_gender'] != NULL && $_POST['from_age'] != NULL & $_POST['to_age'] != NULL
+            && $_POST['city'] != NULL) {
+                $data = $this->userModel->seekingUsers($_POST['seeking_gender'], $_POST['from_age'], $_POST['to_age'], $_POST['city']);
+            } elseif($_POST['seeking_gender'] != NULL && $_POST['from_age'] != NULL & $_POST['to_age'] != NULL
+            && $_POST['state'] != NULL) {
+                $data = $this->userModel->seekingUsersByGenderAndAge($_POST['seeking_gender'], $_POST['from_age'], $_POST['to_age']);
+                foreach($data as $k => $value) {
+                    $address = $this->userModel->getCurrentAddress($value["id"]);
+                    if($address["state_id"] != $_POST['state']) {
+                        unset($data[$k]);
+                    }
+                }
+            } elseif($_POST['seeking_gender'] != NULL && $_POST['from_age'] != NULL & $_POST['to_age'] != NULL
+            && $_POST['country'] != NULL) {
+                $data = $this->userModel->seekingUsersByGenderAndAge($_POST['seeking_gender'], $_POST['from_age'], $_POST['to_age']);
+                foreach($data as $k => $value) {
+                    $address = $this->userModel->getCurrentAddress($value["id"]);
+                    if($address["country_id"] != $_POST['country']) {
+                        unset($data[$k]);
+                    }
+                }
+            } elseif($_POST['seeking_gender'] != NULL && $_POST['from_age'] != NULL && $_POST['to_age'] != NULL) {
+                $data = $this->userModel->seekingUsersByGenderAndAge($_POST['seeking_gender'], $_POST['from_age'], $_POST['to_age']);
+            } elseif($_POST['seeking_gender'] != NULL && $_POST['from_age'] != NULL) {
+                $data = $this->userModel->seekingUsersByGenderAndFromAge($_POST['seeking_gender'], $_POST['from_age']);
+            } elseif($_POST['seeking_gender'] != NULL && $_POST['to_age'] != NULL) {
+                $data = $this->userModel->seekingUsersByGenderAndToAge($_POST['seeking_gender'], $_POST['to_age']);
+            } elseif($_POST['from_age'] != NULL && $_POST['to_age'] != NULL) {
+                $data = $this->userModel->seekingUsersByAge($_POST['from_age'], $_POST['to_age']);
+            } elseif($_POST['seeking_gender'] != NULL) {
+                $data = $this->userModel->seekingUsersByGender($_POST['seeking_gender']);
+            } elseif($_POST['from_age'] != NULL) {
+                $data = $this->userModel->seekingUsersFromAge($_POST['from_age']);
+            } elseif($_POST['to_age'] != NULL) {
+                $data = $this->userModel->seekingUsersToAge($_POST['to_age']);
+            } elseif($_POST['city'] != NULL) {
+                $data = $this->userModel->getAllUsers();
+                foreach($data as $k => $value) {
+                    $address = $this->userModel->getCurrentAddress($value["id"]);
+                    if($address["city_id"] != $_POST['city']) {
+                        unset($data[$k]);
+                    }
+                }
+            } elseif($_POST['state'] != NULL) {
+                $data = $this->userModel->getAllUsers();
+                foreach($data as $k => $value) {
+                    $address = $this->userModel->getCurrentAddress($value["id"]);
+                    if($address["state_id"] != $_POST['state']) {
+                        unset($data[$k]);
+                    }
+                }
+            } elseif($_POST['country'] != NULL) {
+                $data = $this->userModel->getAllUsers();
+                foreach($data as $k => $value) {
+                    $address = $this->userModel->getCurrentAddress($value["id"]);
+                    if($address["country_id"] != $_POST['country']) {
+                        unset($data[$k]);
+                    }
+                }
+            } else {
+                $data = $this->userModel->getAllUsers();
             }
-        }
+
+            foreach($data as $k => $value) {
+                //remove members that user has already liked
+                if($this->userModel->isLike($_SESSION["user_id"], $value["id"]) || $_SESSION["user_id"] == $value["id"]) {
+                    unset($data[$k]);
+                }
+            }
+        $data['country'] = $this->userModel->fetch_country();
         $this->view('pages/members', $data);
     }
-
     //waiting members page: all members already liked current user but haven't been like back
     public function waiting() {
         $data = $this->userModel->getAllUsers();
@@ -134,130 +197,6 @@
             }
         }
         $this->view('pages/matches', $data);
-    }
-
-    public function seeking() {
-        if(isset($_GET['seeking_gender'])) {
-            $seeking_gender = $_GET['seeking_gender'];
-            $from_age = $_GET['from_age'];
-            $to_age = $_GET['to_age'];
-            $output = "";
-
-            if($seeking_gender == NULL && $from_age == NULL & $to_age == NULL) {
-                $data = $this->userModel->getAllUsers();
-                foreach($data as $value) { 
-                    if($value['id'] == $_SESSION['user_id']) {
-                        continue;
-                    }
-                    $output .='<div class="col l-3 m-4 c-12">
-                                    <div class="member-item">
-                                        <a href="'.URLROOT.'/pages/member_profile?user_id='.$value["id"].'">
-                                        <div class="member__img">
-                                            <img id="img_'.$value["id"].'" src="'.URLROOT.'/public/img/'.$value["avatar"].'" alt="ABC">
-                                            <form id="'.$value['id'].'" class="like-form" action="'.URLROOT.'/pages/like" method="POST">
-                                                button id = "button_'.$value['id'].'" type="submit" class="like">
-                                                    <div class="member__action">
-                                                        <i class="fas fa-heart"></i>
-                                                        Like
-                                                    </div>
-                                                </button>
-                                            </form>  
-                                        </div>
-                                        </a>
-                                        <div class="member__info">
-                                            <div class="member__name">'
-                                                .$value["firstname"]. $value['lastname'].'
-                                            </div>
-                                            <div class="member__age">'
-                                                .$diff = (new DateTime())->diff(new DateTime($value["birthday"]))->y
-                                                .' years old
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>';
-                    
-                }
-                echo $output;
-            }
-
-            if($seeking_gender != NULL) {
-                $data = $this->userModel->getAllUsersByGender($seeking_gender);
-                foreach($data as $value) { 
-                    if($value['id'] == $_SESSION['user_id']) {
-                        continue;
-                    }
-                    $output .='<div class="col l-3 m-4 c-12">
-                                    <div class="member-item">
-                                        <a href="'.URLROOT.'/pages/member_profile?user_id='.$value["id"].'">
-                                        <div class="member__img">
-                                            <img id="img_'.$value["id"].'" src="'.URLROOT.'/public/img/'.$value["avatar"].'" alt="ABC">
-                                            <form id="'.$value['id'].'" class="like-form" action="'.URLROOT.'/pages/like" method="POST">
-                                                button id = "button_'.$value['id'].'" type="submit" class="like">
-                                                    <div class="member__action">
-                                                        <i class="fas fa-heart"></i>
-                                                        Like
-                                                    </div>
-                                                </button>
-                                            </form>  
-                                        </div>
-                                        </a>
-                                        <div class="member__info">
-                                            <div class="member__name">'
-                                                .$value["firstname"]. $value['lastname'].'
-                                            </div>
-                                            <div class="member__age">'
-                                                .$diff = (new DateTime())->diff(new DateTime($value["birthday"]))->y
-                                                .' years old
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>';
-                    
-                }
-                echo $output;
-            }
-
-            if($from_age != NULL) {
-                $data = $this->userModel->getAllUsersFromAge($from_age);
-                foreach($data as $data1) {
-                    foreach($data as $value1) {
-                        foreach($value1 as $value) {
-                            if($value['id'] == $_SESSION['user_id']) {
-                                continue;
-                            }
-                            $output .='<div class="col l-3 m-4 c-12">
-                                            <div class="member-item">
-                                                <a href="'.URLROOT.'/pages/member_profile?user_id='.$value["id"].'">
-                                                <div class="member__img">
-                                                    <img id="img_'.$value["id"].'" src="'.URLROOT.'/public/img/'.$value["avatar"].'" alt="ABC">
-                                                    <form id="'.$value['id'].'" class="like-form" action="'.URLROOT.'/pages/like" method="POST">
-                                                        button id = "button_'.$value['id'].'" type="submit" class="like">
-                                                            <div class="member__action">
-                                                                <i class="fas fa-heart"></i>
-                                                                Like
-                                                            </div>
-                                                        </button>
-                                                    </form>  
-                                                </div>
-                                                </a>
-                                                <div class="member__info">
-                                                    <div class="member__name">'
-                                                        .$value["firstname"]. $value['lastname'].'
-                                                    </div>
-                                                    <div class="member__age">'
-                                                        .$diff = (new DateTime())->diff(new DateTime($value["birthday"]))->y
-                                                        .' years old
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>';
-                        }
-                    }
-                }
-            }
-            echo $output;
-
-        }
     }
 }
 

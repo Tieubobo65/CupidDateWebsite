@@ -1215,30 +1215,30 @@ body.showLoginForm .form__close {
 .members__head,
 .waiting__head {
     background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(../img/member.jpg) top center / cover no-repeat;
-    min-height: 450px;
     height: auto;
     position: relative;
     text-align: center;
     color: #fff;
+}
+
+.members__head {
+    min-height: 300px;
 }
 .waiting__head {
     min-height: 400px;
     background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5)), url(../img/member1.jpeg) top center / cover no-repeat;
 }
 .seeking {
-    position: absolute;
-    bottom: 30px;
+    margin-bottom: 30px;
     left: 0;
     right: 0;
 }
 
 .seeking-form {
     color: #333;
-    background-color: #fff;
-    max-width: 86%;
     margin: auto;
-    padding: 30px;
-    border-radius: 100px;
+    padding: 10px;
+    padding-top: 30px;
     font-size:18px;
 }
 
@@ -1248,9 +1248,9 @@ body.showLoginForm .form__close {
     border: none;
     border-radius: 50px;
     outline: 0;
-    padding: 18px;
-    margin: 0 20px;
-    min-width: 116px;
+    padding: 10px 5px;
+    padding-right: 20px;
+    margin: 0 10px;
     font-family: inherit;
     font-weight: 600;
     font-size: 16px;
@@ -1265,7 +1265,7 @@ body.showLoginForm .form__close {
     width: 400px;
     max-width: 100%;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
  }
 
  #slider input[type=radio] {
@@ -1394,7 +1394,6 @@ body.showLoginForm .form__close {
  }
 
 .members-list {
-    padding: 80px 0;
     text-align: center;
 }
 
@@ -1491,9 +1490,10 @@ body.showLoginForm .form__close {
     position: relative;
 }
 .profile__avatar img {
-    max-height: 260px;
+    max-height: 300px;
     min-height: 300px;
-    min-width: 260px;
+    min-width: 300px;
+    max-width: 300px;
     border-radius: 50%;
     border: 8px solid #eee;
 }
@@ -2231,7 +2231,13 @@ body.showLoginForm .form__close {
     margin-top: 20px;
 }
 
-#online-members {
+#new-avt {
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
     max-height: 300px;
-    overflow: hidden;
+}
+
+.profile__avatar img {
+
 }

@@ -13,7 +13,7 @@
         <div class="breadcrumb">
                 <div class="page-title">
                     <img src="../public/img/t-left-img.png" alt="">
-                    <h1 style="font-size: 50px;">Waiting Members</h1>
+                    <h1 style="font-size: 50px;">Liked Members</h1>
                     <img src="../public/img/t-right-img.png" alt="">
                 </div>
                 <span>
@@ -21,7 +21,7 @@
                 </span>
                  » Community » 
                 <span>
-                    <a href="#">Waiting Members</a>
+                    <a href="#">Liked Members</a>
                 </span>
         </div>
     </div>
@@ -39,21 +39,21 @@
                         <div class="slide slide_1">
                             <div class="slide-content">
                                 <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Click like back to people who already like you</p>
+                                <p class="step">Wait for the person you like to respond</p>
                             </div>
                         </div>
 
                         <div class="slide slide_2">
                             <div class="slide-content">
                                 <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Actively Click Like!</p>
+                                <p class="step">Click like back to people who already like you</p>
                             </div>
                         </div>
 
                         <div class="slide slide_3">
                             <div class="slide-content">
                                 <h2>Want To Find Your Lover?</h2>
-                                <p class="step">Wait for the person you like to respond</p>
+                                <p class="step">Actively Click Like!</p>
                             </div>
                         </div>
 
@@ -82,20 +82,26 @@
             </div>
         </div>
 
-                <div class="online-members grid wide">
+                <div  class="online-members grid wide">
                 <?php if(count($data) > 0) { ?>
-                    <div class="row">
-                        <?php foreach($data as $value) { ?>
+                    <div id="online-members" class="row">
+                        <?php
+                            foreach($data as $value) { 
+                                if($value['id'] == $_SESSION['user_id']) {
+                                    continue;
+                                }
+                                ?>
+                            
                             <div class="col l-3 m-4 c-12">
                             <div class="member-item">
                                 <a href="<?php echo URLROOT; ?>/pages/member_profile?user_id=<?php echo $value['id'];?>">
                                     <div class="member__img">
-                                        <img id="img_<?php echo $value['id'];?>" src="<?php echo URLROOT; ?>/public/img/<?= $value['avatar']?>" alt="">
-                                        <form id="<?php echo $value['id'];?>" class="like-form" action="<?php echo URLROOT;?>/pages/like" method="POST">
-                                            <button id="button_<?php echo $value['id'];?>" type="submit" class="like">   
+                                        <img id="img_<?php echo $value['id'];?>" src="<?php echo URLROOT; ?>/public/img/<?php echo $value['avatar']?>" alt="">
+                                        <form id="<?php echo $value['id'];?>" class="unlike-form" action="<?php echo URLROOT;?>/pages/unlike" method="POST">
+                                            <button id="button_<?php echo $value['id'];?>" type="submit" class="unlike">   
                                                 <div class="member__action">
                                                     <i class="fas fa-heart"></i>
-                                                    Like
+                                                    Unlike
                                                 </div>
                                             </button>
                                         </form>  
@@ -129,7 +135,7 @@
                         <?php } ?>
                     </div>
                     <?php } else { ?>
-                        <h3>You have not been liked by anyone yet or maybe they matched you before.</h3>
+                        <h3>You have not liked anyone yet or maybe they matched you before.</h3>
                     <br>        
                     <?php } ?>
                 </div>
