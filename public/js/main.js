@@ -31,34 +31,6 @@ function openRegistrationForm() {
 }
 
 
-//Heading On Click
-function openBlogPage() {
-    closeForm();
-    //show blog page
-    document.getElementById("blog-page").classList.add("here");
-    document.getElementById("blog-container").classList.add("show");
-
-    //hide homepage
-    document.getElementById("home-container").classList.remove("show");
-    //hide members page
-    document.getElementById("community-page").classList.remove("here");
-    document.getElementById("members-container").classList.remove("show");
-    //hide profile page
-    document.getElementById("profile-container").classList.remove("show");
-    document.getElementById("waiting-profile-container").classList.remove("show");
-    document.getElementById("matches-profile-container").classList.remove("show");
-
-     //hide shop page
-     document.getElementById("shop-container").classList.remove("show");
-     document.getElementById("shop-page").classList.remove("here");
-     //hide waiting members page
-     document.getElementById("waiting-container").classList.remove("show");
-
-    //Hide contact page
-    document.getElementById("contact-container").classList.remove("show");
-    document.getElementById("contact-page").classList.remove("here");
-}
-
 function openHomePage() {
     //show Home Page
     document.getElementById("home-container").classList.add("show");
@@ -722,6 +694,9 @@ function closeForm() {
     document.querySelector('#change-avt').style.display = 'none';
     document.querySelector('#open-photo').style.display='none';
     document.querySelector('#delete-account').style.display='none';
+    document.querySelector('#edit-basic-info').style.display = 'none';
+    document.querySelector('#edit-about').style.display = 'none';
+    document.querySelector('#edit-character').style.display = 'none';
 }
 
 function closeAvt() {
@@ -914,4 +889,122 @@ function openDeleteAccountForm() {
     document.querySelector('#overlay_invisible').style.display = "block";
 }   
 
+//seeking country
+$(document).ready(function() {
+    
+    $('#seeking_country').change(function() {
+        var country_id = $('#seeking_country').val();
+        if(country_id != '') {
+            var url = '../members/fetch_state';
+            $.ajax({
+                url:'../CupidDate/members/fetch_state',
+                method: 'POST',
+                data: {country_id:country_id},
+                success:function(data) {
+                    $('#seeking_state').html(data);
+                },
+                error:function() {
+                    console.error();
+                }
+            });
+        }
+    })
 
+    $('#seeking_state').change(function() {
+        var state_id = $('#seeking_state').val();
+        if(state_id != '') {
+            var url = '../CupidDate/members/fetch_city';
+            $.ajax({
+                url:url,
+                method: 'POST',
+                data: {state_id:state_id},
+                success:function(data) {
+                    $('#seeking_city').html(data);
+                },
+                error:function() {
+                    alert('error!!');
+                }
+            });
+        }
+    })
+
+    $('#seeking_city').change(function() {
+        var city_id = $('#seeking_city').val();
+        if(city_id != '') {
+            var url = '../CupidDate/members/fetch_city';
+            $.ajax({
+                url:url,
+                method: 'POST',
+                data: {city_id:city_id}
+            });
+        }
+    })
+})
+
+//edit country
+$(document).ready(function() {
+    
+    $('#edit_country').change(function() {
+        var country_id = $('#edit_country').val();
+        if(country_id != '') {
+            url = '../CupidDate/members/fetch_state',
+            $.ajax({
+                url: url,
+                method: 'POST',
+                data: {country_id:country_id},
+                success:function(data) {
+                    $('#edit_state').html(data);
+                    console.log(url);
+                },
+                error:function() {
+                    console.error();
+                }
+            });
+        }
+    })
+
+    $('#edit_state').change(function() {
+        var state_id = $('#edit_state').val();
+        if(state_id != '') {
+            var url = '../CupidDate/members/fetch_city';
+            $.ajax({
+                url:url,
+                method: 'POST',
+                data: {state_id:state_id},
+                success:function(data) {
+                    $('#edit_city').html(data);
+                },
+                error:function() {
+                    alert('error!!');
+                }
+            });
+        }
+    })
+
+    $('#edit_city').change(function() {
+        var city_id = $('#edit_city').val();
+        if(city_id != '') {
+            var url = '../CupidDate/members/fetch_city';
+            $.ajax({
+                url:url,
+                method: 'POST',
+                data: {city_id:city_id}
+            });
+        }
+    })
+})
+
+function editBasicInfo() {
+    document.querySelector('#overlay_invisible').style.display = 'block';
+    document.querySelector('#edit-basic-info').style.display = 'flex';
+}
+
+function editAbout() {
+    document.querySelector('#overlay_invisible').style.display = 'block';
+    document.querySelector('#edit-about').style.display = 'flex';
+}
+
+function editCharacter() {
+    document.querySelector('#overlay_invisible').style.display = 'block';
+    document.querySelector('#edit-character').style.display = 'flex';
+}

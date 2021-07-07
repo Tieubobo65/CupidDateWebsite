@@ -169,6 +169,7 @@
             $this->view('/users/login', $data);
         }
 
+        //setup pages
         public function setup() {
             $data['country'] = $this->userModel->fetch_country();
             $this->view('users/setup', $data);
@@ -198,8 +199,6 @@
                 $_SESSION['job'] = $_POST['job'];
             }
         }
-
-
 
         function fetch_income() {
             if(isset($_POST['income'])) {
@@ -251,6 +250,7 @@
             }
         }
 
+        //home page
         function home() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if($_FILES['avatar']['name'] != '') {
@@ -269,41 +269,7 @@
             $this->view('users/home', $data);
         }
 
-        function personel_profile() {
-            if(isset($_FILES['photo'])) {
-                $photo_name = time() . '_' . $_FILES['photo']['name'];
-                $this->userModel->addPhoto($_SESSION['user_id'], $photo_name);
-                $target = "../public/img/" . $photo_name;
-                move_uploaded_file($_FILES['photo']['tmp_name'], $target);
-            }
 
-            if(isset($_FILES['avt'])) {
-                if($_FILES['avt']['name'] != '') {
-                    $avatar = time() . '_' . $_FILES['avt']['name'];
-                    $this->userModel->addPhoto($_SESSION['user_id'], $avatar);
-                    $this->userModel->updateAvatar($_SESSION['user_id'], $avatar);
-                    $target = "../public/img/" . $avatar;
-                    move_uploaded_file($_FILES['avt']['tmp_name'], $target);
-                    $_SESSION['avatar'] = $avatar;
-                } else if($_POST['avt_url'] != '') {
-                    $avatar = $_POST['avt_url'];
-                    $this->userModel->updateAvatar($_SESSION['user_id'], $avatar);
-                    $_SESSION['avatar'] = $avatar;
-                } else {
-                    $avatar = "../public/img/avt.png";
-                }
-            }
-
-            $address = $this->userModel->getCurrentAddress($_SESSION['user_id']);
-            $photos =  $this->userModel->getAllPhotos($_SESSION['user_id']);
-            $data = [
-                'city_name' => $address['city'],
-                'state_name' => $address['state'],
-                'country_name' => $address['country'],
-                'photos' => $photos
-            ];
-            $this->view('users/personel_profile', $data);
-        }
         
         public function login_google() {
             $data = [

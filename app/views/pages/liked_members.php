@@ -94,10 +94,10 @@
                             
                             <div class="col l-3 m-4 c-12">
                             <div class="member-item">
-                                <a href="<?php echo URLROOT; ?>/pages/member_profile?user_id=<?php echo $value['id'];?>">
+                                <a href="<?php echo URLROOT; ?>/profile?id=<?php echo $value['id'];?>">
                                     <div class="member__img">
                                         <img id="img_<?php echo $value['id'];?>" src="<?php echo URLROOT; ?>/public/img/<?php echo $value['avatar']?>" alt="">
-                                        <form id="<?php echo $value['id'];?>" class="unlike-form" action="<?php echo URLROOT;?>/pages/unlike" method="POST">
+                                        <form id="<?php echo $value['id'];?>" class="unlike-form" action="<?php echo URLROOT;?>/members/unlike" method="POST">
                                             <button id="button_<?php echo $value['id'];?>" type="submit" class="unlike">   
                                                 <div class="member__action">
                                                     <i class="fas fa-heart"></i>
