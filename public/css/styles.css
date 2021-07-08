@@ -2002,6 +2002,7 @@ body.showLoginForm .form__close {
     margin: 0 -8px;
     border-radius: 5px 0 0 5px;
     box-shadow: 0 0 40px rgb(95 125 149 / 25%);
+    position: relative;
 }
 
 #message-container .search-container,
@@ -2015,7 +2016,7 @@ body.showLoginForm .form__close {
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
-    background-color: #ccc;
+    background-color: #fff;
 }
 
 #message-container .search-container span {
@@ -2127,8 +2128,80 @@ body.showLoginForm .form__close {
     font-weight: 600;
 }
 
-.chat-title {
+.chat-title__content .chat-title__more {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.chat-title__content .chat-title__option {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 2px 1px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    transform-origin: top center;
+    top: calc(100% + 4px);
+    right: 0;
+    z-index: 1;
+    width: 150px;
+    height: auto;
+    display: none;
+}
+
+.dropbtn {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.dropbtn:hover {
     background-color: #ccc;
+}
+
+.chat-title__content .chat-title__option.show {
+    display: block;
+}
+
+.chat-title__content .chat-title__option button {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    padding: 12px;
+    line-height: 16px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: inherit;
+    transition: background-color .2s;
+}
+
+.chat-title__content .chat-title__option button:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.chat-title__content .chat-title__option button:last-child {
+    border-radius: 0 0 8px 8px;    
+}
+
+.chat-title__content .chat-title__option button:hover {
+    background-color: #ccc;
+}
+
+.chat-title {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
 }
 
 .chat-title__detail {
@@ -2224,6 +2297,91 @@ body.showLoginForm .form__close {
     cursor: pointer;
 }
 
+.chat-warning {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+.chat-warning i {
+    color: #a83f39;
+}
+
+.fullscreen {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    text-align: center;
+    background-color: rgba(17,17,17,.7);
+    display: none;
+}
+
+.fullscreen.show {
+    display: block;
+}
+
+.warning {
+    position: fixed;
+    max-width: 315px;
+    background-color: #fff;
+    transform: translateX(0);
+    box-shadow: 1px 2px 10px 0 rgb(0 0 0 / 10%);
+    border-radius: 5px;
+    padding: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.warning .warning-title {
+    padding-bottom: 14px;
+    color: #1e1e1e;
+    line-height: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.warning .warning-body {
+    font-size: 17px;
+    line-height: 25px;
+    margin-bottom: 25px;
+}
+
+.warning button {
+    width: 100%;
+}
+
+.warning .warning-btn__confirm {
+    background-color: #0500be;
+    height: 52px;
+    font-weight: 500;
+    padding: 0 18px;
+    color: #fff;
+    font-size: .875rem;
+    line-height: 52px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.warning .warning-btn__cancel {
+    background: #fff;
+    color: #0500be;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.375rem;
+}
+
 /* End messages */
 .form-row {
     display: flex;
@@ -2238,6 +2396,6 @@ body.showLoginForm .form__close {
     max-height: 300px;
 }
 
-.profile__avatar img {
+/* .profile__avatar img {
 
-}
+} */

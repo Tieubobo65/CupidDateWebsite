@@ -63,5 +63,31 @@
             return mysqli_query($this->conn, $sql);
         }
 
+        public function block($user_id, $block_user_id) {
+            $sql = "INSERT INTO blocks (user_id, block_user_id) VALUES($user_id, $block_user_id)";
+            if($this->db->execute($sql)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function checkBlock($user_id, $block_user_id) {
+            $sql = "SELECT *
+                    FROM blocks
+                    WHERE (user_id = $user_id AND block_user_id = $block_user_id)
+                    OR (user_id = $block_user_id AND block_user_id = $user_id)";
+            return mysqli_query($this->conn, $sql);
+        }
+
+        public function unblock($user_id, $block_user_id) {
+            $sql = "DELETE FROM blocks WHERE user_id = $user_id AND block_user_id = $block_user_id";
+            if($this->db->execute($sql)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
     }
 ?>

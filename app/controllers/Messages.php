@@ -54,8 +54,14 @@
 
         public function chat($user_id) {
             $info = $this->usersModel->getUserById($user_id);
+            $result = $this->messageModel->checkBlock($_SESSION['user_id'], $user_id);
+            $check = false;
+            if (mysqli_num_rows($result) > 0) {
+                $check = true;
+            }
             $data = [
-                "info" => $info
+                "info" => $info,
+                "check" => $check,
             ];
 
             $this->view("/pages/chat", $data);
@@ -191,6 +197,16 @@
             );
 
             echo json_encode($data);
+        }
+
+        public function block($block_user_id) {
+            $user_id = $_SESSION['user_id'];
+            $this->messageModel->block($user_id, $block_user_id);
+        }
+
+        public function unblock($block_user_id) {
+            $user_id = $_SESSION['user_id'];
+            $this->messageModel->unblock($user_id, $block_user_id);
         }
     }
 ?>
