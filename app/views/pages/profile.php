@@ -19,7 +19,7 @@
                                 <?php if($data['user_detail']['avatar']) { ?>
                                     <img src="<?php echo URLROOT; ?>/public/img/<?php echo $data['user_detail']['avatar'];?>" alt="" onclick="openAvt(this.src)" style="cursor: pointer">
                                 <?php } else { ?>
-                                    <img src="../public/img/avt.png" alt="avatar">
+                                    <img src="<?php echo URLROOT; ?>/public/img/avt.png" alt="avatar">
                                 <?php } ?>
                             </div>
 
@@ -61,14 +61,14 @@
                     <div class="col l-6">
                         <div class="profile__banner-right">
                             <?php if($data["like"] == 1) { ?>
-                                <form name="profile__unlike-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__unlike-form" action="<?php echo URLROOT;?>/pages/unlike" method="POST">
+                                <form name="profile__unlike-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__unlike-form" action="<?php echo URLROOT;?>/members/unlike" method="POST">
                                     <button class="button" type="submit" id="unlike_button">
                                         <i class="fas fa-heart"></i>
                                         Unlike
                                     </button>
                                 </form>
 
-                                <form style = "display: none" name="profile__like-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__like-form" action="<?php echo URLROOT;?>/pages/like" method="POST">
+                                <form style = "display: none" name="profile__like-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__like-form" action="<?php echo URLROOT;?>/members/like" method="POST">
                                     <button class="button" type="submit" id="like_button">
                                         <i class="fas fa-heart"></i>
                                         Like
@@ -79,14 +79,14 @@
                                     Message
                                 </button>
                             <?php } else {?>
-                                <form name="profile__like-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__like-form" action="<?php echo URLROOT;?>/pages/like" method="POST">
+                                <form name="profile__like-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__like-form" action="<?php echo URLROOT;?>/members/like" method="POST">
                                     <button class="button" type="submit" id="like_button">
                                         <i class="fas fa-heart"></i>
                                         Like
                                     </button>
                                 </form>
 
-                                <form style = "display: none" name="profile__unlike-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__unlike-form" action="<?php echo URLROOT;?>/pages/unlike" method="POST">
+                                <form style = "display: none" name="profile__unlike-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__unlike-form" action="<?php echo URLROOT;?>/members/unlike" method="POST">
                                     <button class="button" type="submit" id="unlike_button">
                                         <i class="fas fa-heart"></i>
                                         Unlike
@@ -376,7 +376,7 @@
                             <div class="row">
                                 <div class="col l-12">
                                     <h2>Photos</h2>
-                                    <img src="../public/img/widget-title-border.png" alt="">
+                                    <img src="<?php echo URLROOT; ?>/public/img/widget-title-border.png" alt="">
                                 </div>
                                 
                                 <?php foreach($data['photos'] as $value) {?>

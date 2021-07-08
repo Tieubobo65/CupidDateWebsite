@@ -80,21 +80,21 @@
                     <img class="under-title" src="<?php echo URLROOT; ?>/public/img/line-vertical.png" alt="">
                 </div>
 
-                <form action="" novalidate>
+                <form action="<?php echo URLROOT;?>/contact" method="POST">
                     <div class="row">
                         <div class="col l-6 m-6 c-12">
-                            <input class="form__input" type="text" name="contact-form__name" id="contact-form__name" placeholder="Name">
+                            <input class="form__input" type="text" name="name" id="contact-form__name" placeholder="Name">
                             <span class="invalidFeedback">
 
                             </span>
-                            <input class="form__input" type="text" name="contact-form__email" id="contact-form__email" placeholder="Email">
+                            <input class="form__input" type="text" name="email" id="contact-form__email" placeholder="Email" required>
                             <span class="invalidFeedback">
 
                             </span>
                         </div>
     
                         <div class="col l-6 m-6 c-12">
-                            <textarea class="form__input" name="message" id="contact-form__message" rows="1" placeholder="Message"></textarea>
+                            <textarea class="form__input" name="message" id="message" rows="1" placeholder="Message" required></textarea>
                             <span class="invalidFeedback">
 
                             </span>

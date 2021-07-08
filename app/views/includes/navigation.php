@@ -18,22 +18,22 @@
                     <div>
                         <ul class="list heading__nav-list">
                         <li class="heading__nav-item">
-                            <a id="blog-page" onclick="openBlogPage()" style="cursor: pointer;" href="<?php echo URLROOT; ?>/blog">Blog</a>
+                            <a id="blog-page" style="cursor: pointer;" href="<?php echo URLROOT; ?>/blog">Blog</a>
                         </li>
                             <li class="heading__nav-item">
                                 <a id="community-page" href="#">Community</a>
                                 <ul class="list sub-heading__nav">
                                     <li>
-                                        <a href="<?php echo URLROOT; ?>/pages/members">Members</a>
+                                        <a href="<?php echo URLROOT; ?>/members">Members</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo URLROOT; ?>/pages/waiting">Waiting You</a>
+                                        <a href="<?php echo URLROOT; ?>/waiting">Waiting You</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo URLROOT; ?>/pages/liked">Liked Members</a>
+                                        <a href="<?php echo URLROOT; ?>/liked">Liked Members</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo URLROOT; ?>/pages/matches">Matches</a>
+                                        <a href="<?php echo URLROOT; ?>/matches">Matches</a>
                                     </li>
                                 </ul>
                             </li>
@@ -44,7 +44,7 @@
                                 <a href="">Pages</a>
                             </li>
                             <li class="heading__nav-item">
-                                <a href="<?php echo URLROOT; ?>/pages/contact">Contact us</a>
+                                <a href="<?php echo URLROOT; ?>/contact">Contact us</a>
                             </li>
                         </ul>
                     </div>
@@ -71,7 +71,7 @@
                                 <ul class="list sub-heading__nav">
                                 <?php if($_SESSION['city_id']) { ?>
                                     <li>
-                                        <a href="<?php echo URLROOT; ?>/users/personel_profile">Your profile</a>
+                                        <a href="<?php echo URLROOT; ?>/user_profile">Your profile</a>
                                     </li>
                                 <?php } ?>
                                     <li>

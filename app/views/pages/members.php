@@ -12,9 +12,9 @@
     <div class="members__head">
         <div class="breadcrumb">
                 <div class="page-title">
-                    <img src="../public/img/t-left-img.png" alt="">
+                    <img src="<?php echo URLROOT; ?>/public/img/t-left-img.png" alt="">
                     <h1 style="font-size: 50px;">Members</h1>
-                    <img src="../public/img/t-right-img.png" alt="">
+                    <img src="<?php echo URLROOT; ?>/public/img/t-right-img.png" alt="">
                 </div>
                 <span>
                     <a href="<?php echo URLROOT; ?>/users/home">Home</a>
@@ -29,7 +29,7 @@
     <div class="members-list">
 
         <div class="seeking">
-            <form action="<?php echo URLROOT; ?>/pages/members" class="seeking-form" id="seeking-form" method="POST">
+            <form action="<?php echo URLROOT; ?>/members" class="seeking-form" id="seeking-form" method="POST">
 
                     <label for="seeking_gender">Seeking gender</label>
                     <select name="seeking_gender" id="seeking_gender" class="seeking-form__select">
@@ -55,8 +55,8 @@
                         <?php } ?>
                     </select>
 
-                    <label for="country">Country</label>
-                    <select name="country" id="country" class="seeking-form__select">
+                    <label for="seeking_country">Country</label>
+                    <select name="seeking_country" id="seeking_country" class="seeking-form__select">
                         <option value="">Any</option>
                         <?php
                         foreach($data["country"] as $row)
@@ -66,14 +66,14 @@
                     ?>
                     </select>
 
-                    <label for="state">State</label>
-                    <select name="state" id="state" class="seeking-form__select">
+                    <label for="seeking_state">State</label>
+                    <select name="seeking_state" id="seeking_state" class="seeking-form__select">
                         <option value="">Any</option>
 
                     </select>
 
-                    <label for="state">City</label>
-                    <select name="city" id="city" class="seeking-form__select">
+                    <label for="seeking_city">City</label>
+                    <select name="seeking_city" id="seeking_city" class="seeking-form__select">
                         <option value="">Any</option>
 
                     </select>
@@ -93,10 +93,10 @@
                             
                             <div class="col l-3 m-4 c-12">
                             <div class="member-item">
-                                <a href="<?php echo URLROOT; ?>/pages/member_profile?user_id=<?php echo $value['id'];?>">
+                                <a href="<?php echo URLROOT; ?>/profile?id=<?php echo $value['id'];?>">
                                     <div class="member__img">
                                         <img id="img_<?php echo $value['id'];?>" src="<?php echo URLROOT; ?>/public/img/<?php echo $value['avatar']?>" alt="">
-                                        <form id="<?php echo $value['id'];?>" class="like-form" action="<?php echo URLROOT;?>/pages/like" method="POST">
+                                        <form id="<?php echo $value['id'];?>" class="like-form" action="<?php echo URLROOT;?>/members/like" method="POST">
                                             <button id="button_<?php echo $value['id'];?>" type="submit" class="like">   
                                                 <div class="member__action">
                                                     <i class="fas fa-heart"></i>
@@ -134,7 +134,7 @@
                         <?php } ?>
                     </div>
                 <?php } else { ?>
-                    <h3>No users available!</h3>
+                    <h3>No users available or maybe you have liked them before!</h3>
                     <br>        
                 <?php } ?>
                 </div>
