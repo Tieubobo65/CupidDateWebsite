@@ -21,7 +21,6 @@
                             <div class="post-item__img">
                                 <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="image">
                             </div>
-                            
                             <div class="post__title">
                                 <h2><?php echo $post['title'] ?></h2>
                             </div>
@@ -33,10 +32,16 @@
                                 <div class="post__author">
                                     <span>
                                         By 
-                                        <a href=""><?php echo $post['firstname'] . " " . $post['lastname'] ?></a>
-                                        •
-                                        <?php echo date("d/m/Y" , strtotime($post['created_at'])) ?>
                                     </span>
+                                    <a href="
+                                        <?php if ($_SESSION['user_id'] == $post['author_id']) {
+                                            echo URLROOT . "/user_profile";
+                                        } else {
+                                            echo URLROOT . "/profile?id=" . $post['author_id'];
+                                        }?>">
+                                        <?php echo $post['firstname'] . " " . $post['lastname'] ?></a>
+                                    •
+                                    <?php echo date("d/m/Y" , strtotime($post['created_at'])) ?>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +85,7 @@
                                     $i = 0;
                                     while (($relatedPost = mysqli_fetch_array($data['relatedPosts'])) && ($i < $length)) { 
                                         $i = $i + 1;
-                                        // if ($relatedPost['post_id'] != $post['post_id']) {
+                                        if ($relatedPost['post_id'] != $post['post_id']) {
                                 ?>
                                     <div class="col l-6">
                                         <div class="related-posts-item">
@@ -106,7 +111,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                <?php }  ?>
+                                <?php } } ?>
                             </div>
                         </div>
                     </div>

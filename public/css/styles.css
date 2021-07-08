@@ -182,11 +182,12 @@ a {
 
 .sub-heading__nav li{
     border-bottom: 1px solid #000;
-    text-align: center;
+    text-align: left;
 }
 
 .sub-heading__nav a {
     font-size: 14px;
+    padding: 0 20px;
 }
 
 .sub-heading__nav li:hover {
@@ -792,6 +793,16 @@ body.showLoginForm .form__close {
 .blog__action a:hover i {
     color: #e74c3c;
 }
+
+.blog__title a h2 {
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+
 .blog__img img {
     width: 100%;
     max-width: 100%;
@@ -817,6 +828,11 @@ body.showLoginForm .form__close {
 
 .blog__author a {
     color: #2e3c43;
+    font-weight: 600;
+}
+
+.blog__author a:hover {
+    color: #e74c3c;
 }
 
 .blog__time {
@@ -981,7 +997,7 @@ body.showLoginForm .form__close {
     font-weight: 600;
 }
 
-.post__author:hover a {
+.post__author a:hover {
     color: #e74c3c;
 }
 
@@ -1221,7 +1237,7 @@ body.showLoginForm .form__close {
 }
 
 .sidebar__author a{
-    color: #1273eb;
+    color: #e74c3c;
 }
 
 .sidebar__title a{
@@ -1230,7 +1246,7 @@ body.showLoginForm .form__close {
 }
 
 .sidebar__title a:hover {
-    color: #1273eb;
+    color: #e74c3c;
 }
 /* End blog detail */
 

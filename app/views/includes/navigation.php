@@ -2,7 +2,7 @@
             <div class="grid wide heading-container ">
                 <div id="heading__logo" class="heading__logo">
                     <?php if(isset($_SESSION['user_id'])) { ?>
-                        <a href="<?php echo URLROOT; ?>/users/home" id="home-page">
+                        <a href="<?php echo URLROOT; ?>/home" id="home-page">
                             <span style="color: #e74c3c">Cupid</span> Date
                         </a>
                     <?php } else { ?>
@@ -38,12 +38,6 @@
                                 </ul>
                             </li>
                             <li class="heading__nav-item">
-                                <a id="shop-page" onclick="openShopPage()" href="#">Shop</a>
-                            </li>
-                            <li class="heading__nav-item">
-                                <a href="">Pages</a>
-                            </li>
-                            <li class="heading__nav-item">
                                 <a href="<?php echo URLROOT; ?>/contact">Contact us</a>
                             </li>
                         </ul>
@@ -56,24 +50,19 @@
                         <ul class="list heading__nav-list">
                         <?php if(isset($_SESSION['user_id'])) : ?>
                             <li class="heading__nav-item">
-                                <?php if($_SESSION['avatar']) { ?>
-                                    <a href="#">
-                                        <img src="<?php echo URLROOT; ?>/public/img/<?php echo $_SESSION['avatar']?>" alt="">
-                                        <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
-                                    </a>
-                                <?php } else { ?>
-                                    <a href="#">
-                                        <img src="../public/img/avt_placeholder.svg" alt="">
-                                        <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
-                                    </a>
-                                <?php } ?>
-
+                                <a href="#">
+                                    <img src="<?php echo URLROOT; ?>/public/img/<?php echo $_SESSION['avatar']?>" alt="">
+                                    <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
+                                </a>
                                 <ul class="list sub-heading__nav">
-                                <?php if($_SESSION['city_id']) { ?>
-                                    <li>
-                                        <a href="<?php echo URLROOT; ?>/user_profile">Your profile</a>
-                                    </li>
-                                <?php } ?>
+                                    <?php if($_SESSION['city_id']) { ?>
+                                        <li>
+                                            <a href="<?php echo URLROOT; ?>/user_profile">
+                                                <i class="fas fa-user-circle"></i>
+                                                Your profile
+                                            </a>
+                                        </li>
+                                    <?php } ?>
                                     <li>
                                         <a href="<?php echo URLROOT; ?>/messages">
                                             <i class="fas fa-comment-dots"></i>
@@ -81,7 +70,10 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
+                                        <a href="<?php echo URLROOT; ?>/users/logout">
+                                            <i class="fas fa-sign-out-alt"></i>    
+                                            Log out
+                                        </a>
                                     </li>
                                 </ul>
                             </li>

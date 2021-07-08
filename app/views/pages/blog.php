@@ -33,7 +33,10 @@
                     <div class="col l-4 m-6 c-12">
                             <div class="blog-item">
                                 <div class="blog__img">
-                                    <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="blog-img">
+                                    <a href="<?php echo URLROOT . "/blog/t/" . $post['post_id'] ?>">
+                                        <img src="<?php echo URLROOT; ?>/public/img/blog-1.jpg" alt="blog-img">
+                                    </a>
+                                    
                                     <div class="blog__action">
                                         <ul class="list">
                                             <li>
@@ -60,16 +63,19 @@
                                     </div>
                                 </div>
                                 <div class="blog__title">
-                                    <h2>
-                                        <?php echo $post['title'] ?>
-                                    </h2>
+                                    <a href="<?php echo URLROOT . "/blog/t/" . $post['post_id'] ?>">
+                                        <h2><?php echo $post['title'] ?></h2>
+                                    </a>
                                     <div class="blog__info">
                                         <div class="blog__author">
-                                            <a href="#">
-                                                <span>By</span>
-                                                <span style="font-weight: 600;">
-                                                    <?php echo $post['firstname'] . " " . $post['lastname'] ?>
-                                                </span>
+                                            <span>By</span>
+                                            <a href="
+                                            <?php if ($_SESSION['user_id'] == $post['author_id']) {
+                                                echo URLROOT . "/user_profile";
+                                            } else {
+                                                echo URLROOT . "/profile?id=" . $post['author_id'];
+                                            }?>">
+                                                <?php echo $post['firstname'] . " " . $post['lastname'] ?>
                                             </a>
                                         </div>
                                         <div class="blog__time">
@@ -90,7 +96,7 @@
             </div>
             <div class="row">
                 <div class="col l-12 blog__footer">
-                    <nav arial-label="Page navigation example">
+                    <!-- <nav arial-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item">
                                 <a href="" class="page-link">
@@ -106,18 +112,21 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav>
-                    <!-- <button class="blog__footer-previous">
+                    </nav> -->
+                    <button class="blog__footer-previous">
                         Previous
                         <i class="fas fa-chevron-left"></i>
                     </button>
                     <button class="blog__footer-next">
                         <i class="fas fa-chevron-right"></i>
                         Next
-                    </button> -->
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- End blog -->
+<?php
+    require APPROOT . '/views/includes/footer.php';
+?>
