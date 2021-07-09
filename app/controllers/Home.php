@@ -10,8 +10,8 @@
         $data = [
             'title' => 'Home page',
             'totalMembers' => $totalMembers['total'],
-            'totalMan' => $totalMen['total'],
-            'totalWoman' => $totalWomen['total'],
+            'totalMen' => $totalMen['total'],
+            'totalWomen' => $totalWomen['total'],
         ];
 
         $this->view('pages/home', $data);
@@ -20,8 +20,5 @@
     public function about() {
         $this->view('pages/about');
     }
-
-    
 }
-
 ?>

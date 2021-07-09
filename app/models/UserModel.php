@@ -198,6 +198,7 @@
             $row = mysqli_fetch_array($this->db->execute($sql));
             return $row;
         }
+        
         public function getUserById($user_id) {
             $sql = "SELECT *
                     FROM users

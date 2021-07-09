@@ -49,7 +49,7 @@
                                                 <a href="#">
                                                     <i class="fas fa-comment"></i>
                                                     <span class="comments">
-                                                        <?php echo $post['post_comment_count']?>
+                                                        <?php echo $post['num_comment']?>
                                                     </span>
                                                 </a>
                                             </li>
@@ -70,11 +70,19 @@
                                         <div class="blog__author">
                                             <span>By</span>
                                             <a href="
-                                            <?php if ($_SESSION['user_id'] == $post['author_id']) {
-                                                echo URLROOT . "/user_profile";
-                                            } else {
-                                                echo URLROOT . "/profile?id=" . $post['author_id'];
-                                            }?>">
+                                            <?php 
+                                                if (!empty($_SESSION['user_id'])) {
+                                                    if ($_SESSION['user_id'] == $post['author_id']) {
+                                                        echo URLROOT . "/user_profile";
+                                                    } 
+                                                    else {
+                                                        echo URLROOT . "/profile?id=" . $post['author_id'];
+                                                    }
+                                                }
+                                                else {
+                                                    echo URLROOT . "/users/login";
+                                                }  
+                                            ?>">
                                                 <?php echo $post['firstname'] . " " . $post['lastname'] ?>
                                             </a>
                                         </div>
@@ -96,23 +104,6 @@
             </div>
             <div class="row">
                 <div class="col l-12 blog__footer">
-                    <!-- <nav arial-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a href="" class="page-link">
-                                    <i class="fas fa-chevron-left"></i>
-                                </a>
-                            </li>
-                            <li class="page-item"><a href="" class="page-link">1</a></li>
-                            <li class="page-item"><a href="" class="page-link">2</a></li>
-                            <li class="page-item"><a href="" class="page-link">3</a></li>
-                            <li class="page-item">
-                                <a href="" class="page-link">
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav> -->
                     <button class="blog__footer-previous">
                         Previous
                         <i class="fas fa-chevron-left"></i>

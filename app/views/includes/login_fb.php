@@ -12,7 +12,7 @@
     ]);
 
     $facebook_helper = $facebook->getRedirectLoginHelper();
-    $facebook_login_url = $facebook_helper->getLoginUrl('http://localhost:8080/CupidDate/users/login');
+    $facebook_login_url = $facebook_helper->getLoginUrl('http://localhost/CupidDate/users/login');
     
     
 ?>

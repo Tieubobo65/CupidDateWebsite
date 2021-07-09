@@ -147,7 +147,7 @@
                     if($loggedInUser) {
                         $this->createUserSession($loggedInUser);
                         if($loggedInUser['city_id']) {
-                            header('location: ' . URLROOT . '/users/home');
+                            header('location: ' . URLROOT . '/home');
                         } else {
                             header('location: ' . URLROOT . '/users/setup');
                         }

@@ -34,12 +34,21 @@
                                         By 
                                     </span>
                                     <a href="
-                                        <?php if ($_SESSION['user_id'] == $post['author_id']) {
-                                            echo URLROOT . "/user_profile";
-                                        } else {
-                                            echo URLROOT . "/profile?id=" . $post['author_id'];
-                                        }?>">
-                                        <?php echo $post['firstname'] . " " . $post['lastname'] ?></a>
+                                    <?php 
+                                        if (!empty($_SESSION['user_id'])) {
+                                            if ($_SESSION['user_id'] == $post['author_id']) {
+                                                echo URLROOT . "/user_profile";
+                                            } 
+                                            else {
+                                                echo URLROOT . "/profile?id=" . $post['author_id'];
+                                            }
+                                        }
+                                        else {
+                                            echo URLROOT . "/users/login";
+                                        }  
+                                    ?>">
+                                        <?php echo $post['firstname'] . " " . $post['lastname'] ?>
+                                    </a>
                                     •
                                     <?php echo date("d/m/Y" , strtotime($post['created_at'])) ?>
                                 </div>
@@ -101,7 +110,20 @@
                                                 <h2><a href="#"><?php echo $relatedPost['title'] ?></a></h2>
                                                 <div class="related-posts__info">
                                                     <div>
-                                                        <a href="#">
+                                                        <a href="
+                                                        <?php 
+                                                            if (!empty($_SESSION['user_id'])) {
+                                                                if ($_SESSION['user_id'] == $post['author_id']) {
+                                                                    echo URLROOT . "/user_profile";
+                                                                } 
+                                                                else {
+                                                                    echo URLROOT . "/profile?id=" . $post['author_id'];
+                                                                }
+                                                            }
+                                                            else {
+                                                                echo URLROOT . "/users/login";
+                                                            }  
+                                                        ?>">
                                                             <?php echo $relatedPost['firstname'] . " " . $relatedPost['lastname'] ?>
                                                         </a>
                                                         <?php echo date("d/m/Y" , strtotime($relatedPost['created_at'])) ?>
@@ -183,7 +205,7 @@
                                 </div>
                             </div>
                         </div>
-                    <?php }} ?>
+                    <?php } } ?>
                 <!-- End right sidebar -->
             </div>
         </div>

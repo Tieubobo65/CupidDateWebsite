@@ -202,6 +202,10 @@ a {
     display: block;
 }
 
+#community-page {
+    cursor: default;
+}
+
 #user-avt {
     width: 24px;
     height: 24px;
