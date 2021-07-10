@@ -21,7 +21,7 @@
                         <div class="slider__title">
                             <p>Are You <span style="color: #e74c3c;">Waiting</span></p>
                             <p>For <span style="color: #e74c3c;">Dating ?</span></p>
-                            <a href="<?php echo URLROOT; ?>/users/register">
+                            <a href="<?php echo URLROOT; ?>/register">
                                 <button class="button" onclick="openRegistrationForm()">Registration</button>
                             </a>
                         </div>
@@ -174,7 +174,7 @@
             <div class="col l-6 m-12 c-12">
                 <div class="registration-container">
                     <h1 class="form__title">Registration</h1>
-                    <form id="registration-form" class="registration-form" action="<?php echo URLROOT;?>/users/register" method="POST" novalidate>
+                    <form id="registration-form" class="registration-form" action="<?php echo URLROOT;?>/register" method="POST" novalidate>
                         <input class="form__input" type="email" name="email" id="email" placeholder="Email">
                         <span class="invalidFeedback">
                             <?php echo $data['emailError'];?> 

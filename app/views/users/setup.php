@@ -260,8 +260,8 @@
             <br>
             <h4>Upload a photo of your face for a better experience!</h4>
             <br>
-            <form class="avatar-form" action="<?php echo URLROOT;?>/users/home" method="POST" enctype="multipart/form-data">
-                    <img src="../public/img/add_picture.png" alt="" onclick="triggerClick()" id="profileDisplay">
+            <form class="avatar-form" action="<?php echo URLROOT;?>/home" method="POST" enctype="multipart/form-data">
+                    <img src="<?php echo URLROOT; ?>/public/img/add_picture.png" alt="" onclick="triggerClick()" id="profileDisplay">
                     <input type="file" name="avatar" id="avatar" onChange="displayImage(this)" style="display: none">
                     <div class="setup__button">
                         <button class="button" type="button" onclick="openNineStep()";>PREVIOUS</button>

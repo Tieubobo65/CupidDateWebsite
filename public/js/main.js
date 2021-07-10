@@ -276,9 +276,10 @@ function ajaxSubmitBlog(form, id=null) {
         }
         $(formId).on("submit", function(e) {
             e.preventDefault();
+            var url =  "http://localhost:8080/CupidDate/blog/" + form;
             $.ajax({
                 type: "POST",
-                url: "http://localhost/CupidDate/blog/" + form,
+                url: url,
                 data: $(formId).serializeArray(),
                 success: function(data) {
                     console.log(data);
@@ -311,7 +312,7 @@ function ajaxSubmitMessage(form, id=null) {
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: "http://localhost/CupidDate/messages/" + form,
+                url: "http://localhost:8080/CupidDate/messages/" + form,
                 data: $(formId).serializeArray(),
                 success: function(data) {
                     console.log(data);
@@ -450,7 +451,7 @@ $(document).ready(function() {
     $('#country').change(function() {
         var country_id = $('#country').val();
         if(country_id != '') {
-            var url = '../users/fetch_state';
+            var url = '../CupidDate/setup/fetch_state';
             $.ajax({
                 url:url,
                 method: 'POST',
@@ -459,7 +460,7 @@ $(document).ready(function() {
                     $('#state').html(data);
                 },
                 error:function() {
-                    alert('error!!');
+                    alert("error");
                 }
             });
         }
@@ -468,7 +469,7 @@ $(document).ready(function() {
     $('#state').change(function() {
         var state_id = $('#state').val();
         if(state_id != '') {
-            var url = '.././users/fetch_city';
+            var url = '../CupidDate/users/fetch_city';
             $.ajax({
                 url:url,
                 method: 'POST',
@@ -486,7 +487,7 @@ $(document).ready(function() {
     $('#city').change(function() {
         var city_id = $('#city').val();
         if(city_id != '') {
-            var url = '.././users/fetch_city';
+            var url = '../CupidDate/users/fetch_city';
             $.ajax({
                 url:url,
                 method: 'POST',

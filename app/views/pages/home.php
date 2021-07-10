@@ -16,9 +16,15 @@
                     <div class="slider__title">
                         <p>Are You <span style="color: #e74c3c;">Waiting</span></p>
                         <p>For <span style="color: #e74c3c;">Dating ?</span></p>
-                        <a href="<?php echo URLROOT; ?>/users/register">
-                            <button class="button" onclick="openRegistrationForm()">Registration</button>
+                        <?php if($_SESSION["user_id"]) { ?>
+                            <a href="<?php echo URLROOT; ?>/members">
+                                    <button class="button">Start Seeking your Soulmate</button>
+                                </a>
+                        <?php } else {?>
+                        <a href="<?php echo URLROOT; ?>/register">
+                            <button class="button">Registration</button>
                         </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

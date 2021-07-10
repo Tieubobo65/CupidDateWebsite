@@ -174,7 +174,7 @@
         <div id="login" class="form login row">
             <div class="login-container">
                 <h1 class="form__title">User Login</h1>
-                <form id="login-form" class="login-form" action="<?php echo URLROOT;?>/users/login" method="POST" novalidate>
+                <form id="login-form" class="login-form" action="<?php echo URLROOT;?>/login" method="POST" novalidate>
                     <input class="form__input" type="email" name="email" id="email" placeholder="Email">
                     <span class="invalidFeedback">
                         <?php echo $data['emailError'];?>

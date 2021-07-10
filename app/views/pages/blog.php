@@ -121,3 +121,6 @@
     </div>
 </div>
 <!-- End blog -->
+<?php
+    require APPROOT . '/views/includes/footer.php';
+?>

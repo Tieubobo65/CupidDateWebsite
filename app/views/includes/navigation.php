@@ -2,11 +2,11 @@
             <div class="grid wide heading-container ">
                 <div id="heading__logo" class="heading__logo">
                     <?php if(isset($_SESSION['user_id'])) { ?>
-                        <a href="<?php echo URLROOT; ?>/users/home" id="home-page">
+                        <a href="<?php echo URLROOT; ?>/home" id="home-page">
                             <span style="color: #e74c3c">Cupid</span> Date
                         </a>
                     <?php } else { ?>
-                        <a href="<?php echo URLROOT; ?>/pages/index" id="home-page">
+                        <a href="<?php echo URLROOT; ?>/home" id="home-page">
                             <span style="color: #e74c3c">Cupid</span> Date
                         </a>
                     <?php } ?>
@@ -63,7 +63,7 @@
                                     </a>
                                 <?php } else { ?>
                                     <a href="#">
-                                        <img src="../public/img/avt_placeholder.svg" alt="">
+                                        <img src="<?php echo URLROOT; ?>/public/img/avt_placeholder.svg" alt="">
                                         <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
                                     </a>
                                 <?php } ?>
@@ -89,13 +89,13 @@
                             <?php else: ?>
 
                                 <li class="heading__nav-item">
-                                <a href="<?php echo URLROOT; ?>/users/login">
+                                <a href="<?php echo URLROOT; ?>/login">
                                     <i class="fas fa-key"></i>
                                     Login
                                 </a>
                             </li>
                             <li class="heading__nav-item">
-                                <a href="<?php echo URLROOT; ?>/users/register">
+                                <a href="<?php echo URLROOT; ?>/register">
                                     <i class="fas fa-user-plus"></i>
                                     Registration
                                 </a>
