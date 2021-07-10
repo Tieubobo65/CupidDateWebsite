@@ -25,7 +25,7 @@
                             <button class="button">Registration</button>
                         </a>
                         <?php } ?>
-                    </div>
+                  </div>
                 </div>
             </div>
         </div>

@@ -478,7 +478,7 @@
                 <p>☛ All images will be completely deleted</p>
                 <p>☛ Your account will not show up in search results</p>
                 <p>☛ Your account can no longer be viewed by others</p>
-                <form id="<?php echo $_SESSION["user_id"];?>" class="delete-account-form" action="<?php echo URLROOT;?>/pages/index" method="POST">
+                <form id="<?php echo $_SESSION["user_id"];?>" class="delete-account-form" action="<?php echo URLROOT;?>/home" method="POST">
                     <button type="submit" class="button">I agree to delete my account</button>
                     <button type="button" class="button" onclick = "closeForm()">Cancel</button>
                 </form>

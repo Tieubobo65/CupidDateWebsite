@@ -4,8 +4,6 @@
             $this->userModel = $this->model('UserModel');
         }
 
-
-
         function fetch_state() {
             if(isset($_POST['country_id']))
             {

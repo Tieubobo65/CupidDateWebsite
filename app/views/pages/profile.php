@@ -74,10 +74,20 @@
                                         Like
                                     </button>
                                 </form>
-                                <button class="button">
-                                <i class="fas fa-comment"></i>
-                                    Message
-                                </button>
+                                <?php if ($data['check']) { ?>
+                                    <form action="<?php echo URLROOT;?>/messages/chat/<?php echo $data['user_detail']['id'];?>">
+                                    <button class="button" type="submit">
+                                        <i class="fas fa-comment"></i>
+                                        Message
+                                    </button>
+                                </form>
+                                <?php } else { ?>
+                                    <button class="button">
+                                        <i class="fas fa-comment"></i>
+                                        Message
+                                    </button>
+                                <?php } ?>
+                                
                             <?php } else {?>
                                 <form name="profile__like-form" id="<?php echo $data['user_detail']['id'];?>" class="profile__like-form" action="<?php echo URLROOT;?>/members/like" method="POST">
                                     <button class="button" type="submit" id="like_button">
@@ -92,11 +102,19 @@
                                         Unlike
                                     </button>
                                 </form>
-
-                                <button class="button">
-                                <i class="fas fa-comment"></i>
-                                    Message
-                                </button>
+                                <?php if ($data['check']) { ?>
+                                    <form action="<?php echo URLROOT;?>/messages/chat/<?php echo $data['user_detail']['id'];?>">
+                                    <button class="button" type="submit">
+                                        <i class="fas fa-comment"></i>
+                                        Message
+                                    </button>
+                                </form>
+                                <?php } else { ?>
+                                    <button class="button">
+                                        <i class="fas fa-comment"></i>
+                                        Message
+                                    </button>
+                                <?php } ?>
                             <?php } ?>
                         </div>
                     </div>

@@ -186,4 +186,14 @@
             echo $sql;
             $this->db->execute($sql);
         }
+
+        // check relationship
+        public function checkRelationship($user_1, $user_2) {
+            $sql = "SELECT *
+                    FROM relationships
+                    WHERE (user_1 = $user_1 AND user_2 = $user_2)
+                    OR (user_1 = $user_2 AND user_2 = $user_1)
+                    ";
+            return mysqli_query($this->conn, $sql);
+        }
     }

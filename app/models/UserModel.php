@@ -166,6 +166,8 @@
 
         //Delete account 
         public function deleteAccount($user_id) {
+            $this->db->delete('blocks', 'user_id', $user_id);
+            $this->db->delete('blocks', 'block_user_id', $user_id);
             $this->db->delete('photos', 'user_id', $user_id);
             $this->db->delete('relationships', 'user_1', $user_id);
             $this->db->delete('relationships', 'user_2', $user_id);
@@ -198,6 +200,7 @@
             $row = mysqli_fetch_array($this->db->execute($sql));
             return $row;
         }
+        
         public function getUserById($user_id) {
             $sql = "SELECT *
                     FROM users

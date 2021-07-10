@@ -1,53 +1,46 @@
 <div class="heading">
-            <div class="grid wide heading-container ">
-                <div id="heading__logo" class="heading__logo">
-                    <?php if(isset($_SESSION['user_id'])) { ?>
-                        <a href="<?php echo URLROOT; ?>/home" id="home-page">
-                            <span style="color: #e74c3c">Cupid</span> Date
-                        </a>
-                    <?php } else { ?>
-                        <a href="<?php echo URLROOT; ?>/home" id="home-page">
-                            <span style="color: #e74c3c">Cupid</span> Date
-                        </a>
-                    <?php } ?>
-                        <div id="heading__menubar">
-                            <i class="fas fa-bars"></i>
-                        </div>
-                </div>
-                <nav id="heading__nav" class="heading__nav">
-                    <div>
-                        <ul class="list heading__nav-list">
+    <div class="grid wide heading-container ">
+        <div id="heading__logo" class="heading__logo">
+            <a href="<?php echo URLROOT; ?>/home" id="home-page">
+                <span style="color: #e74c3c">Cupid</span> Date
+            </a>
+            <div id="heading__menubar">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <nav id="heading__nav" class="heading__nav">
+            <div>
+                <ul class="list heading__nav-list">
+                    <li class="heading__nav-item">
+                        <a id="blog-page" style="cursor: pointer;" href="<?php echo URLROOT; ?>/blog">Blog</a>
+                    </li>
+                    <li class="heading__nav-item">
+                        <a id="blog-page" style="cursor: pointer;" href="<?php echo URLROOT; ?>/shop">Shop</a>
+                    </li>
+                    <?php if (!empty($_SESSION['user_id'])) { ?>
                         <li class="heading__nav-item">
-                            <a id="blog-page" style="cursor: pointer;" href="<?php echo URLROOT; ?>/blog">Blog</a>
+                            <a id="community-page">Community</a>
+                            <ul class="list sub-heading__nav">
+                                <li>
+                                    <a href="<?php echo URLROOT; ?>/members">Members</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT; ?>/waiting">Waiting You</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT; ?>/liked">Liked Members</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT; ?>/matches">Matches</a>
+                                </li>
+                            </ul>
                         </li>
-                            <li class="heading__nav-item">
-                                <a id="community-page" href="#">Community</a>
-                                <ul class="list sub-heading__nav">
-                                    <li>
-                                        <a href="<?php echo URLROOT; ?>/members">Members</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo URLROOT; ?>/waiting">Waiting You</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo URLROOT; ?>/liked">Liked Members</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo URLROOT; ?>/matches">Matches</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="heading__nav-item">
-                                <a id="shop-page" onclick="openShopPage()" href="#">Shop</a>
-                            </li>
-                            <li class="heading__nav-item">
-                                <a href="">Pages</a>
-                            </li>
-                            <li class="heading__nav-item">
-                                <a href="<?php echo URLROOT; ?>/contact">Contact us</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <?php } ?>
+                    <li class="heading__nav-item">
+                        <a href="<?php echo URLROOT; ?>/contact">Contact us</a>
+                    </li>
+                </ul>
+            </div>
 
                     <div class="vertical-line">
                     </div>
@@ -67,13 +60,15 @@
                                         <?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?>
                                     </a>
                                 <?php } ?>
-
-                                <ul class="list sub-heading__nav">
-                                <?php if($_SESSION['city_id']) { ?>
-                                    <li>
-                                        <a href="<?php echo URLROOT; ?>/user_profile">Your profile</a>
-                                    </li>
-                                <?php } ?>
+                               <ul class="list sub-heading__nav">
+                                    <?php if($_SESSION['city_id']) { ?>
+                                        <li>
+                                            <a href="<?php echo URLROOT; ?>/user_profile">
+                                                <i class="fas fa-user-circle"></i>
+                                                Your profile
+                                            </a>
+                                        </li>
+                                    <?php } ?>
                                     <li>
                                         <a href="<?php echo URLROOT; ?>/messages">
                                             <i class="fas fa-comment-dots"></i>
@@ -81,7 +76,10 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo URLROOT; ?>/users/logout">Log out</a>
+                                        <a href="<?php echo URLROOT; ?>/users/logout">
+                                            <i class="fas fa-sign-out-alt"></i>    
+                                            Log out
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -124,13 +122,22 @@
             <div class="heading__nav-list">
                 <ul>
                     <li class="heading__nav-mobile-item">
-                        <a onclick="openBlogPage()" href="#">Blog</a>
+                        <a href="<?php echo URLROOT; ?>/blog">Blog</a>
                     </li>
                     <li class="heading__nav-mobile-item">
-                        <a onclick="openMembersPage()" href="#">Members</a>
+                        <a href="<?php echo URLROOT; ?>/members">Members</a>
                     </li>
                     <li class="heading__nav-mobile-item">
-                        <a onclick="openContactPage()" href="#">Contact us</a>
+                        <a href="<?php echo URLROOT; ?>/waiting">Waiting You</a>
+                    </li>
+                    <li class="heading__nav-mobile-item">
+                        <a href="<?php echo URLROOT; ?>/liked">Liked Members</a>
+                    </li>
+                    <li class="heading__nav-mobile-item">
+                        <a href="<?php echo URLROOT; ?>/matches">Matches</a>
+                    </li>
+                    <li class="heading__nav-mobile-item">
+                        <a href="<?php echo URLROOT; ?>/contact">Contact us</a>
                     </li>
                 </ul>
             </div>

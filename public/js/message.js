@@ -42,7 +42,6 @@ setInterval(() => {
                 if (!searchBar.classList.contains("active")) {
                     conversationList.innerHTML = data;
                 }
-                
             }
         }
     }

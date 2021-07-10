@@ -182,11 +182,12 @@ a {
 
 .sub-heading__nav li{
     border-bottom: 1px solid #000;
-    text-align: center;
+    text-align: left;
 }
 
 .sub-heading__nav a {
     font-size: 14px;
+    padding: 0 20px;
 }
 
 .sub-heading__nav li:hover {
@@ -199,6 +200,10 @@ a {
 }
 .heading__nav-item:hover > .sub-heading__nav {
     display: block;
+}
+
+#community-page {
+    cursor: default;
 }
 
 #user-avt {
@@ -792,6 +797,16 @@ body.showLoginForm .form__close {
 .blog__action a:hover i {
     color: #e74c3c;
 }
+
+.blog__title a h2 {
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+
 .blog__img img {
     width: 100%;
     max-width: 100%;
@@ -817,6 +832,11 @@ body.showLoginForm .form__close {
 
 .blog__author a {
     color: #2e3c43;
+    font-weight: 600;
+}
+
+.blog__author a:hover {
+    color: #e74c3c;
 }
 
 .blog__time {
@@ -981,7 +1001,7 @@ body.showLoginForm .form__close {
     font-weight: 600;
 }
 
-.post__author:hover a {
+.post__author a:hover {
     color: #e74c3c;
 }
 
@@ -1221,7 +1241,7 @@ body.showLoginForm .form__close {
 }
 
 .sidebar__author a{
-    color: #1273eb;
+    color: #e74c3c;
 }
 
 .sidebar__title a{
@@ -1230,7 +1250,7 @@ body.showLoginForm .form__close {
 }
 
 .sidebar__title a:hover {
-    color: #1273eb;
+    color: #e74c3c;
 }
 /* End blog detail */
 
@@ -2045,21 +2065,20 @@ body.showLoginForm .form__close {
 
 #message-container,
 #chat-container {
-    margin-top: 80px;
+    margin-top: 81px;
     max-height: 800px;
-    height: 95vh - 40px;
+    height: 637px;
     border-radius: 3px;
-}
-
-.message-list {
-    box-shadow: 0 0 40px rgb(95 125 149 / 25%);
+    margin-bottom: 10px;
 }
 
 #message-container .message-item,
 #chat-container .chat-item {
-    height: 88vh;
+    height: 573px;
     margin: 0 -8px;
     border-radius: 5px 0 0 5px;
+    box-shadow: 0 0 40px rgb(95 125 149 / 25%);
+    position: relative;
 }
 
 #message-container .search-container,
@@ -2072,9 +2091,8 @@ body.showLoginForm .form__close {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
-    background-color: #ccc;
+    background-color: #fff;
 }
 
 #message-container .search-container span {
@@ -2171,12 +2189,13 @@ body.showLoginForm .form__close {
 
 .conversation-container .conversation__detail p {
     color: #67676a;
+    text-align: left;
 }
 
 
 /* Begin chat */
 .chat-title__content {
-    padding: 10px 20px;
+    padding: 10px 30px;
     display: flex;
     align-items: center;
 }
@@ -2185,8 +2204,80 @@ body.showLoginForm .form__close {
     font-weight: 600;
 }
 
-.chat-title {
+.chat-title__content .chat-title__more {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.chat-title__content .chat-title__option {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 2px 1px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    transform-origin: top center;
+    top: calc(100% + 4px);
+    right: 0;
+    z-index: 1;
+    width: 150px;
+    height: auto;
+    display: none;
+}
+
+.dropbtn {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.dropbtn:hover {
     background-color: #ccc;
+}
+
+.chat-title__content .chat-title__option.show {
+    display: block;
+}
+
+.chat-title__content .chat-title__option button {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    padding: 12px;
+    line-height: 16px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: inherit;
+    transition: background-color .2s;
+}
+
+.chat-title__content .chat-title__option button:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.chat-title__content .chat-title__option button:last-child {
+    border-radius: 0 0 8px 8px;    
+}
+
+.chat-title__content .chat-title__option button:hover {
+    background-color: #ccc;
+}
+
+.chat-title {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
 }
 
 .chat-title__detail {
@@ -2231,7 +2322,7 @@ body.showLoginForm .form__close {
 }
 
 #chat-box .outgoing .details p {
-    background-color: #333;
+    background-color: #e74c3c;
     color: #fff;
     border-radius: 18px 18px 0 18px;
     padding: 12px;
@@ -2282,6 +2373,91 @@ body.showLoginForm .form__close {
     cursor: pointer;
 }
 
+.chat-warning {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+.chat-warning i {
+    color: #a83f39;
+}
+
+.fullscreen {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    text-align: center;
+    background-color: rgba(17,17,17,.7);
+    display: none;
+}
+
+.fullscreen.show {
+    display: block;
+}
+
+.warning {
+    position: fixed;
+    max-width: 315px;
+    background-color: #fff;
+    transform: translateX(0);
+    box-shadow: 1px 2px 10px 0 rgb(0 0 0 / 10%);
+    border-radius: 5px;
+    padding: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.warning .warning-title {
+    padding-bottom: 14px;
+    color: #1e1e1e;
+    line-height: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.warning .warning-body {
+    font-size: 17px;
+    line-height: 25px;
+    margin-bottom: 25px;
+}
+
+.warning button {
+    width: 100%;
+}
+
+.warning .warning-btn__confirm {
+    background-color: #0500be;
+    height: 52px;
+    font-weight: 500;
+    padding: 0 18px;
+    color: #fff;
+    font-size: .875rem;
+    line-height: 52px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.warning .warning-btn__cancel {
+    background: #fff;
+    color: #0500be;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.375rem;
+}
+
 /* End messages */
 .form-row {
     display: flex;
@@ -2296,6 +2472,6 @@ body.showLoginForm .form__close {
     max-height: 300px;
 }
 
-.profile__avatar img {
+/* .profile__avatar img {
 
-}
+} */
