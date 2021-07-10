@@ -58,7 +58,7 @@
         // Get login url
         $facebook_permissions = ['email']; // Optional permissions
 
-        $facebook_login_url = $facebook_helper->getLoginUrl('http://localhost:8080/CupidDate/users/login', $facebook_permissions);
+        $facebook_login_url = $facebook_helper->getLoginUrl('http://localhost/CupidDate/users/login', $facebook_permissions);
     
         // Render Facebook login button
         $facebook_login_url = '<div align="center"><a href="'.$facebook_login_url.'"><img src="php-login-with-facebook.gif" /></a></div>';

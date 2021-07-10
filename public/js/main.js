@@ -24,7 +24,7 @@ function ajaxSubmitBlog(form, id=null) {
         }
         $(formId).on("submit", function(e) {
             e.preventDefault();
-            var url =  "http://localhost:8080/CupidDate/blog/" + form;
+            var url =  "http://localhost/CupidDate/blog/" + form;
             $.ajax({
                 type: "POST",
                 url: url,
@@ -63,7 +63,7 @@ function ajaxSubmitMessage(form, id=null) {
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/CupidDate/messages/" + form,
+                url: "http://localhost/CupidDate/messages/" + form,
                 data: $(formId).serializeArray(),
                 success: function(data) {
                     console.log(data);
